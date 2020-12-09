@@ -6,7 +6,6 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
-    console.log(req.body);
     let { fullname, email, password, phone_no, address, dob, gender, scanned_license} = req.body;
     User.findOne({ email })
         .then(user => {
@@ -26,8 +25,8 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-    let { username, password } = req.body;
-    User.findOne({ username })
+    let { email, password } = req.body;
+    User.findOne({ email })
         .then((user) => {
             if (!user) {
                 let err = new Error('User does not exists!');
@@ -43,10 +42,7 @@ router.post('/login', (req, res, next) => {
                     }
                     let payload = {
                         id: user.id,
-                        username: user.username,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        role: user.role
+                       email: user.email    
                     }
                     jwt.sign(payload, process.env.SECRET, (err, token) => {
                         if (err) return next(err);
