@@ -6,13 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="157dp"
-        android:layout_height="161dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="228dp"
-        tools:src="@tools:sample/avatars" />
+        android:layout_width="304dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="228dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Please follow traffic rules and wear helmet at all times.."
+        android:textColor="@color/orange"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="सडकमा ट्राफिक नियमको पालना गरौं ।"
+        android:textColor="@color/red"
+        android:textColorHighlight="@color/red"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
