@@ -1,14 +1,26 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const validators = require('validator');
 const User = require('../models/User');
 
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
-    let { fullname, email, password, phone_no, address, dob, gender, scanned_license} = req.body;
+//validation 
+    // let { errors, isValid } = validators.RegisterInput(req.body);
+    // if (!isValid) {
+    //     return res.status(400).json({
+    //         status: 'error',
+    //         message: errors
+    //     });
+    // }
+
+    let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense } = req.body;
+    console.log(email + 'this si email');   
     User.findOne({ email })
         .then(user => {
+            console.log(user + "this is euser");
             if (user) {
                 let err = new Error('Email already exists!');
                 err.status = 400;
@@ -16,7 +28,7 @@ router.post('/register', (req, res, next) => {
             }
             bcrypt.hash(password, 10)
                 .then((hash) => {
-                    User.create({fullname, email, password: hash, phone_no, address, dob, gender, scanned_license })
+                    User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense })
                         .then(user => {
                             res.status(201).json({ "status": "Registration successful" });
                         })
@@ -26,6 +38,13 @@ router.post('/register', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
     let { email, password } = req.body;
+    // let { errors, isValid } = validators.LoginInput(req.body);
+    // if (!isValid) {
+    //     return res.status(400).json({
+    //         status: 'error',
+    //         message: errors
+    //     });
+    // }
     User.findOne({ email })
         .then((user) => {
             if (!user) {
