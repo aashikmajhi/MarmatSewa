@@ -3,7 +3,7 @@ const validator = require('validator');
 const RegisterInput = (data) => {
     let errors = {};
     if (data.fullname) {
-        if (!validator.isLength(data.Fullname.trim(), { min: 6, max: 30 })) {
+        if (!validator.isLength(data.fullname.trim(), { min: 6, max: 30 })) {
             errors.fullname = 'Fullname must be between 6 and 30 characters.';
         }
     } else errors.fullname = 'Fullname is required.';
@@ -19,26 +19,36 @@ const RegisterInput = (data) => {
     if (data.password) {
         if (!validator.isLength(data.password.trim(), { min: 6, max: 30 })) {
             errors.password = 'Password must be between 6 and 30 characters.';
-        } 
-        // else if (!validator.isStrongPassword(data.password.trim(), {  minLowercase: 1, minUppercase: 1 })) {
-        //     errors.password = 'Password must contain 1 lower-case and 1 upper-case. '
-        // }
+        }  else if (validator.isStrongPassword(data.password.trim(), {  minUppercase: 1 })) {
+            errors.password = 'Password must contain  1 upper-case. '
+        }
     } else errors.password = 'Password is required.';
 
-    if (data.phone_no) {
-        if (!validator.isLength(data.phone_no.trim(), { min: 10, max: 10 })) {
-            errors.phone_no = 'Phone number must be 10 character.';
-        } else if (!validator.isInt()) {
-            errors.phone_no = 'Phone number must be INT.';
+    if (data.phoneNo) {
+        if (!validator.isLength(data.phoneNo, { min: 10, max: 10 })) {
+            errors.phoneNo = 'Phone number must be 10 character.';
+        } else if (!validator.isInt(data.phoneNo)) {
+            errors.phoneNo = 'Phone number must be INT.';
         }
-    } else errors.phone_no = 'Phone number is required.';
+    } else errors.phoneNo = 'Phone number is required.';
 
     if (data.address) {
-        if (!validator.isLength(data.address.trim(), { min: 5, max: 30 })) {
-            errors.phone_no = 'Phone number must be 10 character.';
+        if (!validator.isLength(data.address.trim(), { min: 6, max: 30 })) {
+            errors.address = 'Address must be between 6 and 30 characters.';
         } 
-    } else errors.phone_no = 'Phone number is required.';
+    } else errors.address = 'Address is required.';
   
+    if (!data.dob) {
+        errors.dob = 'Date of birth is required.';
+    } 
+
+    if (!data.gender) {
+        errors.address = 'Gender is required.';
+    } 
+
+    if (!data.scannedLicense) {
+        errors.address = 'Gender is required.';
+    }
     return {
         errors,
         isValid: Object.keys(errors).length === 0
@@ -59,15 +69,13 @@ const LoginInput = (data) => {
         } else if (!validator.isEmail(data.email.trim())) {
             errors.email = 'Invalid email.'
         }
-    } else errors.password = 'Email is required.';
+    } else errors.email = 'Email is required.';
   
     return {
         errors,
         isValid: Object.keys(errors).length === 0
     }
 }
-
-
 
 module.exports = {
     RegisterInput, LoginInput

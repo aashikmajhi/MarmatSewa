@@ -8,7 +8,6 @@ const garageInfoRouter = require('./routes/garageInfoRouter');
 
 const app = express();
 
-<<<<<<< HEAD
 mongoose.connect(process.env.DbURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,16 +15,6 @@ mongoose.connect(process.env.DbURI,{
 })
 .then(()=> console.log('----------------- Database server connected --------------------'))
 .catch((err) => console.log(err));
-=======
-mongoose
-	.connect(process.env.DbURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: true
-	})
-	.then(() => console.log('----------------- Database server connected --------------------'))
-	.catch((err) => console.log(err));
->>>>>>> 17d3a3190610be6b5f3e55b3e63f0f01836d0156
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
