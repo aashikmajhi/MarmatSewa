@@ -8,7 +8,7 @@ const garageInfoRouter = require('./routes/garageInfoRouter');
 
 const app = express();
 
-mongoose.connect(process.env.DBUri,{
+mongoose.connect(process.env.DbURI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true
