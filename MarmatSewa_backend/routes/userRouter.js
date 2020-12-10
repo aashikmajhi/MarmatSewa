@@ -1,23 +1,22 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const validators = require('validator');
+const validators = require('../utils/validators');
 const User = require('../models/User');
 
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
 //validation 
-    // let { errors, isValid } = validators.RegisterInput(req.body);
-    // if (!isValid) {
-    //     return res.status(400).json({
-    //         status: 'error',
-    //         message: errors
-    //     });
-    // }
+    let { errors, isValid } = validators.RegisterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({
+            status: 'error',
+            message: errors
+        });
+    }
 
     let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense } = req.body;
-    console.log(email + 'this si email');   
     User.findOne({ email })
         .then(user => {
             console.log(user + "this is euser");
@@ -38,13 +37,13 @@ router.post('/register', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
     let { email, password } = req.body;
-    // let { errors, isValid } = validators.LoginInput(req.body);
-    // if (!isValid) {
-    //     return res.status(400).json({
-    //         status: 'error',
-    //         message: errors
-    //     });
-    // }
+    let { errors, isValid } = validators.LoginInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({
+            status: 'error',
+            message: errors
+        });
+    }
     User.findOne({ email })
         .then((user) => {
             if (!user) {
