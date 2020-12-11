@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const userRouter = require('./routes/userRouter');
 const garageInfoRouter = require('./routes/garageInfoRouter');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', userRouter);
 app.use('/api/garage-infos', garageInfoRouter);
+app.use('/api/uploads', uploadRouter);
 
 app.listen(process.env.Port, () => {
 	console.log(`Server is running at localhost:${process.env.Port}`);

@@ -25,6 +25,7 @@ router.route('/')
         .then(updatedUser => {
             res.status(200).send(updatedUser + " " + garage);
         }).catch(next);
+        
     }).catch(next);
 });
 
