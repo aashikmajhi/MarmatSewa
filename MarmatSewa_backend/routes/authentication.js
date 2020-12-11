@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 
 function verifyUser(req, res, next) {
     let authHeader = req.headers.authorization;
-    if (! authHeader) {
+    console.log("this is Header" + authHeader);
+    if (!authHeader) {
         let err = new Error('No authentication information!');
 		err.status = 401;
         return next(err);
