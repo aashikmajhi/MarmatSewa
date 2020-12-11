@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const validators = require('../utils/garageInfoValidation');
 const GarageInfo = require('../models/GarageInfo');
+const User = require('../models/User');
 const auth = require('../routes/authentication');
 
 const router = express.Router();
@@ -20,7 +21,10 @@ router.route('/')
     }
 	GarageInfo.create({... req.body, user: req.user.id})
     .then((garage) => {
-        res.status(201).json(garage);
+        User.findByIdAndUpdate(req.user.id, {role: 'GARAGE_OWNER' }, {new: true})
+        .then(updatedUser => {
+            res.status(200).send(updatedUser + " " + garage);
+        }).catch(next);
     }).catch(next);
 });
 

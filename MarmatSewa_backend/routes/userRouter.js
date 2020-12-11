@@ -69,7 +69,7 @@ router.post('/login', (req, res, next) => {
                             token: `Bearer ${token}`
                         });
                     });
-                })
+                }).catch(next);
         }).catch(next);
 });
 
