@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const validators = require('../utils/garageInfoValidation');
 const GarageInfo = require('../models/GarageInfo');
 const auth = require('../routes/authentication');
 
@@ -10,6 +11,13 @@ router.route('/')
     console.log("Get req to be sent ...")
 })
 .post(auth.verifyUser,(req, res, next) => {
+    let { errors, isValid } = validators.GarageInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({
+            status: 'error',
+            message: errors
+        });
+    }
 	GarageInfo.create({... req.body, user: req.user.id})
     .then((garage) => {
         res.status(201).json(garage);

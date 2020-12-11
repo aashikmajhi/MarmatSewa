@@ -43,11 +43,11 @@ const RegisterInput = (data) => {
     } 
 
     if (!data.gender) {
-        errors.address = 'Gender is required.';
+        errors.gender = 'Gender is required.';
     } 
 
     if (!data.scannedLicense) {
-        errors.address = 'Gender is required.';
+        errors.scannedLicense = 'Scanned License is required.';
     }
     return {
         errors,
