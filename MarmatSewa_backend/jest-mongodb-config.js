@@ -1,13 +1,13 @@
 module.exports = {
     mongodbMemoryServerOptions: {
         instance: {
-            dbName: ''
+            dbName: 'MarmatSewa_Dev'
         },
         binary: {
-            version: '4.0.2',
+            version: 'latest',
             skipMD5: true
         },
 
-        autostart: false
+        autoStart: false
     }
 }
