@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MarmatSewa</string>
+
+    <string-array name="vehicleType">
+        <item>2 wheeler</item>
+        <item>4 wheeler</item>
+        <item>Both</item>
+    </string-array>
 </resources>

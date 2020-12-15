@@ -2,6 +2,7 @@ package com.example.marmatsewa.Registration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -43,7 +44,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "Signup Button Pressed", Toast.LENGTH_SHORT).show();
-            }
+                    Intent intent = new Intent(LoginActivity.this, RegistrationType.class);
+                    startActivity(intent);
+                }
         });
 
     }
