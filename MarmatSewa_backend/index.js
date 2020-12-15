@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const userRouter = require('./routes/userRouter');
-const garageInfoRouter = require('./routes/garageInfoRouter');
+const garageInfoRouter = require('./routes/garageOwner');
 
 const app = express();
 
