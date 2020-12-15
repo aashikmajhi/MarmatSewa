@@ -42,21 +42,21 @@ const garageInfo = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
-    controrlsAndBrakes: {
+    controlsAndBrakes: {
         type: Boolean,
-        required: true
+        default: false
     },
     electricity: {
         type: Boolean,
-        required: true
+        default: false
     },
     puncture: {
         type: Boolean,
-        required: true
+        default: false
     },
     wheelAndControl: {
         type: Boolean,
-        required: true
+        default: false
     },
     // isApproved: {
     //     type: Boolean,
