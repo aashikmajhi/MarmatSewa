@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRouter);
-app.use('/api/garage-infos', garageInfoRouter);
+app.use('/api/garageOwner', garageInfoRouter);
 
 app.listen(process.env.Port, () => {
 	console.log(`Server is running at localhost:${process.env.Port}`);
