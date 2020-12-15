@@ -86,13 +86,13 @@ describe('Test for user route', () => {
 
     test('should be able to login', () => {
         return request(app).post('/api/users/login')
-        .send({
-        email: 'test@abc.com',
-        password: 'test123',
-    }).then((res) => {
-        console.log(res.body)
-        expect(res.statusCode).toBe(200)
-        })
+            .send({
+                email: 'test@abc.com',
+                password: 'test123',
+            }).then((res) => {
+                console.log(res.body)
+                expect(res.statusCode).toBe(200)
+            })
     })
 
     test('should be not be able to login with wrong password', () => {
