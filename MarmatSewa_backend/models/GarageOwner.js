@@ -6,6 +6,16 @@ const garageInfo = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
+    email: {
+        type: String,
+        maxlength: 255,
+        required: true
+    },
+    password: {
+        type: String,
+        maxlength: 255,
+        required: true
+    },
     address: {
         type: String,
         maxlength: 255,
@@ -32,17 +42,27 @@ const garageInfo = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
-    featuringServices: {
-        type: String,
-        maxlength: 255,
+    controrlsAndBrakes: {
+        type: Boolean,
         required: true
     },
-    user: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		required: true
+    electricity: {
+        type: Boolean,
+        required: true
     },
- 
+    puncture: {
+        type: Boolean,
+        required: true
+    },
+    wheelAndControl: {
+        type: Boolean,
+        required: true
+    },
+    // isApproved: {
+    //     type: Boolean,
+    //     default: false
+    // }
+  
 },{timestamps: true});
 
 module.exports = mongoose.model('GarageInfo', garageInfo); 

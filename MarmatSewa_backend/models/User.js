@@ -41,13 +41,6 @@ const userSchema = new mongoose.Schema({
 		maxlength: 25,
 		required: true
     },
-    role: {
-        type: String,
-		enum: ['USER', 'GARAGE_OWNER', 'ADMIN'],
-        required: true,
-        default: 'USER'
-    }
-
 },
 {timestamps: true});
 
