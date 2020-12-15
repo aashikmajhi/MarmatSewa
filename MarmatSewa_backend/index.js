@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const userRouter = require('./routes/userRouter');
-const garageInfoRouter = require('./routes/garageOwner');
+const garageOwnerRouter = require('./routes/garageOwnerRouter');
+const garageOwner = require('./models/GarageOwner');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRouter);
-app.use('/api/garageOwner', garageInfoRouter);
+app.use('/api/garageOwner', garageOwnerRouter);
 
 app.listen(process.env.Port, () => {
 	console.log(`Server is running at localhost:${process.env.Port}`);

@@ -1,5 +1,5 @@
 const express = require('express');
-const validators = require('../utils/garageOwner');
+const validators = require('../utils/garageValidation');
 const GarageOwner = require('../models/GarageOwner');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
@@ -18,7 +18,7 @@ router.route('/')
             message: errors
         });
     }
-    let { businessName, email, password, address, contactNo, registrationType,
+    let { businessName, ownerName, email, password, address, contactNo, registrationType,
     panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl } = req.body;
     User.findOne({ email })
     .then(user => {
@@ -36,7 +36,7 @@ router.route('/')
             }
             bcrypt.hash(password, 10)
             .then((hash) => {
-                GarageOwner.create({ businessName, email, password: hash, address, contactNo, 
+                GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
                     registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl })
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });

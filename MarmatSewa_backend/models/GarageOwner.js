@@ -6,6 +6,11 @@ const garageInfo = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
+    ownerName: {
+        type: String, 
+        maxlength: 255,
+        required:true
+    },
     email: {
         type: String,
         maxlength: 255,

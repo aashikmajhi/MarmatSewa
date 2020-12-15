@@ -8,6 +8,12 @@ const GarageInput = (data) => {
         }
     } else errors.businessName = 'Business name is required.';
 
+    if (data.ownerName) {
+        if (!validator.isLength(data.ownerName.trim(), { min: 6, max: 30 })) {
+            errors.ownerName = 'Owner name must be between 6 and 30 characters.';
+        }
+    } else errors.ownerName = 'Owner name name is required.';
+
     if (data.address) {
         if (!validator.isLength(data.address.trim(), { min: 6, max: 30 })) {
             errors.address = 'Address must be between 6 and 30 characters.';
