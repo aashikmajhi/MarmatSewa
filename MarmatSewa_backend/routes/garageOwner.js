@@ -1,9 +1,8 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const validators = require('../utils/garageInfoValidation');
-const GarageInfo = require('../models/GarageInfo');
+const validators = require('../utils/garageOwner');
+const GarageOwner = require('../models/GarageOwner');
 const User = require('../models/User');
-const auth = require('../routes/authentication');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
@@ -11,7 +10,7 @@ router.route('/')
 .get((req, res, next ) => {
     console.log("Get req to be sent ...")
 })
-.post(auth.verifyUser,(req, res, next) => {
+.post((req, res, next) => {
     let { errors, isValid } = validators.GarageInput(req.body);
     if (!isValid) {
         return res.status(400).json({
@@ -19,11 +18,30 @@ router.route('/')
             message: errors
         });
     }
-	GarageInfo.create({... req.body, user: req.user.id})
-    .then((garage) => {
-        User.findByIdAndUpdate(req.user.id, {role: 'GARAGE_OWNER' }, {new: true})
-        .then(updatedUser => {
-            res.status(200).send(updatedUser + " " + garage);
+    let { businessName, email, password, address, contactNo, registrationType,
+    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl } = req.body;
+    User.findOne({ email })
+    .then(user => {
+        if (user) {
+            let err = new Error('Email already exists!');
+            err.status = 400;
+            return next(err);
+        }
+        GarageOwner.findOne({ email })
+        .then(garageOwner => {
+            if (garageOwner) {
+                let err = new Error('Email already exists!');
+                err.status = 400;
+                return next(err);
+            }
+            bcrypt.hash(password, 10)
+            .then((hash) => {
+                GarageOwner.create({ businessName, email, password: hash, address, contactNo, 
+                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl })
+                    .then(user => {
+                        res.status(201).json({ "status": "Registration successful" });
+                    })
+            }).catch(next);
         }).catch(next);
     }).catch(next);
 });

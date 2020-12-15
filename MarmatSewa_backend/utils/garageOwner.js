@@ -31,9 +31,17 @@ const GarageInput = (data) => {
     if (!data.registrationDoc) {
         errors.registrationDoc = 'Registration document is required.';
     }
-    if (!data.featuringServices) {
-        errors.featuringServices = 'Featuring services is required.';
-    }
+
+    // let NO_OF_SELECTED_FEATURES = 0;
+    // if (data.controlsAndBrakes) NO_OF_SELECTED_FEATURES++;
+    // if (data.puncture) NO_OF_SELECTED_FEATURES++;
+    // if (data.electricity) NO_OF_SELECTED_FEATURES++;
+    // if (data.wheelAndControl) NO_OF_SELECTED_FEATURES++;
+
+    // if (NO_OF_SELECTED_FEATURES < 2) {
+    //      errors.panDoc = 'At least 2 services most be selected.';
+    // }
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0
