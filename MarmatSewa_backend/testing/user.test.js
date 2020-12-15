@@ -27,7 +27,6 @@ describe('Test for user route', () => {
                 console.log(res.body)
                 expect(res.statusCode).toBe(201)
             })
-
     })
 
     test('should not register user with same email', () => {
@@ -83,6 +82,7 @@ describe('Test for user route', () => {
                 expect(res.statusCode).toBe(400)
             })
     })
+    
 
     test('should be able to login', () => {
         return request(app).post('/api/users/login')
@@ -119,5 +119,45 @@ describe('Test for user route', () => {
             })
     })
 
+    test('should not be able to register with existing email', () => {
+        return request(app).post('/api/users/register')
+            .send({
+                fullname: 'testingapi',
+                email: 'test@abcd.com',
+                password: 'test123',
+                phoneNo: '1234567890',
+                address: 'teststreet',
+                dob: '1988-01-20',
+                gender: 'MALE',
+                role: 'USER',
+                scannedLicense: 'license.png'
+            }).then((res) => {
+                console.log(res.body)
+                expect(res.statusCode).toBe(400)
+            })
+    })
 
+    test('should be not be able to login with invalid username', () => {
+        return request(app).post('/api/users/login')
+            .send({
+                email: 'testbabc.com',
+                password: 'test121',
+            }).then((res) => {
+                console.log(res.body)
+                expect(res.statusCode).toBe(400)
+                // expect(res.body.status).toBe('error')
+            })
+    })
+
+    test('should be not be able to login with garageowners wrong password', () => {
+        return request(app).post('/api/users/login')
+            .send({
+                email: 'test@abcd.com',
+                password: 'test123'
+            }).then((res) => {
+                console.log(res.body)
+                expect(res.statusCode).toBe(400)
+                // expect(res.body.status).toBe('error')
+            })
+    })
 })
