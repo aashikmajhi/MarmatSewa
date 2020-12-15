@@ -1,6 +1,6 @@
 const express = require('express');
-const validators = require('../utils/garageOwner');
-const GarageOwner = require('../models/GarageOwner');
+const validators = require('../utils/garageValidation');
+const GarageOwner = require('../models/garageOwner');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
