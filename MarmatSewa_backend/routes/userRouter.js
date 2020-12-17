@@ -3,11 +3,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const validators = require('../utils/userValidation');
 const User = require('../models/User');
+const GarageOwner = require('../models/GarageOwner');
 
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
-//validation 
+
     let { errors, isValid } = validators.RegisterInput(req.body);
     if (!isValid) {
         return res.status(400).json({
@@ -19,19 +20,26 @@ router.post('/register', (req, res, next) => {
     let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense } = req.body;
     User.findOne({ email })
         .then(user => {
-            console.log(user + "this is euser");
             if (user) {
                 let err = new Error('Email already exists!');
                 err.status = 400;
                 return next(err);
             }
-            bcrypt.hash(password, 10)
+            GarageOwner.findOne({ email })
+            .then(garageOwner => {
+                if (garageOwner) {
+                    let err = new Error('Email already exists!');
+                    err.status = 400;
+                    return next(err);
+                }
+                bcrypt.hash(password, 10)
                 .then((hash) => {
                     User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense })
                         .then(user => {
                             res.status(201).json({ "status": "Registration successful" });
                         })
-                })
+                }).catch(next);
+            }).catch(next);
         }).catch(next);
 });
 
@@ -44,14 +52,43 @@ router.post('/login', (req, res, next) => {
             message: errors
         });
     }
+
     User.findOne({ email })
-        .then((user) => {
+    .then((user) => {
+        //FOR GARAGE OWNER
             if (!user) {
-                let err = new Error('User does not exists!');
-                err.status = 400;
-                return next(err);
-            }
-            bcrypt.compare(password, user.password)
+                GarageOwner.findOne({ email })
+                .then(garageOwner => {
+                    if  (!garageOwner) {
+                        let err = new Error('User does not exists!');
+                        err.status = 400;
+                        return next(err);
+                    } else {
+                        bcrypt.compare(password, garageOwner.password)
+                        .then(isMatch => {
+                            if (!isMatch) {
+                                let err = new Error('Password does not match!');
+                                err.status = 400;
+                                return next(err);
+                            }
+                            let payload = {
+                                id: garageOwner.id,
+                               email: garageOwner.email,
+                               role: 'GARAGE_OWNER'
+                            }
+                            jwt.sign(payload, process.env.SECRET, (err, token) => {
+                                if (err) return next(err);
+                                        res.json({
+                                    status: "Login successful",
+                                    token: `Bearer ${token}`
+                                });
+                            });
+                        }).catch(next);
+                    }
+                }).catch(next);
+            } else {
+                //FOR USER
+                bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if (!isMatch) {
                         let err = new Error('Password does not match!');
@@ -60,7 +97,8 @@ router.post('/login', (req, res, next) => {
                     }
                     let payload = {
                         id: user.id,
-                       email: user.email    
+                       email: user.email,
+                       role: 'USER'
                     }
                     jwt.sign(payload, process.env.SECRET, (err, token) => {
                         if (err) return next(err);
@@ -70,6 +108,7 @@ router.post('/login', (req, res, next) => {
                         });
                     });
                 }).catch(next);
+            }
         }).catch(next);
 });
 

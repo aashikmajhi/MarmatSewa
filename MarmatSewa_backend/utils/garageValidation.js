@@ -8,6 +8,12 @@ const GarageInput = (data) => {
         }
     } else errors.businessName = 'Business name is required.';
 
+    if (data.ownerName) {
+        if (!validator.isLength(data.ownerName.trim(), { min: 6, max: 30 })) {
+            errors.ownerName = 'Owner name must be between 6 and 30 characters.';
+        }
+    } else errors.ownerName = 'Owner name name is required.';
+
     if (data.address) {
         if (!validator.isLength(data.address.trim(), { min: 6, max: 30 })) {
             errors.address = 'Address must be between 6 and 30 characters.';
@@ -31,9 +37,17 @@ const GarageInput = (data) => {
     if (!data.registrationDoc) {
         errors.registrationDoc = 'Registration document is required.';
     }
-    if (!data.featuringServices) {
-        errors.featuringServices = 'Featuring services is required.';
-    }
+
+    // let NO_OF_SELECTED_FEATURES = 0;
+    // if (data.controlsAndBrakes) NO_OF_SELECTED_FEATURES++;
+    // if (data.puncture) NO_OF_SELECTED_FEATURES++;
+    // if (data.electricity) NO_OF_SELECTED_FEATURES++;
+    // if (data.wheelAndControl) NO_OF_SELECTED_FEATURES++;
+
+    // if (NO_OF_SELECTED_FEATURES < 2) {
+    //      errors.panDoc = 'At least 2 services most be selected.';
+    // }
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0
