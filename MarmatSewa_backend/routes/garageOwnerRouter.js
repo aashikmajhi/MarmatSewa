@@ -1,10 +1,6 @@
 const express = require('express');
 const validators = require('../utils/garageValidation');
-<<<<<<< HEAD:MarmatSewa_backend/routes/garageOwnerRouter.js
 const GarageOwner = require('../models/GarageOwner');
-=======
-const GarageOwner = require('../models/garageOwner');
->>>>>>> c41040aaba54dfdd0f96138c44c516f73ae3b2b0:MarmatSewa_backend/routes/garageOwner.js
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
@@ -23,7 +19,7 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
-    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl } = req.body;
+    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -41,7 +37,7 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
-                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl })
+                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
