@@ -55,6 +55,7 @@ router.post('/login', (req, res, next) => {
 
     User.findOne({ email })
     .then((user) => {
+        //FOR GARAGE OWNER
             if (!user) {
                 GarageOwner.findOne({ email })
                 .then(garageOwner => {
@@ -72,7 +73,8 @@ router.post('/login', (req, res, next) => {
                             }
                             let payload = {
                                 id: garageOwner.id,
-                               email: garageOwner.email    
+                               email: garageOwner.email,
+                               role: 'GARAGE_OWNER'
                             }
                             jwt.sign(payload, process.env.SECRET, (err, token) => {
                                 if (err) return next(err);
@@ -85,6 +87,7 @@ router.post('/login', (req, res, next) => {
                     }
                 }).catch(next);
             } else {
+                //FOR USER
                 bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if (!isMatch) {
@@ -94,7 +97,8 @@ router.post('/login', (req, res, next) => {
                     }
                     let payload = {
                         id: user.id,
-                       email: user.email    
+                       email: user.email,
+                       role: 'USER'
                     }
                     jwt.sign(payload, process.env.SECRET, (err, token) => {
                         if (err) return next(err);

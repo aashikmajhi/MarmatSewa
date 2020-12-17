@@ -19,7 +19,7 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
-    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl } = req.body;
+    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -37,7 +37,7 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
-                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl })
+                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const garageInfo = new mongoose.Schema({
+            
+const garageOwnerSchema = new mongoose.Schema({
     businessName: {
         type: String,
         maxlength: 255,
@@ -35,7 +35,6 @@ const garageInfo = new mongoose.Schema({
         type: String,
         maxlength: 255,
         required: true
-        // options to be added 
     },
     panDoc: {
         type: String,
@@ -63,11 +62,21 @@ const garageInfo = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    // isApproved: {
-    //     type: Boolean,
-    //     default: false
-    // }
-  
+    status: {
+        type: String,
+        enum: ['PENDING', 'APPROVED']
+    },
+    latitude: {
+        type: mongoose.Types.Decimal128
+    },
+    longitude: {
+        type: mongoose.Types.Decimal128
+    },
+    vehicleType: {
+        type: String,
+        enum: ['TWO_WHEEL', 'FOUR_WHEEL', 'BOTH']
+    }, 
+ 
 },{timestamps: true});
 
-module.exports = mongoose.model('GarageInfo', garageInfo); 
+module.exports = mongoose.model('GarageOwner', garageOwnerSchema); 
