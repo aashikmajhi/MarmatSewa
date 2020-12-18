@@ -304,7 +304,7 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBoxControlBrake" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/btnRegisterWorkshop"
         android:layout_width="174dp"
         android:layout_height="39dp"
         android:layout_marginStart="171dp"
