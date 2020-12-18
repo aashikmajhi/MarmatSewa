@@ -96,7 +96,7 @@ router.post('/login', (req, res, next) => {
                         return next(err);
                     }
                     let payload = {
-                        id: user.id,
+                        id: user._id,
                        email: user.email,
                        role: 'USER'
                     }
