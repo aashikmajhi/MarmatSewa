@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.marmatsewa.R;
 
-public class GarageServices extends AppCompatActivity {
+public class FourWheelerServices extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_garage_services);
+        setContentView(R.layout.activity_four_wheeler_services);
     }
 }
