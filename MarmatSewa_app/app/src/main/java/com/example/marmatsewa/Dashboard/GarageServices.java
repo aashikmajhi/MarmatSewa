@@ -1,4 +1,4 @@
-package com.example.marmatsewa.Dasboard;
+package com.example.marmatsewa.Dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +23,7 @@ public class GarageServices extends AppCompatActivity {
 
     }
 
-//    Buton click handler on Services
+//    Image click handler on Services
 
     public void onCardClicker(View v)
     {

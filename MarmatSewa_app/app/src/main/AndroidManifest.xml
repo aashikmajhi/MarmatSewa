@@ -13,17 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Dashboard.TwoWheelerServices"></activity>
+        <activity android:name=".Dashboard.FourWheelerServices"></activity>
+        <activity android:name=".Dashboard.GarageServices">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Registration.workshopRegistration"></activity>
         <activity android:name=".Registration.userRegistration" />
         <activity android:name=".Registration.RegistrationType" />
         <activity android:name=".Registration.SignupActivity" />
         <activity android:name=".Registration.LoginActivity" />
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
