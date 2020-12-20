@@ -62,14 +62,14 @@
                     android:id="@+id/btn_Services"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/wheels"
-                    android:text="Services "
+                    android:text="Wheels "
                     android:layout_margin="15dp"/>
 
                 <Button
                     android:id="@+id/btn_Contactus"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/engine"
-                    android:text="Contact Us"
+                    android:text="Engine"
                     android:layout_margin="15dp"/>
             </LinearLayout>
 
@@ -83,14 +83,14 @@
                     android:id="@+id/btn_Booking"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/fuel"
-                    android:text="Book Laundry"
+                    android:text="Fuel"
                     android:layout_margin="15dp"/>
 
                 <Button
                     android:id="@+id/btn_History"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/suspension"
-                    android:text="Booking History"
+                    android:text="Suspension"
                     android:layout_margin="15dp"/>
 
             </LinearLayout>
@@ -105,13 +105,13 @@
                     android:id="@+id/btn_Aboutus"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/body"
-                    android:text="About Us"
+                    android:text="Body Frame"
                     android:layout_margin="15dp"/>
 
                 <Button  android:id="@+id/btn_Feedback"
                     style="@style/HomeButton"
                     android:drawableTop="@drawable/cooling"
-                    android:text="Feedback"
+                    android:text="Cooling"
                     android:layout_margin="15dp"/>
 
             </LinearLayout>
