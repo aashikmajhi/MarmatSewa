@@ -85,8 +85,18 @@ router.route('/:garage_id/reviews/:review_id')
             res.status(201).json(updatedGarage.reviews.id(req.params.review_id));
         }).catch(next);
     })
-})
-
+    .delete(auth.verifyUser, (req, res, next) => {
+        GarageOwner.findById(req.params.garage_id)
+        .then((garage) => {
+            garage.reviews = garage.reviews.filter((review) => {
+                return review.id !== req.params.review_id;
+            });
+            garage.save()
+                .then((garage) => {
+                    res.json(garage.reviews);
+                }).catch(err => next(err));
+        }).catch(err => next(err));
+});
 
 module.exports = router;
 
