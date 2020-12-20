@@ -44,6 +44,10 @@
         app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/back" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -62,15 +66,15 @@
         <Button
             android:id="@+id/btn_Services"
             style="@style/HomeButton"
-            android:drawableTop="@drawable/wheels"
-            android:text="Wheels"
+            android:drawableTop="@drawable/charging"
+            android:text="Charging"
             android:layout_margin="15dp"/>
 
         <Button
             android:id="@+id/btn_Contactus"
             style="@style/HomeButton"
-            android:drawableTop="@drawable/engine"
-            android:text="Engine"
+            android:drawableTop="@drawable/brake"
+            android:text="Brake"
             android:layout_margin="15dp"/>
     </LinearLayout>
 
@@ -83,15 +87,15 @@
         <Button
             android:id="@+id/btn_Booking"
             style="@style/HomeButton"
-            android:drawableTop="@drawable/fuel"
-            android:text="Fuel+Air"
+            android:drawableTop="@drawable/electronic"
+            android:text="Electronic System"
             android:layout_margin="15dp"/>
 
         <Button
             android:id="@+id/btn_History"
             style="@style/HomeButton"
-            android:drawableTop="@drawable/suspension"
-            android:text="Suspension"
+            android:drawableTop="@drawable/battery"
+            android:text="Battery"
             android:layout_margin="15dp"/>
 
     </LinearLayout>
@@ -105,8 +109,8 @@
         <Button
             android:id="@+id/btn_Aboutus"
             style="@style/HomeButton"
-            android:drawableTop="@drawable/body"
-            android:text="Body Fram"
+            android:drawableTop="@drawable/suspension"
+            android:text="Suspension"
             android:layout_margin="15dp"/>
 
         <Button  android:id="@+id/btn_Feedback"
@@ -116,7 +120,15 @@
             android:layout_margin="15dp"/>
 
     </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/Ask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            android:text="Ask"
+            tools:ignore="MissingConstraints" />
     </LinearLayout>
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
