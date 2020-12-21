@@ -1,4 +1,4 @@
-package com.example.marmatsewa.Registration.LoginDev;
+package com.example.marmatsewa.Registration.LoginDevelopment;
 
 public class LoginResponse {
 
