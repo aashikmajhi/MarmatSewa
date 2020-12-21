@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 function verifyUser(req, res, next) {
     let authHeader = req.headers.authorization;
-    console.log("this is Header" + authHeader);
     if (!authHeader) {
         let err = new Error('No authentication information!');
 		err.status = 401;
@@ -16,11 +15,22 @@ function verifyUser(req, res, next) {
             err.status = 401;
             return next(err);
         } else { 
-			req.user = payload;
+            req.user = payload;
+            // console.log(req.user.id);
             next();
         }
     })
 };
+
+
+function verifyGarageOwner(req, res, next) {
+    if (req.user.role !== 'GARAGE_OWNER') {
+        let err = new Error('Forbidden');
+        err.status = 403;
+        return next(err);
+	}
+    next();
+}
 
 function verifyAdmin(req, res, next) {
     if (req.user.role !== 'admin') {
@@ -32,5 +42,5 @@ function verifyAdmin(req, res, next) {
 }
 
 module.exports = {
-    verifyUser, verifyAdmin
+    verifyUser, verifyGarageOwner, verifyAdmin
 }

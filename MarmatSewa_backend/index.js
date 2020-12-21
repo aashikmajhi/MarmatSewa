@@ -5,7 +5,8 @@ require('dotenv').config();
 
 const userRouter = require('./routes/userRouter');
 const garageOwnerRouter = require('./routes/garageOwnerRouter');
-const garageOwner = require('./models/GarageOwner');
+const featureRouter = require('./routes/featureRouter');
+
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', userRouter);
 app.use('/api/garageOwner', garageOwnerRouter);
+app.use('/api/features', featureRouter);
 
 app.listen(process.env.Port, () => {
 	console.log(`Server is running at localhost:${process.env.Port}`);

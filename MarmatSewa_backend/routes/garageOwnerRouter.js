@@ -3,6 +3,7 @@ const validators = require('../utils/garageValidation');
 const GarageOwner = require('../models/GarageOwner');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const auth = require('./authentication');
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
-    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl } = req.body;
+    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -37,7 +38,7 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
-                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl })
+                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
@@ -45,38 +46,57 @@ router.route('/')
         }).catch(next);
     }).catch(next);
 });
+//reviews
+router.route('/:garage_id/reviews')
+.get(auth.verifyUser, (req, res, next) => {
+    GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+        res.status(200).json(garage.reviews);
+    })
+})
 
-// router.route('/:book_id')
-// .get((req, res, next) => {
-// 	Book.findById(req.params.book_id)
-// 	.populate('category')
-// 	.populate('owner')
-//     .then(book => {
-//         res.status(200).json(book);
-//     }).catch(next);
-// })
+.post(auth.verifyUser, (req, res, next) => {
+    const rv = { review, rating } = req.body;
+    rv.user = req.user.id;
+	GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+       garage.reviews.push(rv);
+       garage.save()
+       .then(newReview => res.status(201).json(newReview)).catch(next);
+    }).catch(next);
+});
 
-// .put(auth.verifyUser, (req, res, next) => {
-// 	Book.findByIdAndUpdate(req.params.book_id, {$set: req.body}, {new: true})
-// 	.then(updatedBook => {
-// 		res.status(200).send(updatedBook);
-// 	}).catch(next);
-// })
-// .delete(auth.verifyUser, (req, res, next) => {
-// 	Book.findByIdAndDelete(req.params.book_id) 
-// 	.then(book => {
-// 		res.status(200).send(book);
-// 	}).catch(next);
-// });	 
-
-// router.route('/user/book')
-// .get(auth.verifyUser, (req, res, next) => {
-// 	Book.find({owner: req.user.profileId})
-// 	.populate('category')
-//     .then((books) => {
-//         res.status(200).json(books);
-//     }).catch(next);
-// });
+router.route('/:garage_id/reviews/:review_id')
+.get(auth.verifyUser, (req, res, next) => {
+    GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+        res.status(200)
+        .json(garage.reviews.id(req.params.review_id));
+    }).catch(next);
+})
+.put(auth.verifyUser, (req, res, next) => {
+    GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+        let oldReview = garage.reviews.id(req.params.review_id);
+        oldReview.review = req.body.review;
+        oldReview.rating = req.body.rating;
+        garage.save()
+        .then(updatedGarage => {
+            res.status(201).json(updatedGarage.reviews.id(req.params.review_id));
+        }).catch(next);
+    })
+    .delete(auth.verifyUser, (req, res, next) => {
+        GarageOwner.findById(req.params.garage_id)
+        .then((garage) => {
+            garage.reviews = garage.reviews.filter((review) => {
+                return review.id !== req.params.review_id;
+            });
+            garage.save()
+                .then((garage) => {
+                    res.json(garage.reviews);
+                }).catch(err => next(err));
+        }).catch(err => next(err));
+});
 
 module.exports = router;
 
