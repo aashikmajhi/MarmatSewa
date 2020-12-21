@@ -84,7 +84,8 @@ const garageOwnerSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['PENDING', 'APPROVED']
+        enum: ['PENDING', 'APPROVED'],
+        default: 'PENDING'
     },
     latitude: {
         type: mongoose.Types.Decimal128

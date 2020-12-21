@@ -17,7 +17,7 @@ router.post('/register', (req, res, next) => {
         });
     }
 
-    let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense } = req.body;
+    let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense, isAdmin } = req.body;
     User.findOne({ email })
         .then(user => {
             if (user) {
@@ -34,10 +34,10 @@ router.post('/register', (req, res, next) => {
                 }
                 bcrypt.hash(password, 10)
                 .then((hash) => {
-                    User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense })
-                        .then(user => {
-                            res.status(201).json({ "status": "Registration successful" });
-                        })
+                    User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense, isAdmin })
+                    .then(user => {
+                        res.status(201).json({ "status": "Registration successful" });
+                    }).catch(next);
                 }).catch(next);
             }).catch(next);
         }).catch(next);
@@ -87,7 +87,7 @@ router.post('/login', (req, res, next) => {
                     }
                 }).catch(next);
             } else {
-                //FOR USER
+                //FOR USER & ADMIN
                 bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if (!isMatch) {
@@ -95,11 +95,20 @@ router.post('/login', (req, res, next) => {
                         err.status = 400;
                         return next(err);
                     }
+
                     let payload = {
                         id: user._id,
                        email: user.email,
-                       role: 'USER'
                     }
+
+                    if (user.isAdmin) {
+                        payload.role = 'ADMIN'
+                    } else {
+                        payload.role = 'USER'
+                    }
+
+                    console.log(payload);
+                   
                     jwt.sign(payload, process.env.SECRET, (err, token) => {
                         if (err) return next(err);
                         res.json({
