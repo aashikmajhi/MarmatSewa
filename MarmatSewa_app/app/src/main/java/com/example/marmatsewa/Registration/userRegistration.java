@@ -60,11 +60,13 @@ public class userRegistration extends AppCompatActivity {
             public void onClick(View view) {
                 if(genderMale.isSelected()) {
                     gender = "MALE";
+                    System.out.println("gender is male");
                 }
                 else if(genderFemale.isSelected()) {
                     gender = "FEMALE";
+                    System.out.println("gender is female");
                 }
-                registerUser();
+                //registerUser();
             }
         });
     }
@@ -78,7 +80,7 @@ public class userRegistration extends AppCompatActivity {
                 edtPhone.getText().toString(),
                 edtAddress.getText().toString(),
                 edtDob.getText().toString(),
-                gender,
+                "MALE",
                 "scannedlicense"
         );
 
