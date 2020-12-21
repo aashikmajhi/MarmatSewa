@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 
 public class RegistrationType extends AppCompatActivity {
-
 
     private ImageView btnUser, btnGarage, btnBack;
 
@@ -26,6 +26,7 @@ public class RegistrationType extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
 
         //TODO go to userRegistration form when btnUser clicked
+
         btnUser.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -33,7 +34,6 @@ public class RegistrationType extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
 
         //TODO go to workshopRegistration form when btnGarage clicked
 
@@ -54,7 +54,6 @@ public class RegistrationType extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 }

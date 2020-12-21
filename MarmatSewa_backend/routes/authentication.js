@@ -15,12 +15,12 @@ function verifyUser(req, res, next) {
             err.status = 401;
             return next(err);
         } else { 
-			req.user = payload;
+            req.user = payload;
+            // console.log(req.user.id);
             next();
         }
     })
 };
-
 
 function verifyGarageOwner(req, res, next) {
     if (req.user.role !== 'GARAGE_OWNER') {
@@ -32,7 +32,7 @@ function verifyGarageOwner(req, res, next) {
 }
 
 function verifyAdmin(req, res, next) {
-    if (req.user.role !== 'admin') {
+    if (req.user.role !== 'ADMIN') {
         let err = new Error('Forbidden');
         err.status = 403;
         return next(err);
