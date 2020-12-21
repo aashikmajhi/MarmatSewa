@@ -63,7 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Client Requests"
+            android:text="Customer Requests"
             android:padding="12dp"
             android:textStyle="bold"
             android:layout_marginStart="16dp"/>
@@ -99,6 +99,30 @@
                 android:src="@drawable/ic_service"/>
 
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickLog">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Request Log"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_request_log"/>
+
+    </LinearLayout>
 
 
     <LinearLayout

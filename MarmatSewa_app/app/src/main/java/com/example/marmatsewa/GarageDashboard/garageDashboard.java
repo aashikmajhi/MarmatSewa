@@ -36,7 +36,7 @@ public class garageDashboard extends AppCompatActivity {
         openDrawer(drawerLayout);
     }
 
-    private static void openDrawer(DrawerLayout drawerLayout) {
+    public static void openDrawer(DrawerLayout drawerLayout) {
         //Open Drawer layout
         drawerLayout.openDrawer(GravityCompat.START);
     }
@@ -46,7 +46,7 @@ public class garageDashboard extends AppCompatActivity {
         closeDrawer(drawerLayout);
     }
 
-    private static void closeDrawer(DrawerLayout drawerLayout) {
+    public static void closeDrawer(DrawerLayout drawerLayout) {
         //Close drawer layout
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -58,10 +58,15 @@ public class garageDashboard extends AppCompatActivity {
     }
 
 
-//    public void ClickRequest(View view){
-//        redirectActivity(this,);
-//    }
+    public void ClickRequest(View view){
+        redirectActivity(this,customerRequest.class);
+    }
 
+    public void ClickLog(View view){
+        redirectActivity(this,Request_Log_Activity.class);
+    }
+
+    //TODO
 //    public void ClickServices(View view){
 //        redirectActivity(this,);
 //    }
@@ -70,7 +75,7 @@ public class garageDashboard extends AppCompatActivity {
         logout(this);
     }
 
-    private static void logout(Activity activity) {
+    public static void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setTitle("Logout");
@@ -97,7 +102,7 @@ public class garageDashboard extends AppCompatActivity {
 
     }
 
-    private static void redirectActivity(Activity activity, Class aClass) {
+    public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity, aClass);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

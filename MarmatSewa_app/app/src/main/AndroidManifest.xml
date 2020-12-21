@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GarageDashboard.garageDashboard"></activity>
+        <activity android:name=".GarageDashboard.Request_Log_Activity"></activity>
+        <activity android:name=".GarageDashboard.customerRequest" />
+        <activity android:name=".GarageDashboard.garageDashboard" />
         <activity android:name=".Registration.workshopRegistration" />
         <activity android:name=".Registration.userRegistration" />
         <activity android:name=".Registration.RegistrationType" />
