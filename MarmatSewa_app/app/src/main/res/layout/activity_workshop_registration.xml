@@ -363,10 +363,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="142dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="248dp"
+        android:id="@+id/btnRegisterWorkshop"
         android:background="@drawable/rounded_button"
         android:text="  Register ->"
         android:textColor="@color/white"
