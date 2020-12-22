@@ -11,16 +11,16 @@ import com.example.marmatsewa.R;
 
 public class FourWheelerServices extends AppCompatActivity {
 
-    ImageView backbtn1;
+    ImageView backbtn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_wheeler_services);
 
-        backbtn1=findViewById(R.id.backbtn1);
+        backbtn2=findViewById(R.id.btnBack2);
 
-        backbtn1.setOnClickListener(new View.OnClickListener() {
+        backbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(FourWheelerServices.this,GarageServices.class);
@@ -28,4 +28,5 @@ public class FourWheelerServices extends AppCompatActivity {
             }
         });
     }
+
 }

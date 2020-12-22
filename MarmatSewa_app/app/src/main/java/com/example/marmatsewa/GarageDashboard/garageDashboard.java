@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.marmatsewa.Dashboard.GarageServices;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
 import com.example.marmatsewa.Registration.RegistrationType;
@@ -53,6 +54,11 @@ public class garageDashboard extends AppCompatActivity {
         }
     }
 
+
+    public void ClickProfile(View view) {
+        garageDashboard.redirectActivity(this, GarageProfile.class);
+    }
+
     public void ClickDashboard(View view){
         recreate();
     }
@@ -66,10 +72,9 @@ public class garageDashboard extends AppCompatActivity {
         redirectActivity(this,Request_Log_Activity.class);
     }
 
-    //TODO
-//    public void ClickServices(View view){
-//        redirectActivity(this,);
-//    }
+    public void ClickServices(View view) {
+        garageDashboard.redirectActivity(this, GarageServices.class);
+    }
 
     public void ClickLogout(View view){
         logout(this);
