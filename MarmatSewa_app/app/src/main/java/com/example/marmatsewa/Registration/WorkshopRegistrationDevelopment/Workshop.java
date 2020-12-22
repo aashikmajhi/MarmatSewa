@@ -15,11 +15,13 @@ public class Workshop {
     private boolean electricity;
     private boolean puncture;
     private boolean wheelAndControl;
+    private String status;
+    private int latitude;
+    private int longitude;
+    private String vehicleType;
 
-    public Workshop() {
-    }
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panDoc, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panDoc, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -33,6 +35,7 @@ public class Workshop {
         this.electricity = electricity;
         this.puncture = puncture;
         this.wheelAndControl = wheelAndControl;
+        this.status = status;
     }
 
     public String getBusinessName() {
@@ -137,5 +140,37 @@ public class Workshop {
 
     public void setWheelAndControl(boolean wheelAndControl) {
         this.wheelAndControl = wheelAndControl;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(int latitude) {
+        this.latitude = latitude;
+    }
+
+    public int getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(int longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }

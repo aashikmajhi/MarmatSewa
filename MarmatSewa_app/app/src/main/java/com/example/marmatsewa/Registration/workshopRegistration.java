@@ -23,7 +23,7 @@ import com.example.marmatsewa.url.URL;
 public class workshopRegistration extends AppCompatActivity {
 
     private ImageView backBtn, btnUploadDocument;
-    private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo;
+    private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo, garageEmail, garagePassword;
     private CheckBox checkBoxControlBrake, checkBoxElectrical, checkBoxFuelAir, checkBoxWheelDrives;
     private TextView btnRegisterWorkshop;
 
@@ -44,6 +44,9 @@ public class workshopRegistration extends AppCompatActivity {
         edtContactName = findViewById(R.id.edtContactName);
         edtNumber = findViewById(R.id.edtNumber);
         edtPanNo = findViewById(R.id.edtPanNo);
+
+        garageEmail = findViewById(R.id.garageEmail);
+        garagePassword = findViewById(R.id.garagePassword);
 
         //checkbox references
         checkBoxControlBrake = findViewById(R.id.checkBoxControlBrake);
@@ -124,8 +127,8 @@ public class workshopRegistration extends AppCompatActivity {
         Workshop workshop = new Workshop(
                 garageName.getText().toString(),
                 edtContactName.getText().toString(),
-                "email@abc.com",
-                "password",
+                garageEmail.getText().toString(),
+                garagePassword.getText().toString(),
                 edtLocation.getText().toString(),
                 edtNumber.getText().toString(),
                 edtRegType.getText().toString(),
@@ -134,7 +137,8 @@ public class workshopRegistration extends AppCompatActivity {
                 isCheckBoxControlBrake,
                 isCheckBoxElectrical,
                 isCheckBoxFuelAir,
-                isCheckBoxWheelDrives
+                isCheckBoxWheelDrives,
+                "PENDING"
                 );
 
         WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
