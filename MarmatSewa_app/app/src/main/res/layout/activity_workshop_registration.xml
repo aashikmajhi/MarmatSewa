@@ -99,6 +99,7 @@
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="Garage Password"
+        android:inputType="textPassword"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,7 +191,7 @@
         android:drawablePadding="16dp"
         android:ems="10"
         android:hint="Location"
-        android:inputType="textPassword"
+
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

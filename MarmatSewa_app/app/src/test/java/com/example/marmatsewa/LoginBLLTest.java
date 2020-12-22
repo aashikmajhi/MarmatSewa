@@ -1,7 +1,7 @@
 package com.example.marmatsewa;
 
-import com.example.marmatsewa.Registration.LoginDev.Login;
-import com.example.marmatsewa.Registration.LoginDev.LoginBLL;
+
+import com.example.marmatsewa.Registration.LoginDevelopment.LoginBLL;
 
 import org.junit.Test;
 
