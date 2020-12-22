@@ -1,5 +1,5 @@
 const express = require('express');
-const validators = require('../utils/garageValidation');
+const validators = require('../utils/featureValidation');
 const Feature = require('../models/Feature');
 const auth = require('./authentication');
 
@@ -14,6 +14,13 @@ router.route('/')
 
 })
 .post(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
+    let { errors, isValid } = validators.FeatureInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({
+            status: 'error',
+            message: errors
+        });
+    }
     Feature.create({... req.body, garage: req.user.id})
     .then(feature => {
         res.status(201).json(feature);
@@ -22,6 +29,13 @@ router.route('/')
 
 router.route('/:feature_id')
 .put(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
+    let { errors, isValid } = validators.FeatureInput(req.body);
+    if (!isValid) {
+        return res.status(400).json({
+            status: 'error',
+            message: errors
+        });
+    }
     const feature = { name, img } = req.body;
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feature }, {new: true})
     .then(updatedFeature => {
