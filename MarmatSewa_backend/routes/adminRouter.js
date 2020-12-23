@@ -1,6 +1,6 @@
 const express = require('express');
 const GarageOwner = require('../models/GarageOwner');
-const auth = require('./authentication');
+const auth = require('../middlewares/authentication');
 
 const router = express.Router();
 

@@ -3,7 +3,7 @@ const validators = require('../utils/garageValidation');
 const GarageOwner = require('../models/GarageOwner');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const auth = require('./authentication');
+const auth = require('../middlewares/authentication');
 
 const router = express.Router();
 
