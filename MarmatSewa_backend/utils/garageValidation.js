@@ -48,6 +48,13 @@ const GarageInput = (data) => {
     //      errors.panDoc = 'At least 2 services most be selected.';
     // }
 
+    // if (data.name) {
+    //     if (!validator.isLength(data.businessName.trim(), { min: 6, max: 30 })) {
+    //         errors.businessName = 'Business must be between 6 and 30 characters.';
+    //     }
+    // } else errors.businessName = 'Business name is required.';
+
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0
