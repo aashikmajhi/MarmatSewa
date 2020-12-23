@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({
-    name: {
+    feature: {
         type: String,
         maxlength: 255,
         required: true
@@ -15,6 +15,6 @@ const featureSchema = new mongoose.Schema({
         ref: 'GarageOwner',
         required: true
     }
-}, { timestamps: true});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Feature', featureSchema); 
