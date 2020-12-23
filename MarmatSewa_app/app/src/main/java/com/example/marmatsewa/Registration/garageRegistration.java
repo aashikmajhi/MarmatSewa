@@ -20,7 +20,7 @@ import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Works
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.WorkshopBLL;
 import com.example.marmatsewa.url.URL;
 
-public class workshopRegistration extends AppCompatActivity {
+public class garageRegistration extends AppCompatActivity {
 
     private ImageView backBtn, btnUploadDocument;
     private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo;
@@ -35,7 +35,7 @@ public class workshopRegistration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workshop_registration);
+        setContentView(R.layout.activity_garage_registration);
 
         //edit text references
         garageName = findViewById(R.id.garageName);
@@ -74,7 +74,7 @@ public class workshopRegistration extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(workshopRegistration.this, RegistrationType.class);
+                Intent intent = new Intent(garageRegistration.this, RegistrationType.class);
                 startActivity(intent);
             }
         });
@@ -96,7 +96,7 @@ public class workshopRegistration extends AppCompatActivity {
                     isCheckBoxWheelDrives = true;
                 }
                 registerWorkshop();
-                Toast.makeText(workshopRegistration.this, "workshop registered", Toast.LENGTH_SHORT).show();
+                Toast.makeText(garageRegistration.this, "workshop registered", Toast.LENGTH_SHORT).show();
 
             }
         });

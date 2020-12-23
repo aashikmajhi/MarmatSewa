@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.marmatsewa.Dashboard.GarageServices;
 import com.example.marmatsewa.R;
 
 public class Request_Log_Activity extends AppCompatActivity {
@@ -33,6 +34,10 @@ public class Request_Log_Activity extends AppCompatActivity {
         garageDashboard.closeDrawer(drawerLayout);
     }
 
+    public void ClickProfile(View view) {
+        garageDashboard.redirectActivity(this, GarageProfile.class);
+    }
+
     public void ClickDashboard(View view){
         garageDashboard.redirectActivity(this, garageDashboard.class);
     }
@@ -41,7 +46,9 @@ public class Request_Log_Activity extends AppCompatActivity {
         garageDashboard.redirectActivity(this, customerRequest.class);
     }
 
-    //TODO SERVICES
+    public void ClickServices(View view) {
+        garageDashboard.redirectActivity(this, GarageServices.class);
+    }
 
     public void ClickLog(View view){
         recreate();

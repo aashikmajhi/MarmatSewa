@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    tools:context=".GarageDashboard.garageDashboard">
+    tools:context=".Dashboard.GarageServices">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,22 +22,48 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Dashboard"
+                android:text="Services"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:paddingBottom="10dp"
                 android:gravity="center"/>
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Graph View"
-            android:textSize="50sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Type"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"/>
+
+        <ImageView
+            android:id="@+id/btnTwoWheeler"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/motor"/>
+
+        <ImageView
+            android:id="@+id/btnFourWheeler"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/car" />
 
     </LinearLayout>
+
+
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -49,6 +74,8 @@
         <include
             layout="@layout/main_nav_drawer"/>
     </RelativeLayout>
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
