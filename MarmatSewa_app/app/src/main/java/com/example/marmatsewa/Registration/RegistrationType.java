@@ -49,8 +49,7 @@ public class RegistrationType extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistrationType.this, garageDashboard.class);
-                //LoginActivity.class
+                Intent intent = new Intent(RegistrationType.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
