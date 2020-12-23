@@ -6,8 +6,9 @@ const auth = require('./authentication');
 const router = express.Router();
 
 router.route('/')
-.get(auth.verifyUser, auth.verifyGarageOwner, (req, res, next ) => {
-    Feature.findById(req.user.id)
+.get(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
+    console.log(req.user.id);
+    Feature.find({garage: req.user.id })
     .then(feature => {
         res.status(201).json(feature);
     }).catch(next)
@@ -22,7 +23,7 @@ router.route('/')
 
 router.route('/:feature_id')
 .put(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
-    const feature = { name, img } = req.body;
+    const feature = { feature, img } = req.body;
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feature }, {new: true})
     .then(updatedFeature => {
         res.status(200).send(updatedFeature);

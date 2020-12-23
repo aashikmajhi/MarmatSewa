@@ -30,8 +30,8 @@ const GarageInput = (data) => {
         errors.registrationType = 'Registration type is required.';
     } 
 
-    if (!data.panDoc) {
-        errors.panDoc = 'Pan Document is required.';
+    if (!data.panNo) {
+        errors.panNo = 'Pan No is required.';
     } 
 
     if (!data.registrationDoc) {
@@ -52,7 +52,6 @@ const GarageInput = (data) => {
         errors,
         isValid: Object.keys(errors).length === 0
     }
- 
 }
 module.exports = {
     GarageInput
