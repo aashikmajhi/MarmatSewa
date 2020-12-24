@@ -13,23 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
+        <activity android:name=".GarageDashboard.GarageProfile"></activity>
+        <activity android:name=".Dashboard.TwoWheelerServices" />
+        <activity android:name=".Dashboard.FourWheelerServices" />
 
+<<<<<<< HEAD
         <activity android:name=".Dashboard.TwoWheelerServices"></activity>
         <activity android:name=".Dashboard.FourWheelerServices"></activity>
         <activity android:name=".Dashboard.GarageServices">
+=======
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> c8be05c1b5a3231e9f81159bbbb6578b0c446c9c
 
         </activity>
-        <activity android:name=".Registration.workshopRegistration"></activity>
 
-        <activity android:name=".GarageDashboard.Request_Log_Activity"></activity>
+        <activity android:name=".Registration.garageRegistration" />
+        <activity android:name=".GarageDashboard.Request_Log_Activity" />
         <activity android:name=".GarageDashboard.customerRequest" />
         <activity android:name=".GarageDashboard.garageDashboard" />
-        <activity android:name=".Registration.workshopRegistration" />
-
         <activity android:name=".Registration.userRegistration" />
         <activity android:name=".Registration.RegistrationType" />
-        <activity android:name=".Registration.SignupActivity" />
         <activity android:name=".Registration.LoginActivity" />
+<<<<<<< HEAD
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+=======
+        <activity android:name=".Dashboard.GarageServices"></activity>
+>>>>>>> c8be05c1b5a3231e9f81159bbbb6578b0c446c9c
     </application>
 
 </manifest>

@@ -32,7 +32,7 @@
             app:layout_constraintVertical_bias="0.023" />
 
         <ImageView
-            android:id="@+id/backbtn"
+            android:id="@+id/btnBack"
             android:layout_width="46dp"
             android:layout_height="54dp"
             app:layout_constraintBottom_toBottomOf="parent"

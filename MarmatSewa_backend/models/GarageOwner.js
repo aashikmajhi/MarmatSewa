@@ -56,7 +56,7 @@ const garageOwnerSchema = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
-    panDoc: {
+    panNo: {
         type: String,
         maxlength: 255,
         required: true
