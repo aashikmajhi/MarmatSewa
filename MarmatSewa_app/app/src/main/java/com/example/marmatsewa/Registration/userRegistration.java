@@ -36,7 +36,7 @@ public class userRegistration extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         edtPhone = findViewById(R.id.edtPhone);
-        edtPhone = findViewById(R.id.edtPhone);
+//        edtPhone = findViewById(R.id.edtPhone);
         edtAddress = findViewById(R.id.edtAddress);
         edtDob = findViewById(R.id.edtDob);
 

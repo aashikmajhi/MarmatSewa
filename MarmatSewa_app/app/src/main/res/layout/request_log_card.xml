@@ -49,6 +49,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.503" />
 
+<<<<<<< HEAD
+    <ImageView
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       />
+=======
 <!--    <ImageView-->
 <!--        android:id="@+id/btnDelete"-->
 <!--        android:layout_width="wrap_content"-->
@@ -58,6 +69,7 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:srcCompat="/" />-->
+>>>>>>> c8be05c1b5a3231e9f81159bbbb6578b0c446c9c
 
     <ImageView
         android:id="@+id/btnAccept"
