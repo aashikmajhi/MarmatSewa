@@ -10,7 +10,7 @@ router.route('/')
     console.log(req.user.id);
     Feature.find({garage: req.user.id })
     .then(feature => {
-        res.status(201).json(feature);
+        res.status(200).json(feature);
     }).catch(next)
 
 })
@@ -26,7 +26,7 @@ router.route('/:feature_id')
     const feature = { feature, img } = req.body;
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feature }, {new: true})
     .then(updatedFeature => {
-        res.status(200).send(updatedFeature);
+        res.status(201).send(updatedFeature);
     }).catch(next);
 })
 .delete(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
