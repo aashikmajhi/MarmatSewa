@@ -5,7 +5,7 @@ const featureRouter = require('../routes/featureRouter')
 const userRouter = require('../routes/userRouter')
 const garageOwnerRouter = require('../routes/garageOwnerRouter')
 
-const auth = require('../routes/authentication')
+const auth = require('../middlewares/authentication')
 
 require('dotenv').config()
 require('./setup')
@@ -75,14 +75,6 @@ describe('Test for feature router', () => {
             })
     })
 
-    // test('should be able to get features', () => {
-    //     return request(app.use(auth.verifyGarageOwner)).get(`/api/features/${feature_id}`)
-    //         .set('authorization', garage_owner_Token)
-    //         .then((res) => {
-    //             console.log(res.body)
-    //             expect(res.statusCode).toBe(200)
-    //         })
-    // })
 
     test('should be able to update specific features', () => {
         return request(app.use(auth.verifyGarageOwner)).put(`/api/features/${featureId}`)
@@ -91,7 +83,16 @@ describe('Test for feature router', () => {
                 feature: 'Towing'
             })
             .then((res) => {
-                console.log(res)
+                console.log(res.body)
+                expect(res.statusCode).toBe(201)
+            })
+    })
+
+    test('should be able to delete particular feature', () => {
+        return request(app.use(auth.verifyGarageOwner)).delete(`/api/features/${featureId}`)
+            .set('authorization', garage_owner_Token)
+            .then((res) => {
+                console.log(res.body)
                 expect(res.statusCode).toBe(200)
             })
     })
