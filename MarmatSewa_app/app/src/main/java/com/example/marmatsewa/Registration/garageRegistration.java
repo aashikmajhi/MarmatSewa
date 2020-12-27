@@ -20,12 +20,20 @@ import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Works
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.WorkshopBLL;
 import com.example.marmatsewa.url.URL;
 
-public class workshopRegistration extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class garageRegistration extends AppCompatActivity {
 
     private ImageView backBtn, btnUploadDocument;
     private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo, garageEmail, garagePassword;
     private CheckBox checkBoxControlBrake, checkBoxElectrical, checkBoxFuelAir, checkBoxWheelDrives;
     private TextView btnRegisterWorkshop;
+
+    private Spinner spinner;
+    String[] categories = {"TWO WHEEL", "FOUR WHEEL", "BOTH"};
+
+    private String category;
 
     private boolean isCheckBoxControlBrake=false,
             isCheckBoxElectrical=false,
@@ -35,7 +43,7 @@ public class workshopRegistration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workshop_registration);
+        setContentView(R.layout.activity_garage_registration);
 
         //edit text references
         garageName = findViewById(R.id.garageName);
@@ -62,22 +70,33 @@ public class workshopRegistration extends AppCompatActivity {
 
 
         //Dropdown list for the garage registration form..
+        spinner = (Spinner) findViewById(R.id.spinner);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.vehicleType, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
+
+       // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                category = spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         backBtn = findViewById(R.id.backBtn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(workshopRegistration.this, RegistrationType.class);
+                Intent intent = new Intent(garageRegistration.this, RegistrationType.class);
                 startActivity(intent);
             }
         });
@@ -98,29 +117,12 @@ public class workshopRegistration extends AppCompatActivity {
                 if(checkBoxWheelDrives.isChecked()) {
                     isCheckBoxWheelDrives = true;
                 }
+                System.out.println(category);
                 registerWorkshop();
-                Toast.makeText(workshopRegistration.this, "workshop registered", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
-    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            Spinner spinner = (Spinner) findViewById(R.id.spinner);
-            spinner.setOnItemSelectedListener(this);
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
-
-        }
-
-    }
 
     private void registerWorkshop() {
 
@@ -138,7 +140,11 @@ public class workshopRegistration extends AppCompatActivity {
                 isCheckBoxElectrical,
                 isCheckBoxFuelAir,
                 isCheckBoxWheelDrives,
-                "PENDING"
+                "PENDING",
+                27.6946843,
+                85.3310636,
+                category
+
                 );
 
         WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
@@ -146,6 +152,7 @@ public class workshopRegistration extends AppCompatActivity {
 
         if (workshopBLL.isRegisterWorkshop()) {
             Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(garageRegistration.this, LoginActivity.class));
         }
         else {
             Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
