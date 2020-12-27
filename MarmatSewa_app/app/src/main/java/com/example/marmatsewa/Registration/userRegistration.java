@@ -100,7 +100,7 @@ public class userRegistration extends AppCompatActivity implements DatePickerDia
         submitUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //registerUser();
+                registerUser();
             }
         });
     }
@@ -123,6 +123,7 @@ public class userRegistration extends AppCompatActivity implements DatePickerDia
 
         if(userRegisterBLL.isRegisterUser()) {
             Toast.makeText(this, "User register successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(userRegistration.this, LoginActivity.class));
         }
         else {
             Toast.makeText(this, "User register failed!!", Toast.LENGTH_SHORT).show();
@@ -130,7 +131,6 @@ public class userRegistration extends AppCompatActivity implements DatePickerDia
     }
 
     private void loadDatePicker() {
-
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);

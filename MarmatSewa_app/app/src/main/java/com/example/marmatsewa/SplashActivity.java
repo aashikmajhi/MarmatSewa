@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.marmatsewa.Registration.LoginActivity;
+import com.example.marmatsewa.Registration.RegistrationType;
 
 public class SplashActivity extends AppCompatActivity {
 

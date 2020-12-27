@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.marmatsewa.Dashboard.GarageServices;
+import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginDevelopment.LoginBLL;
 import com.example.marmatsewa.url.URL;
@@ -43,8 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "Signup Button Pressed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, RegistrationType.class);
+                    Intent intent = new Intent(LoginActivity.this, userRegistration.class);
                     startActivity(intent);
                 }
         });
@@ -57,6 +58,13 @@ public class LoginActivity extends AppCompatActivity {
 
         if (loginBLL.checkLogin()) {
             Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
+            if(URL.role=="USER") {
+                startActivity(new Intent(LoginActivity.this, GarageServices.class));
+            } else if (URL.role=="ADMIN") {
+                Toast.makeText(this, "Admin Login success !!", Toast.LENGTH_SHORT).show();
+            } else if(URL.role == "GARAGE_OWNER") {
+                startActivity(new Intent(LoginActivity.this, garageDashboard.class));
+            }
         }
         else {
             Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();

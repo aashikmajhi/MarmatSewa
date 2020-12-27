@@ -140,11 +140,10 @@ public class garageRegistration extends AppCompatActivity {
                 isCheckBoxElectrical,
                 isCheckBoxFuelAir,
                 isCheckBoxWheelDrives,
-                "PENDING",
+                "APPROVED",
                 27.6946843,
                 85.3310636,
                 category
-
                 );
 
         WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
