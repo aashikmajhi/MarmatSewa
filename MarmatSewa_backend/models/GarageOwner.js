@@ -66,22 +66,6 @@ const garageOwnerSchema = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
-    controlsAndBrakes: {
-        type: Boolean,
-        default: false
-    },
-    electricity: {
-        type: Boolean,
-        default: false
-    },
-    puncture: {
-        type: Boolean,
-        default: false
-    },
-    wheelAndControl: {
-        type: Boolean,
-        default: false
-    },
     status: {
         type: String,
         enum: ['PENDING', 'APPROVED'],
