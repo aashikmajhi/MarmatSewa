@@ -133,7 +133,7 @@ router.post('/login', (req, res, next) => {
 							res.json({
 								status: 'Login successful',
 								token: `Bearer ${token}`,
-								
+								role: payload.role
 							});
 						});
 					})

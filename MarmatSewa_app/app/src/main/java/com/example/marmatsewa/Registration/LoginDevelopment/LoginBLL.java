@@ -29,6 +29,8 @@ public class LoginBLL {
             if (r.isSuccessful()) {
                 URL.token = r.body().getToken();
                 URL.role = r.body().getRole();
+                System.out.println("token" + URL.token);
+                System.out.println("role "+ URL.role);
                 isSuccess = true;
             }
 

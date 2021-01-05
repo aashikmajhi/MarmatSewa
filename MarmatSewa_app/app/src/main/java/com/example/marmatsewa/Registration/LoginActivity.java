@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent intent = new Intent(LoginActivity.this, userRegistration.class);
+                    Intent intent = new Intent(LoginActivity.this, RegistrationType.class);
                     startActivity(intent);
                 }
         });
@@ -57,12 +57,15 @@ public class LoginActivity extends AppCompatActivity {
         URL.getStrictMode();
 
         if (loginBLL.checkLogin()) {
-            Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
-            if(URL.role=="USER") {
+//            Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Login success !!", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(LoginActivity.this, GarageServices.class));
+
+            if(URL.role.equals("USER")) {
                 startActivity(new Intent(LoginActivity.this, GarageServices.class));
-            } else if (URL.role=="ADMIN") {
+            } else if (URL.role.equals("ADMIN")) {
                 Toast.makeText(this, "Admin Login success !!", Toast.LENGTH_SHORT).show();
-            } else if(URL.role == "GARAGE_OWNER") {
+            } else if(URL.role.equals("GARAGE_OWNER")) {
                 startActivity(new Intent(LoginActivity.this, garageDashboard.class));
             }
         }
