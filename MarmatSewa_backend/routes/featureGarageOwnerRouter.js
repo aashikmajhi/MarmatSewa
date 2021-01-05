@@ -10,8 +10,8 @@ router.route('/')
     .then(Feature_GarageOwner => {
         res.status(201).json(Feature_GarageOwner);
     }).catch(next)
-
 })
+
 .post(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     Feature_GarageOwner.create({... req.body, garage: req.user.id})
     .then(Feature_GarageOwner => {
@@ -25,5 +25,6 @@ router.route('/:FeatureGarageOwner_id')
     .then(deletedFeature_GarageOwner => {
         res.status(200).send(deletedFeature_GarageOwner);
     }).catch(next);
-})
+});
+
 module.exports = router;

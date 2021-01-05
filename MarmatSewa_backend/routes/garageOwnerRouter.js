@@ -9,7 +9,10 @@ const router = express.Router();
 
 router.route('/')
 .get((req, res, next ) => {
-    console.log("Get req to be sent ...")
+    GarageOwner.find()
+    .then(garageOwner => {
+        res.status(200).json(garageOwner);
+    })
 })
 .post((req, res, next) => {
     let { errors, isValid } = validators.GarageInput(req.body);
