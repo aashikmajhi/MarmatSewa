@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/main_toolbar"/>
+            layout="@layout/garage_toolbar"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
         android:background="@color/white">
 
         <include
-            layout="@layout/main_nav_drawer"/>
+            layout="@layout/garage_nav_drawer"/>
     </RelativeLayout>
 
 

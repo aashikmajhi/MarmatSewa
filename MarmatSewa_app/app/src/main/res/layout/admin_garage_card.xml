@@ -8,11 +8,11 @@
     android:background="@color/tab">
 
     <TextView
-        android:id="@+id/customerEmail"
+        android:id="@+id/GName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="*Email"
+        android:text="*Name"
         android:textColor="@color/blue"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -22,50 +22,38 @@
         app:layout_constraintVertical_bias="0.122" />
 
     <TextView
-        android:id="@+id/customerNumber"
+        android:id="@+id/GNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="304dp"
         android:text="*Number"
         android:textColor="@color/blue"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/customerLocation"
+        android:id="@+id/GLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="*Request Location"
+        android:text="*Address"
         android:textColor="@color/blue"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--    <ImageView-->
-<!--        android:id="@+id/btnDecline"-->
-<!--        android:layout_width="60dp"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_marginTop="112dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.951"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_decline" />-->
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
 
     <TextView
         android:id="@+id/linkMapView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="72dp"
         android:text="(View on map ->)"
         android:textColor="@color/red"
         android:textSize="12sp"
@@ -75,30 +63,15 @@
         app:layout_constraintStart_toEndOf="@+id/customerLocation"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/hireType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="*pickupANDdelivery or Dropin"
-        android:textColor="@color/orange"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/btnRemove"
+        android:layout_width="46dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.882" />
-
-    <ImageView
-    android:id="@+id/btnAccept"
-    android:layout_width="60dp"
-    android:layout_height="42dp"
-    android:layout_marginTop="112dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.921"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/ic_accept" />
-
+        app:srcCompat="@drawable/ic_remove" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
