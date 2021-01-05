@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const featureSchema = new mongoose.Schema({
+const featureGarageOwner = new mongoose.Schema({
     feature: {
-        type: String,
-        maxlength: 255,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feature', 
         required: true
     },
-    admin: {
+    garageOwner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
