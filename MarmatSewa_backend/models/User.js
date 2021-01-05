@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 	gender: {
-        type: Number,
         type: String,
 		enum: ['MALE', 'FEMALE', 'OTHERS'],
 		required: true
@@ -41,6 +40,10 @@ const userSchema = new mongoose.Schema({
 		maxlength: 25,
 		required: true
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 },
 {timestamps: true});
 
