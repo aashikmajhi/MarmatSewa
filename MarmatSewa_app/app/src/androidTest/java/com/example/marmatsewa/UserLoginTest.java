@@ -16,6 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class UserLoginTest {
     @Rule
+
 public ActivityTestRule<LoginActivity>testRule=new ActivityTestRule<>(LoginActivity.class);
     @Test
     public void LoginTest() {
