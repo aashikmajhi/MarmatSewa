@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminInterface.admin_garage_request_list"></activity>
+        <activity android:name=".Registration.garageRegistrationBusinessInfo"></activity>
+        <activity android:name=".Registration.garageRegistrationPersonalInfo" />
+        <activity android:name=".AdminInterface.admin_garage_request_list" />
         <activity android:name=".AdminInterface.admin_garage_list" />
         <activity android:name=".AdminInterface.admin_services" />
         <activity android:name=".AdminInterface.admin_dash" />
