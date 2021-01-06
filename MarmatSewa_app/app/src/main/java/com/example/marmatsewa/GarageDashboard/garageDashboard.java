@@ -11,10 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
 import com.example.marmatsewa.R;
-import com.example.marmatsewa.Registration.LoginActivity;
-import com.example.marmatsewa.Registration.RegistrationType;
 
 public class garageDashboard extends AppCompatActivity {
 
