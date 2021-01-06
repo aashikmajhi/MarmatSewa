@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
+import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
 
 public class TwoWheelerServices extends AppCompatActivity {
