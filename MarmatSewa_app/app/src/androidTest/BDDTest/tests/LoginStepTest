@@ -1,3 +1,5 @@
+package BDDTest;
+
 class LoginDetailsSteps {
     private val robot = LoginScreenRobot()
     private val activityRule = ActivityTestRule(LoginActivity::class.java, false, false)

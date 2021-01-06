@@ -27,6 +27,19 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+// for BDD testing
+def getInstrumentation() {
+    project.hasProperty('cucumber') ? 'com.sniper.bdd.cucumber.runner.CucumberTestRunner' : 'android.support.test.runner.AndroidJUnitRunner'
+}
+
+def getTestTags() {
+    project.getProperties().get('tags') ?: ''
+}
+
+def getTestScenario() {
+    project.getProperties().get('scenario') ?: ''
+}
+////////////////////////////////////////////////////
 
 dependencies {
 
@@ -57,3 +70,4 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
     implementation 'androidx.cardview:cardview:1.0.0'
 }
+

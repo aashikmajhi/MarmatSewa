@@ -1,3 +1,5 @@
+package BDDTest.tests;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.CucumberOptions
 @CucumberOptions(features = ["features"],
