@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
 import com.example.marmatsewa.R;
 
 public class Request_Log_Activity extends AppCompatActivity {

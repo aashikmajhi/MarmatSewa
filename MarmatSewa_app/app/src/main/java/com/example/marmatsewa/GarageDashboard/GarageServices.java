@@ -1,4 +1,4 @@
-package com.example.marmatsewa.Dashboard;
+package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,10 +10,6 @@ import android.widget.ImageView;
 
 import com.example.marmatsewa.AdminInterface.FourWheelerServices;
 import com.example.marmatsewa.AdminInterface.TwoWheelerServices;
-import com.example.marmatsewa.GarageDashboard.GarageProfile;
-import com.example.marmatsewa.GarageDashboard.Request_Log_Activity;
-import com.example.marmatsewa.GarageDashboard.customerRequest;
-import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 
 public class GarageServices extends AppCompatActivity {

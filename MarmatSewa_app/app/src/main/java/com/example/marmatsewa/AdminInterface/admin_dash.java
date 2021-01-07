@@ -11,14 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
-import com.example.marmatsewa.GarageDashboard.Request_Log_Activity;
-import com.example.marmatsewa.GarageDashboard.customerRequest;
-import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
-
-import static com.example.marmatsewa.GarageDashboard.garageDashboard.closeDrawer;
-import static com.example.marmatsewa.GarageDashboard.garageDashboard.openDrawer;
 
 public class admin_dash extends AppCompatActivity {
 

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
 import com.example.marmatsewa.R;
 
 public class FourWheelerServices extends AppCompatActivity {
@@ -51,13 +50,13 @@ public class FourWheelerServices extends AppCompatActivity {
 
     public void createNewFourWheelerDialog(){
         dialogBuilder = new AlertDialog.Builder(this);
-        final View twoWheelerFormView = getLayoutInflater().inflate(R.layout.popup_twowheeler_form, null);
-        edtFourWheelServiceName = (EditText) twoWheelerFormView.findViewById(R.id.edtTwoWheelServiceName);
-        btnUploadImage = (ImageView) twoWheelerFormView.findViewById(R.id.btnUploadImage);
+        final View fourWheelerFormView = getLayoutInflater().inflate(R.layout.popup_fourwheeler_form, null);
+        edtFourWheelServiceName = (EditText) fourWheelerFormView.findViewById(R.id.edtFourWheelServiceName);
+        btnUploadImage = (ImageView) fourWheelerFormView.findViewById(R.id.btnUploadImage);
 
-        btnAddService = (Button) twoWheelerFormView.findViewById(R.id.btnAddService);
+        btnAddService = (Button) fourWheelerFormView.findViewById(R.id.btnAddService);
 
-        dialogBuilder.setView(twoWheelerFormView);
+        dialogBuilder.setView(fourWheelerFormView);
         dialog = dialogBuilder.create();
         dialog.show();
 
