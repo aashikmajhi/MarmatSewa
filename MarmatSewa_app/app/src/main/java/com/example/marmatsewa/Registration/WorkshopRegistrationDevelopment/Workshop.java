@@ -16,8 +16,8 @@ public class Workshop {
     private boolean puncture;
     private boolean wheelAndControl;
 
-    public Workshop() {
-    }
+//    public Workshop() {
+//    }
 
     public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panDoc, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl) {
         this.businessName = businessName;
