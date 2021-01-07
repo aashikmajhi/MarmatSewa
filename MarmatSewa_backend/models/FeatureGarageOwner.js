@@ -13,4 +13,4 @@ const featureGarageOwner = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Feature', featureSchema); 
+module.exports = mongoose.model('FeatureGarageOwner', featureGarageOwner); 

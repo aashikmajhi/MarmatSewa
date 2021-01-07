@@ -17,7 +17,6 @@ const reviewSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }
-
 }, {timestamps: true});
 
 const garageOwnerSchema = new mongoose.Schema({
