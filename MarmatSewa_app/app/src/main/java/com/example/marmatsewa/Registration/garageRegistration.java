@@ -25,71 +25,15 @@ import java.util.List;
 
 public class garageRegistration extends AppCompatActivity {
 
-    private ImageView backBtn, btnUploadDocument;
-    private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo, garageEmail, garagePassword;
-    private CheckBox checkBoxControlBrake, checkBoxElectrical, checkBoxFuelAir, checkBoxWheelDrives;
-    private TextView btnRegisterWorkshop;
 
-    private Spinner spinner;
-    String[] categories = {"TWO WHEEL", "FOUR WHEEL", "BOTH"};
+    private ImageView backBtn, btnNext;
+    private EditText edtGarageEmail, edtGaragePassword;
 
-    private String category;
-
-    private boolean isCheckBoxControlBrake=false,
-            isCheckBoxElectrical=false,
-            isCheckBoxFuelAir=false,
-            isCheckBoxWheelDrives=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_registration);
-
-        //edit text references
-        garageName = findViewById(R.id.garageName);
-        edtRegType = findViewById(R.id.edtRegType);
-        edtLocation = findViewById(R.id.edtLocation);
-        edtContactName = findViewById(R.id.edtContactName);
-        edtNumber = findViewById(R.id.edtNumber);
-        edtPanNo = findViewById(R.id.edtPanNo);
-
-        garageEmail = findViewById(R.id.garageEmail);
-        garagePassword = findViewById(R.id.garagePassword);
-
-        //checkbox references
-        checkBoxControlBrake = findViewById(R.id.checkBoxControlBrake);
-        checkBoxElectrical = findViewById(R.id.checkBoxElectrical);
-        checkBoxFuelAir = findViewById(R.id.checkBoxFuelAir);
-        checkBoxWheelDrives = findViewById(R.id.checkBoxWheelDrives);
-
-        //imageview references
-        btnUploadDocument = findViewById(R.id.btnUploadDocument);
-
-        //button reference
-        btnRegisterWorkshop = findViewById(R.id.btnRegisterWorkshop);
-
-
-        //Dropdown list for the garage registration form..
-        spinner = (Spinner) findViewById(R.id.spinner);
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
-
-       // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                category = spinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
 
         backBtn = findViewById(R.id.backBtn);
 
@@ -101,60 +45,57 @@ public class garageRegistration extends AppCompatActivity {
             }
         });
 
-        btnRegisterWorkshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(checkBoxControlBrake.isChecked()){
-                    isCheckBoxControlBrake = true;
-                }
-                if(checkBoxElectrical.isChecked()) {
-                    isCheckBoxElectrical = true;
-                }
-                if(checkBoxFuelAir.isChecked()) {
-                    isCheckBoxFuelAir = true;
-                }
-                if(checkBoxWheelDrives.isChecked()) {
-                    isCheckBoxWheelDrives = true;
-                }
-                System.out.println(category);
-                registerWorkshop();
-            }
-        });
+//        btnRegisterWorkshop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(checkBoxControlBrake.isChecked()){
+//                    isCheckBoxControlBrake = true;
+//                }
+//                if(checkBoxElectrical.isChecked()) {
+//                    isCheckBoxElectrical = true;
+//                }
+//                if(checkBoxFuelAir.isChecked()) {
+//                    isCheckBoxFuelAir = true;
+//                }
+//                if(checkBoxWheelDrives.isChecked()) {
+//                    isCheckBoxWheelDrives = true;
+//                }
+//                registerWorkshop();
+//                Toast.makeText(garageRegistration.this, "workshop registered", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
     }
 
+//
+//    private void registerWorkshop() {
+//
+//        Workshop workshop = new Workshop(
+//                garageName.getText().toString(),
+//                edtContactName.getText().toString(),
+//                "email@abc.com",
+//                "password",
+//                edtLocation.getText().toString(),
+//                edtNumber.getText().toString(),
+//                edtRegType.getText().toString(),
+//                edtPanNo.getText().toString(),
+//                "registrationdoc",
+//                isCheckBoxControlBrake,
+//                isCheckBoxElectrical,
+//                isCheckBoxFuelAir,
+//                isCheckBoxWheelDrives
+//                );
+//
+//        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
+//        URL.getStrictMode();
+//
+//        if (workshopBLL.isRegisterWorkshop()) {
+//            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
+//        }
+//        else {
+//            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
-    private void registerWorkshop() {
-
-        Workshop workshop = new Workshop(
-                garageName.getText().toString(),
-                edtContactName.getText().toString(),
-                garageEmail.getText().toString(),
-                garagePassword.getText().toString(),
-                edtLocation.getText().toString(),
-                edtNumber.getText().toString(),
-                edtRegType.getText().toString(),
-                edtPanNo.getText().toString(),
-                "registrationdoc",
-                isCheckBoxControlBrake,
-                isCheckBoxElectrical,
-                isCheckBoxFuelAir,
-                isCheckBoxWheelDrives,
-                "APPROVED",
-                27.6946843,
-                85.3310636,
-                category
-                );
-
-        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
-        URL.getStrictMode();
-
-        if (workshopBLL.isRegisterWorkshop()) {
-            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(garageRegistration.this, LoginActivity.class));
-        }
-        else {
-            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

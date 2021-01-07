@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    tools:context=".GarageDashboard.garageDashboard">
+    tools:context=".AdminInterface.admin_garage_list">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,30 +12,22 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/garage_toolbar"/>
+            layout="@layout/admin_main_toolbar"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
             android:orientation="vertical">
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcViewAdminGarageList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Dashboard"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:paddingBottom="10dp"
-                android:gravity="center"/>
+                android:paddingTop="10dp"/>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Graph View"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
 
     </LinearLayout>
 
@@ -47,8 +38,7 @@
         android:background="@color/white">
 
         <include
-            layout="@layout/garage_nav_drawer"/>
+            layout="@layout/admin_nav_drawer"/>
     </RelativeLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

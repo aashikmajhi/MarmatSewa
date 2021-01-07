@@ -18,17 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Registration.garageRegistrationBusinessInfo"></activity>
+        <activity android:name=".Registration.garageRegistrationPersonalInfo" />
+        <activity android:name=".AdminInterface.admin_garage_request_list" />
+        <activity android:name=".AdminInterface.admin_garage_list" />
+        <activity android:name=".AdminInterface.admin_services" />
+        <activity android:name=".AdminInterface.admin_dash" />
         <activity android:name=".GarageDashboard.GarageProfile" />
-        <activity android:name=".Dashboard.TwoWheelerServices" />
-        <activity android:name=".Dashboard.FourWheelerServices" />
-        <activity android:name=".Registration.garageRegistration" />
-        <activity android:name=".GarageDashboard.Request_Log_Activity" />
-        <activity android:name=".GarageDashboard.customerRequest" />
-        <activity android:name=".GarageDashboard.garageDashboard" />
-        <activity android:name=".Registration.userRegistration" />
-        <activity android:name=".Registration.RegistrationType" />
-        <activity android:name=".Registration.LoginActivity" />
+        <activity android:name=".AdminInterface.TwoWheelerServices" />
+        <activity android:name=".AdminInterface.FourWheelerServices" />
+        <activity android:name=".Dashboard.GarageServices" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard.GarageServices" />
+        <activity android:name=".Registration.garageRegistration" />
+        <activity android:name=".GarageDashboard.Request_Log_Activity" />
+        <activity android:name=".GarageDashboard.customerRequest" />
+        <activity android:name=".GarageDashboard.garageDashboard" />
+        <activity android:name=".Registration.userRegistration" />
+        <activity android:name=".Registration.RegistrationType" />
+        <activity android:name=".Registration.LoginActivity" />
     </application>
 
 </manifest>

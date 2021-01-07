@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".GarageDashboard.garageDashboard">
+    tools:context=".AdminInterface.admin_dash">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,27 +13,12 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/garage_toolbar"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Dashboard"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:paddingBottom="10dp"
-                android:gravity="center"/>
-        </LinearLayout>
+            layout="@layout/admin_main_toolbar"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Graph View"
+            android:text="Instructions..."
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
@@ -47,8 +32,7 @@
         android:background="@color/white">
 
         <include
-            layout="@layout/garage_nav_drawer"/>
+            layout="@layout/admin_nav_drawer"/>
     </RelativeLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

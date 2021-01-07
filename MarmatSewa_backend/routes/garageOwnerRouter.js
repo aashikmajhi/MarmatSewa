@@ -9,7 +9,10 @@ const router = express.Router();
 
 router.route('/')
 .get((req, res, next ) => {
-    console.log("Get req to be sent ...")
+    GarageOwner.find()
+    .then(garageOwner => {
+        res.status(200).json(garageOwner);
+    })
 })
 .post((req, res, next) => {
     let { errors, isValid } = validators.GarageInput(req.body);
@@ -20,7 +23,7 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
-    panNo, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
+    panNo, registrationDoc, latitude, longitude } = req.body;
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -38,7 +41,7 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
-                    registrationType, panNo,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
+                    registrationType, panNo,  registrationDoc, latitude, longitude })
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
