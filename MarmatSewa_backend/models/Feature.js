@@ -1,20 +1,16 @@
 const mongoose = require('mongoose');
 
 const featureSchema = new mongoose.Schema({
-    name: {
+    feature: {
         type: String,
         maxlength: 255,
         required: true
     },
-    img: {
-        type: String,
-        maxlength: 255
-    },
-    garage: {
+    admin: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'GarageOwner',
+        ref: 'User',
         required: true
     }
-}, { timestamps: true});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Feature', featureSchema); 

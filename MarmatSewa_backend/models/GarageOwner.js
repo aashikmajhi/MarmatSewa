@@ -17,7 +17,6 @@ const reviewSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }
-
 }, {timestamps: true});
 
 const garageOwnerSchema = new mongoose.Schema({
@@ -56,7 +55,7 @@ const garageOwnerSchema = new mongoose.Schema({
         maxlength: 255,
         required: true
     },
-    panDoc: {
+    panNo: {
         type: String,
         maxlength: 255,
         required: true
@@ -65,22 +64,6 @@ const garageOwnerSchema = new mongoose.Schema({
         type: String,
         maxlength: 255,
         required: true
-    },
-    controlsAndBrakes: {
-        type: Boolean,
-        default: false
-    },
-    electricity: {
-        type: Boolean,
-        default: false
-    },
-    puncture: {
-        type: Boolean,
-        default: false
-    },
-    wheelAndControl: {
-        type: Boolean,
-        default: false
     },
     status: {
         type: String,

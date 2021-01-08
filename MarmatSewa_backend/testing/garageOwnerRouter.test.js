@@ -8,11 +8,11 @@ require('./setup')
 
 const app = express();
 app.use(express.json());
-app.use('/api/garageOwnerRouter', garageOwner)
+app.use('/api/garageOwner', garageOwner)
 
 describe('Test for user route', () => {
     test('should be able to register a new user', () => {
-        return request(app).post('/api/garageOwnerRouter')
+        return request(app).post('/api/garageOwner')
             .send({
                 ownerName: 'garageowner1',
                 email: 'test@abcd.com',
@@ -21,7 +21,7 @@ describe('Test for user route', () => {
                 address: 'garageStreet',
                 contactNo: '9807654321',
                 registrationType: 'PAN',
-                panDoc: 'pandoc.png',
+                panNo: 'pandoc.png',
                 registrationDoc: 'regd.png',
                 controlsAndBrakes: true,
                 electricity: true,
@@ -35,7 +35,7 @@ describe('Test for user route', () => {
     })
 
     test('should not register user with same email', () => {
-        return request(app).post('/api/garageOwnerRouter')
+        return request(app).post('/api/garageOwner')
             .send({
                 ownerName: 'garageowner1',
                 email: 'test@abcd.com',
@@ -44,7 +44,7 @@ describe('Test for user route', () => {
                 address: 'garageStreet',
                 contactNo: '9807654321',
                 registrationType: 'PAN',
-                panDoc: 'pandoc.png',
+                panNo: 'pandoc.png',
                 registrationDoc: 'regd.png',
                 controlsAndBrakes: true,
                 electricity: true,
@@ -57,7 +57,7 @@ describe('Test for user route', () => {
     })
 
     test('should not register user without fulfilling required fields', () => {
-        return request(app).post('/api/garageOwnerRouter')
+        return request(app).post('/api/garageOwner')
             .send({
                 ownerName: 'garageowner1',
                 email: 'test@abcd.com',
@@ -66,7 +66,7 @@ describe('Test for user route', () => {
                 address: 'garageStreet',
                 contactNo: '',
                 registrationType: 'PAN',
-                panDoc: '.png',
+                panNo: '.png',
                 registrationDoc: 'regd.png',
                 controlsAndBrakes: true,
                 electricity: true,
@@ -79,7 +79,7 @@ describe('Test for user route', () => {
     })
 
     test('should be not able to register a new user', () => {
-        return request(app).post('/api/garageOwnerRouter')
+        return request(app).post('/api/garageOwner')
             .send({
                 ownerName: 'garageowner1',
                 email: 'test@abcd.com',
@@ -88,7 +88,7 @@ describe('Test for user route', () => {
                 address: 'garageStreet',
                 contactNo: '9807654321',
                 registrationType: 'PAN',
-                panDoc: 'pandoc.png',
+                panNo: 'pandoc.png',
                 registrationDoc: 'regd.png',
                 controlsAndBrakes: true,
                 electricity: true,

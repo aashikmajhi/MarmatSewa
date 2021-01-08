@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.marmatsewa">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,29 +19,28 @@
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".Dashboard.TwoWheelerServices"></activity>
-        <activity android:name=".Dashboard.FourWheelerServices"></activity>
-        <activity android:name=".Dashboard.GarageServices">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Registration.workshopRegistration"></activity>
-
-        <activity android:name=".GarageDashboard.Request_Log_Activity"></activity>
-        <activity android:name=".GarageDashboard.customerRequest" />
-        <activity android:name=".GarageDashboard.garageDashboard" />
-        <activity android:name=".Registration.workshopRegistration" />
-
-        <activity android:name=".Registration.userRegistration" />
-        <activity android:name=".Registration.RegistrationType" />
-        <activity android:name=".Registration.SignupActivity" />
-        <activity android:name=".Registration.LoginActivity" />
+        <activity android:name=".GarageDashboard.GarageFourWheelService"></activity>
+        <activity android:name=".GarageDashboard.GarageTwoWheelService" />
+        <activity android:name=".Registration.garageRegistrationBusinessInfo" />
+        <activity android:name=".Registration.garageRegistrationPersonalInfo" />
+        <activity android:name=".AdminInterface.admin_garage_request_list" />
+        <activity android:name=".AdminInterface.admin_garage_list" />
+        <activity android:name=".AdminInterface.admin_services" />
+        <activity android:name=".AdminInterface.admin_dash" />
+        <activity android:name=".GarageDashboard.GarageProfile" />
+        <activity android:name=".AdminInterface.TwoWheelerServices" />
+        <activity android:name=".AdminInterface.FourWheelerServices" />
+        <activity android:name=".GarageDashboard.GarageServices" />
         <activity android:name=".SplashActivity">
 
         </activity>
+        <activity android:name=".Registration.garageRegistration" />
+        <activity android:name=".GarageDashboard.Request_Log_Activity" />
+        <activity android:name=".GarageDashboard.customerRequest" />
+        <activity android:name=".GarageDashboard.garageDashboard" />
+        <activity android:name=".Registration.userRegistration" />
+        <activity android:name=".Registration.RegistrationType" />
+        <activity android:name=".Registration.LoginActivity" />
     </application>
 
 </manifest>

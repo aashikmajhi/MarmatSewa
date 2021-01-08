@@ -14,15 +14,22 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/main_toolbar"/>
+            layout="@layout/garage_toolbar"/>
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="Requests"-->
-<!--            android:textSize="50sp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:gravity="center"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Customer Requests"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:paddingBottom="10dp"
+                android:gravity="center"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +39,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"/>
     </LinearLayout>
 
 
@@ -45,7 +53,7 @@
         android:background="@color/white">
 
         <include
-            layout="@layout/main_nav_drawer"/>
+            layout="@layout/garage_nav_drawer"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

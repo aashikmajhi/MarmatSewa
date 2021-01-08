@@ -8,4 +8,7 @@ public interface WorkshopAPI {
 
     @POST("api/garageOwner/")
     Call<Void> registerWorkshop(@Body Workshop workshop);
+
+    @POST("api/upload/")
+    Call<Void> uploadDocs();
 }

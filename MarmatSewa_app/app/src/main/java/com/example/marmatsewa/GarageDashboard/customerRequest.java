@@ -35,6 +35,10 @@ public class customerRequest extends AppCompatActivity {
         garageDashboard.closeDrawer(drawerLayout);
     }
 
+    public void ClickProfile(View view) {
+        garageDashboard.redirectActivity(this, GarageProfile.class);
+    }
+
     public void ClickDashboard(View view){
         garageDashboard.redirectActivity(this, garageDashboard.class);
     }
@@ -43,7 +47,9 @@ public class customerRequest extends AppCompatActivity {
         recreate();
     }
 
-    //TODO SERVICES
+    public void ClickServices(View view) {
+        garageDashboard.redirectActivity(this, GarageServices.class);
+    }
 
     public void ClickLog(View view){
         garageDashboard.redirectActivity(this, Request_Log_Activity.class);
