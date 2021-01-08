@@ -2,6 +2,7 @@ package com.example.marmatsewa.Registration;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,8 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.marmatsewa.AdminInterface.admin_dash;
+import com.example.marmatsewa.GarageDashboard.GarageServices;
+import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
-import com.example.marmatsewa.Registration.LoginDev.LoginBLL;
+import com.example.marmatsewa.Registration.LoginDevelopment.LoginBLL;
 import com.example.marmatsewa.url.URL;
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,8 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "Signup Button Pressed", Toast.LENGTH_SHORT).show();
-            }
+                    Intent intent = new Intent(LoginActivity.this, RegistrationType.class);
+                    startActivity(intent);
+                }
         });
 
     }
@@ -53,7 +59,18 @@ public class LoginActivity extends AppCompatActivity {
         URL.getStrictMode();
 
         if (loginBLL.checkLogin()) {
-            Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Login success !!", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(LoginActivity.this, GarageServices.class));
+
+            if(URL.role.equals("USER")) {
+               startActivity(new Intent(LoginActivity.this, GarageServices.class));
+            } else if (URL.role.equals("ADMIN")) {
+                startActivity(new Intent(LoginActivity.this, admin_dash.class));
+                Toast.makeText(this, "Admin Login success !!", Toast.LENGTH_SHORT).show();
+            } else if(URL.role.equals("GARAGE_OWNER")) {
+                startActivity(new Intent(LoginActivity.this, garageDashboard.class));
+            }
         }
         else {
             Toast.makeText(this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();

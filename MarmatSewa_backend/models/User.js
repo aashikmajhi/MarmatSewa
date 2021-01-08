@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phone_no: {
+    phoneNo: {
         type: String,
         maxlength: 255,
         required: true
@@ -27,19 +27,23 @@ const userSchema = new mongoose.Schema({
 		required: true
     },
     dob: {
-        type: Date
+        type: Date,
+        required: true
     },
 	gender: {
-        type: Number,
         type: String,
 		enum: ['MALE', 'FEMALE', 'OTHERS'],
 		required: true
 	},
-    scanned_license: {
+    scannedLicense: {
         type: String,
 		maxlength: 25,
 		required: true
-	},
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 },
 {timestamps: true});
 
