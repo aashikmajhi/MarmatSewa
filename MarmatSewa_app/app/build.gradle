@@ -27,19 +27,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-// for BDD testing
-def getInstrumentation() {
-    project.hasProperty('cucumber') ? 'com.sniper.bdd.cucumber.runner.CucumberTestRunner' : 'android.support.test.runner.AndroidJUnitRunner'
-}
 
-def getTestTags() {
-    project.getProperties().get('tags') ?: ''
-}
-
-def getTestScenario() {
-    project.getProperties().get('scenario') ?: ''
-}
-////////////////////////////////////////////////////
 
 dependencies {
 
@@ -54,8 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'info.cukes:cucumber-android:1.2.5'
-    androidTestImplementation 'info.cukes:cucumber-picocontainer:1.2.5'
+
     //api dependencies
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
