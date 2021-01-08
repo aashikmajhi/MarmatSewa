@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route('/')
 .get(auth.verifyUser, (req, res, next ) => {
-    Feature_GarageOwner.findById(req.user.id)
+    Feature_GarageOwner.find()
     .then(Feature_GarageOwner => {
         res.status(200).json(Feature_GarageOwner);
     }).catch(next)

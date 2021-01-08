@@ -8,6 +8,7 @@ const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
 const adminRouter = require('./routes/adminRouter');
 const featureGarageOwnerRouter = require('./routes/featureGarageOwnerRouter');
+const requestRouter = require('./routes/requestRouter');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
 app.use('/api/featureGarageOwner', featureGarageOwnerRouter);
 app.use('/api/admin', adminRouter);
+app.use('/api/requests', requestRouter);
 
 app.listen(process.env.Port, () => {
 	console.log(`Server is running at localhost:${process.env.Port}`);

@@ -1,30 +1,26 @@
 const mongoose = require('mongoose');
 
-const Request = new mongoose.Schema({
+const requestSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    feature: {
+    featureGarageOwner:{
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Feature',
+        ref: 'FeatureGarageOwner',
         required:true
     },
-    garageOwner: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Feature',
-        required:true
-    },
+   
     status: {
         type: String,
         enum: ['REQUESTED', 'PENDING', 'APPROVED'],
         default: 'REQUESTED'
     },
-    // requestType: {
-    //     type: String,
-    //     //what will be the options ... 
-    // }
+    requestType: {
+        type: String,
+        enum: ['PICKUP AND DELIVERY','DROPPIN SERVICE','ON THE SPOT SERVICE']
+    }
 },{timestamps: true});
 
-module.exports = mongoose.model('GarageOwner', garageOwnerSchema); 
+module.exports = mongoose.model('Request', requestSchema); 
