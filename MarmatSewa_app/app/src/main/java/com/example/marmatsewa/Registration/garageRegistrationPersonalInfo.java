@@ -49,6 +49,8 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences("Workshop",0);
         editor = sharedPreferences.edit();
 
+        System.out.println(sharedPreferences.getString("garageEmail", null));
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
