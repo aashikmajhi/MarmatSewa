@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.marmatsewa.Dashboard.GarageServices;
+
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginDevelopment.LoginBLL;
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 //            startActivity(new Intent(LoginActivity.this, GarageServices.class));
 
             if(URL.role.equals("USER")) {
-                startActivity(new Intent(LoginActivity.this, GarageServices.class));
+               // startActivity(new Intent(LoginActivity.this, GarageServices.class));
             } else if (URL.role.equals("ADMIN")) {
                 Toast.makeText(this, "Admin Login success !!", Toast.LENGTH_SHORT).show();
             } else if(URL.role.equals("GARAGE_OWNER")) {
