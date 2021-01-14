@@ -16,40 +16,39 @@ router.post('/register', (req, res, next) => {
 		});
 	}
 
-<<<<<<< HEAD
-    let { errors, isValid } = validators.RegisterInput(req.body);
-    if (!isValid) {
-        return res.status(400).json({
-            status: 'error',
-            message: errors
-        });
-    }
+    // let { errors, isValid } = validators.RegisterInput(req.body);
+    // if (!isValid) {
+    //     return res.status(400).json({
+    //         status: 'error',
+    //         message: errors
+    //     });
+    // }
 
-    let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense, isAdmin } = req.body;
-    User.findOne({ email })
-        .then(user => {
-            if (user) {
-                let err = new Error('Email already exists!');
-                err.status = 400;
-                return next(err);
-            }
-            GarageOwner.findOne({ email })
-            .then(garageOwner => {
-                if (garageOwner) {
-                    let err = new Error('Email already exists!');
-                    err.status = 400;
-                    return next(err);
-                }
-                bcrypt.hash(password, 10)
-                .then((hash) => {
-                    User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense, isAdmin })
-                    .then(user => {
-                        res.status(201).json({ "status": "Registration successful" });
-                    }).catch(next);
-                }).catch(next);
-            }).catch(next);
-        }).catch(next);
-=======
+    // let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense, isAdmin } = req.body;
+    // User.findOne({ email })
+    //     .then(user => {
+    //         if (user) {
+    //             let err = new Error('Email already exists!');
+    //             err.status = 400;
+    //             return next(err);
+    //         }
+    //         GarageOwner.findOne({ email })
+    //         .then(garageOwner => {
+    //             if (garageOwner) {
+    //                 let err = new Error('Email already exists!');
+    //                 err.status = 400;
+    //                 return next(err);
+    //             }
+    //             bcrypt.hash(password, 10)
+    //             .then((hash) => {
+    //                 User.create({fullname, email, password: hash, phoneNo, address, dob, gender, scannedLicense, isAdmin })
+    //                 .then(user => {
+    //                     res.status(201).json({ "status": "Registration successful" });
+    //                 }).catch(next);
+    //             }).catch(next);
+    //         }).catch(next);
+    //     }).catch(next);
+
 	let { fullname, email, password, phoneNo, address, dob, gender, scannedLicense, isAdmin } = req.body;
 	User.findOne({ email })
 		.then((user) => {
@@ -89,7 +88,7 @@ router.post('/register', (req, res, next) => {
 				.catch(next);
 		})
 		.catch(next);
->>>>>>> Development
+
 });
 
 router.post('/login', (req, res, next) => {
@@ -163,7 +162,7 @@ router.post('/login', (req, res, next) => {
 
 						console.log(payload);
 
-<<<<<<< HEAD
+
     User.findOne({ email })
     .then((user) => {
         //FOR GARAGE OWNER
@@ -230,7 +229,7 @@ router.post('/login', (req, res, next) => {
                 }).catch(next);
             }
         }).catch(next);
-=======
+
 						jwt.sign(payload, process.env.SECRET, (err, token) => {
 							if (err) return next(err);
 							res.json({
@@ -244,7 +243,7 @@ router.post('/login', (req, res, next) => {
 			}
 		})
 		.catch(next);
->>>>>>> Development
+
 });
 
 module.exports = router;
