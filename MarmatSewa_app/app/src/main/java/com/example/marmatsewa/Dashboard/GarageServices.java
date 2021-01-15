@@ -18,8 +18,8 @@ public class GarageServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_services);
 
-        ImgBike=findViewById(R.id.ImgBike);
-        ImgCar=findViewById(R.id.ImgCar);
+        ImgBike=findViewById(R.id.btnTwoWheeler);
+        ImgCar=findViewById(R.id.btnFourWheeler);
 
     }
 
@@ -30,12 +30,12 @@ public class GarageServices extends AppCompatActivity {
         Intent i;
 
         switch (v.getId()){
-            case R.id.ImgBike:
+            case R.id.btnTwoWheeler:
                 i=new Intent(this,TwoWheelerServices.class);
                 startActivity(i);
                 break;
 
-            case R.id.ImgCar:
+            case R.id.btnFourWheeler:
                 i=new Intent(this,FourWheelerServices.class);
                 startActivity(i);
                 break;
