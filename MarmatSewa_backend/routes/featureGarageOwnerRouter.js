@@ -5,6 +5,7 @@ const auth = require('../middlewares/authentication');
 const router = express.Router();
 
 router.route('/')
+//GET Feature_GarageOwner from garageOwner_id
 .get(auth.verifyUser, (req, res, next ) => {
     Feature_GarageOwner.findById(req.user.id)
     .then(Feature_GarageOwner => {
@@ -27,4 +28,12 @@ router.route('/:FeatureGarageOwner_id')
     }).catch(next);
 });
 
+//For what ???
+router.route('/:FeatureGarageOwner_id/:feature_id')
+.get(auth.verifyUser, (req, res, next) => {
+    Feature_GarageOwner.findById(req.params.feature_id)
+    .then(feature_garageOwner => {
+        res.status(200).json(feature_garageOwner);
+    }).catch(next);
+}).catch(next);
 module.exports = router;
