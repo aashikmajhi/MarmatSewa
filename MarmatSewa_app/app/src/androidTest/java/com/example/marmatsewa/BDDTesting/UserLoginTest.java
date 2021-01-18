@@ -1,8 +1,9 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.BDDTesting;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
 
 import org.junit.Rule;
@@ -20,11 +21,11 @@ public ActivityTestRule<LoginActivity>testRule=new ActivityTestRule<>(LoginActiv
     @Test
     public void LoginTest() {
         onView(ViewMatchers.withId(R.id.edtEmail))
-                .perform(typeText("nitesh.katwal20@gmail.com"))
+                .perform(typeText("aashikmajhi@gmail.com"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.edtPword))
-                .perform(typeText("Nit3sh@123"))
+                .perform(typeText("Password123"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.btnLogin))
