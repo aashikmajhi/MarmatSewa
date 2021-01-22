@@ -20,6 +20,7 @@ router.route('/')
 });
 
 router.route('/:feature_id')
+
 .put(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     const feat = req.body;
     console.log(feat)

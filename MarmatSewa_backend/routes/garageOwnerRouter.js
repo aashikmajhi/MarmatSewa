@@ -48,7 +48,16 @@ router.route('/')
             }).catch(next);
         }).catch(next);
     }).catch(next);
+});
+
+router.route('/:garage_id')
+.get(auth.verifyUser, (req, res, next) => {
+    GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+        res.status(200).json(garage);
+    })
 })
+
 //reviews
 router.route('/:garage_id/reviews')
 .get(auth.verifyUser, (req, res, next) => {
