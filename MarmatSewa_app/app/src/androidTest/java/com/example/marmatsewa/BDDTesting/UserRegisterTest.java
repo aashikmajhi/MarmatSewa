@@ -1,10 +1,11 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.BDDTesting;
 
 
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.userRegistration;
 
 import org.junit.Rule;
@@ -45,9 +46,9 @@ public class UserRegisterTest {
                 .perform(typeText("1990-12-12"))
                 .perform(closeSoftKeyboard());
 
-//        onView(ViewMatchers.withId(R.id.genderMale))
-//                .perform(typeText("Male"))
-//                .perform(closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.genderMale))
+                .perform(typeText("MALE"))
+                .perform(closeSoftKeyboard());
 
         onView(withId(R.id.submitUser))
                 .perform(click());
