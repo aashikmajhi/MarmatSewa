@@ -58,38 +58,16 @@
         app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/back" />
 
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="250dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBoxFuelAir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fuel and Air"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBoxControlBrake"
-        android:layout_width="181dp"
-        android:layout_height="48dp"
-        android:text="Control and Brakes "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
 
     <TextView
         android:id="@+id/dropdown"
@@ -104,66 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.713" />
-
-    <CheckBox
-        android:id="@+id/checkBoxElectrical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Electrical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.401"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42" />
-
-  
-    <CheckBox
-        android:id="@+id/checkBoxWheelDrives"
-        android:layout_width="189dp"
-        android:layout_height="53dp"
-        android:text="Wheel and Drives"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.581"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
-
-
-
-    <!--    <TextView-->
-<!--        android:id="@+id/btnRegisterWorkshop"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="216dp"-->
-<!--        android:background="@drawable/rounded_button"-->
-<!--        android:text="  Register ->"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.52" />-->
-
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="212dp"
-        android:layout_height="46dp"
-        android:gravity="center_horizontal"
-        android:text="Featuring Services"
-        android:textColor="@color/blue"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
+        app:layout_constraintVertical_bias="0.387" />
 
 
     <TextView
