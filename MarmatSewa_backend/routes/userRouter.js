@@ -16,6 +16,7 @@ router.post('/register', (req, res, next) => {
 		});
 	}
 
+
     // let { errors, isValid } = validators.RegisterInput(req.body);
     // if (!isValid) {
     //     return res.status(400).json({
@@ -243,7 +244,6 @@ router.post('/login', (req, res, next) => {
 			}
 		})
 		.catch(next);
-
 });
 
 module.exports = router;

@@ -9,6 +9,7 @@ const userRouter = require('./routes/userRouter');
 const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
 const adminRouter = require('./routes/adminRouter');
+
 const uploadRouter = require('./routes/uploadRouter');
 
 const featureGarageOwnerRouter = require('./routes/featureGarageOwnerRouter');
@@ -16,15 +17,13 @@ const featureGarageOwnerRouter = require('./routes/featureGarageOwnerRouter');
 const app = express();
 app.use(cors('*'));
 
-mongoose
-	.connect(process.env.DbURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: true,
-		useCreateIndex: true
-	})
-	.then(() => console.log('----------------- Database server connected --------------------'))
-	.catch((err) => console.log(err));
+mongoose.connect(process.env.DbURI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true
+})
+.then(()=> console.log('----------------- Database server connected --------------------'))
+.catch((err) => console.log(err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

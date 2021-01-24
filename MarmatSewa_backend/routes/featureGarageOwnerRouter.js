@@ -5,8 +5,10 @@ const auth = require('../middlewares/authentication');
 const router = express.Router();
 
 router.route('/')
-.get(auth.verifyUser, (req, res, next ) => {
-    Feature_GarageOwner.findById(req.user.id)
+// GET Feature_GarageOwner from garageOwner_id
+.get(auth.verifyUser, (req, res, next) => {
+    Feature_GarageOwner.find()
+    .populate('feature')
     .then(Feature_GarageOwner => {
         res.status(200).json(Feature_GarageOwner);
     }).catch(next)
@@ -27,4 +29,13 @@ router.route('/:FeatureGarageOwner_id')
     }).catch(next);
 });
 
+//GET garageOwner Detail from feature_id
+router.route('/:FeatureGarageOwner_id/:feature_id')
+.get(auth.verifyUser, (req, res, next) => {
+    Feature_GarageOwner.find( {feature: req.params.feature_id} )
+    .populate('garageOwner') 
+    .then(feature_garageOwner => {
+        res.status(200).json(feature_garageOwner);
+    }).catch(next);
+});
 module.exports = router;

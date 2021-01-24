@@ -24,7 +24,10 @@ public class GarageServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_services);
 
+
         drawerLayout = findViewById(R.id.drawer_layout);
+         ImgBike=findViewById(R.id.btnTwoWheeler);
+        ImgCar=findViewById(R.id.btnFourWheeler);
 
         btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
         btnFourWheeler=findViewById(R.id.btnFourWheeler);
@@ -65,6 +68,7 @@ public class GarageServices extends AppCompatActivity {
     }
 
 
+
     public void ClickDashboard(View view) {
         garageDashboard.redirectActivity(this, garageDashboard.class);
     }
@@ -76,6 +80,16 @@ public class GarageServices extends AppCompatActivity {
     public void ClickServices(View view) {
         recreate();
     }
+        switch (v.getId()){
+            case R.id.btnTwoWheeler:
+                i=new Intent(this,TwoWheelerServices.class);
+                startActivity(i);
+                break;
+
+            case R.id.btnFourWheeler:
+                i=new Intent(this,FourWheelerServices.class);
+                startActivity(i);
+                break;
 
     public void ClickLog(View view) {
         garageDashboard.redirectActivity(this, Request_Log_Activity.class);

@@ -10,6 +10,7 @@ const router = express.Router();
 router.route('/')
 .get((req, res, next ) => {
     console.log("Get req to be sent ...")
+
     GarageOwner.find()
     .then(garageOwner => {
         res.status(200).json(garageOwner);
@@ -25,9 +26,13 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
+
     panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
 
 //     panNo, registrationDoc, latitude, longitude } = req.body;
+
+
+    panNo, registrationDoc, latitude, longitude } = req.body;
 
     User.findOne({ email })
     .then(user => {
@@ -49,13 +54,25 @@ router.route('/')
 
                     registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
                     // registrationType, panNo,  registrationDoc, latitude, longitude })
+                    
+                    registrationType, panNo,  registrationDoc, latitude, longitude })
+
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
             }).catch(next);
         }).catch(next);
     }).catch(next);
+});
+
+router.route('/:garage_id')
+.get(auth.verifyUser, (req, res, next) => {
+    GarageOwner.findById(req.params.garage_id)
+    .then(garage => {
+        res.status(200).json(garage);
+    })
 })
+
 //reviews
 router.route('/:garage_id/reviews')
 .get(auth.verifyUser, (req, res, next) => {
@@ -64,7 +81,6 @@ router.route('/:garage_id/reviews')
         res.status(200).json(garage.reviews);
     })
 })
-
 
 .post(auth.verifyUser, (req, res, next) => {
     const rv = { review, rating } = req.body;
@@ -76,7 +92,10 @@ router.route('/:garage_id/reviews')
        .then(newReview => res.status(201).json(newReview)).catch(next);
     }).catch(next);
 
+
 // })
+});
+
 });
 
 
