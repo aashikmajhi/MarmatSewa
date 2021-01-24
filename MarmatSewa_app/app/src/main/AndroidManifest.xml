@@ -14,6 +14,13 @@
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
 
+        <activity android:name=".UserInterface.user_hiring_page"></activity>
+        <activity android:name=".UserInterface.user_two_wheel_services" />
+        <activity android:name=".UserInterface.user_four_wheel_services" />
+        <activity android:name=".UserInterface.userRating" />
+        <activity android:name=".UserInterface.user_dashboard" />
+
+
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -32,7 +39,6 @@
             android:label="@string/title_activity_maps_location">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

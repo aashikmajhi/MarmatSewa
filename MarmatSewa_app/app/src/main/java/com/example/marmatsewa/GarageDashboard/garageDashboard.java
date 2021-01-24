@@ -18,6 +18,7 @@ public class garageDashboard extends AppCompatActivity {
     //Initialize variable
 
     DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
