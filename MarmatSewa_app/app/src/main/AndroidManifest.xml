@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MarmatSewa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GarageDashboard.GarageFourWheelService"></activity>
+        <activity android:name=".UserInterface.user_hiring_page"></activity>
+        <activity android:name=".UserInterface.user_two_wheel_services" />
+        <activity android:name=".UserInterface.user_four_wheel_services" />
+        <activity android:name=".UserInterface.userRating" />
+        <activity android:name=".UserInterface.user_dashboard" />
+        <activity android:name=".GarageDashboard.GarageFourWheelService" />
         <activity android:name=".GarageDashboard.GarageTwoWheelService" />
         <activity android:name=".Registration.garageRegistrationBusinessInfo" />
         <activity android:name=".Registration.garageRegistrationPersonalInfo" />
