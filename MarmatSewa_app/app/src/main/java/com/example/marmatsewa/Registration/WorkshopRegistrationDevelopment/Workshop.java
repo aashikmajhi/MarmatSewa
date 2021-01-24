@@ -1,5 +1,7 @@
 package com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment;
 
+import java.math.BigDecimal;
+
 public class Workshop {
 
     private String businessName;
@@ -9,17 +11,19 @@ public class Workshop {
     private String address;
     private String contactNo;
     private String registrationType;
-    private String panDoc;
+    private String panNo;
     private String registrationDoc;
     private boolean controlsAndBrakes;
     private boolean electricity;
     private boolean puncture;
     private boolean wheelAndControl;
+    private String status;
+    private double latitude;
+    private double longitude;
+    private String vehicleType;
 
-    public Workshop() {
-    }
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panDoc, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, double latitude, double longitude, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -27,12 +31,16 @@ public class Workshop {
         this.address = address;
         this.contactNo = contactNo;
         this.registrationType = registrationType;
-        this.panDoc = panDoc;
+        this.panNo = panNo;
         this.registrationDoc = registrationDoc;
         this.controlsAndBrakes = controlsAndBrakes;
         this.electricity = electricity;
         this.puncture = puncture;
         this.wheelAndControl = wheelAndControl;
+        this.status = status;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.vehicleType = vehicleType;
     }
 
     public String getBusinessName() {
@@ -91,12 +99,12 @@ public class Workshop {
         this.registrationType = registrationType;
     }
 
-    public String getPanDoc() {
-        return panDoc;
+    public String getpanNo() {
+        return panNo;
     }
 
-    public void setPanDoc(String panDoc) {
-        this.panDoc = panDoc;
+    public void setpanNo(String panNo) {
+        this.panNo = panNo;
     }
 
     public String getRegistrationDoc() {
@@ -137,5 +145,45 @@ public class Workshop {
 
     public void setWheelAndControl(boolean wheelAndControl) {
         this.wheelAndControl = wheelAndControl;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPanNo() {
+        return panNo;
+    }
+
+    public void setPanNo(String panNo) {
+        this.panNo = panNo;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 }

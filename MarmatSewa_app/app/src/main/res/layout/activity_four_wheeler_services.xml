@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AdminInterface.FourWheelerServices">
 
-
     <View
         android:id="@+id/bottom"
         android:layout_width="0dp"
@@ -166,7 +165,6 @@
 <!--            tools:ignore="MissingConstraints" />-->
 <!--    </LinearLayout>-->
 <!--    </ScrollView>-->
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

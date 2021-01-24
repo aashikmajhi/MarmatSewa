@@ -1,11 +1,20 @@
 package com.example.marmatsewa.Registration;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -17,14 +26,18 @@ import com.example.marmatsewa.Registration.UserRegistrationDevelopment.User;
 import com.example.marmatsewa.Registration.UserRegistrationDevelopment.UserRegisterBLL;
 import com.example.marmatsewa.url.URL;
 
-public class userRegistration extends AppCompatActivity {
+import java.util.Calendar;
 
-    private ImageView backBtn, submitUser;
+public class userRegistration extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    private ImageView backBtn, submitUser, btnUploadLicense;
     private EditText edtfName, edtEmail, edtPassword, edtPhone, edtAddress, edtDob;
     private RadioButton genderMale, genderFemale;
     private TextView license;
 
     private String gender;
+
+    final Calendar c = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +49,13 @@ public class userRegistration extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         edtPhone = findViewById(R.id.edtPhone);
-//        edtPhone = findViewById(R.id.edtPhone);
         edtAddress = findViewById(R.id.edtAddress);
         edtDob = findViewById(R.id.edtDob);
 
         genderMale = findViewById(R.id.genderMale);
         genderFemale = findViewById(R.id.genderFemale);
+
+        btnUploadLicense = findViewById(R.id.btnUploadLicense);
 
         submitUser = findViewById(R.id.submitUser);
 
@@ -55,18 +69,38 @@ public class userRegistration extends AppCompatActivity {
             }
         });
 
+        edtDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadDatePicker();
+            }
+        });
+
+        genderMale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gender = "MALE";
+            }
+        });
+        genderFemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gender = "FEMALE";
+            }
+        });
+
+        checkPermissions();
+        btnUploadLicense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadCamera();
+            }
+        });
+
         submitUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(genderMale.isSelected()) {
-                    gender = "MALE";
-                    System.out.println("gender is male");
-                }
-                else if(genderFemale.isSelected()) {
-                    gender = "FEMALE";
-                    System.out.println("gender is female");
-                }
-                //registerUser();
+                registerUser();
             }
         });
     }
@@ -80,7 +114,7 @@ public class userRegistration extends AppCompatActivity {
                 edtPhone.getText().toString(),
                 edtAddress.getText().toString(),
                 edtDob.getText().toString(),
-                "MALE",
+                gender,
                 "scannedlicense"
         );
 
@@ -89,9 +123,51 @@ public class userRegistration extends AppCompatActivity {
 
         if(userRegisterBLL.isRegisterUser()) {
             Toast.makeText(this, "User register successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(userRegistration.this, LoginActivity.class));
         }
         else {
             Toast.makeText(this, "User register failed!!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void loadDatePicker() {
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, this, year, month, day);
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String date = month + "/" + dayOfMonth + "/" + year;
+        edtDob.setText(date);
+    }
+
+    private void checkPermissions() {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]
+                    {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        }
+    }
+
+    private void loadCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager())!= null) {
+            startActivityForResult(intent, 1);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            //imageView.setImageBitmap(imageBitmap);
+        }
+
+    }
+
 }

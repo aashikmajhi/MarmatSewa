@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,10 +22,17 @@ import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Works
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.WorkshopBLL;
 import com.example.marmatsewa.url.URL;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class garageRegistration extends AppCompatActivity {
+
 
     private ImageView backBtn, btnNext;
     private EditText edtGarageEmail, edtGaragePassword;
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
 
     @Override
@@ -31,11 +40,11 @@ public class garageRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_registration);
 
-
-        btnNext = findViewById(R.id.btnNext);
-        //TODO intent to garageRegistrationPersonalInfo if the fields are filled..
+        edtGarageEmail = findViewById(R.id.edtGarageEmail);
+        edtGaragePassword = findViewById(R.id.edtGaragePassword);
 
         backBtn = findViewById(R.id.backBtn);
+        btnNext = findViewById(R.id.btnNext);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,56 +54,36 @@ public class garageRegistration extends AppCompatActivity {
             }
         });
 
-//        btnRegisterWorkshop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if(checkBoxControlBrake.isChecked()){
-//                    isCheckBoxControlBrake = true;
-//                }
-//                if(checkBoxElectrical.isChecked()) {
-//                    isCheckBoxElectrical = true;
-//                }
-//                if(checkBoxFuelAir.isChecked()) {
-//                    isCheckBoxFuelAir = true;
-//                }
-//                if(checkBoxWheelDrives.isChecked()) {
-//                    isCheckBoxWheelDrives = true;
-//                }
-//                registerWorkshop();
-//                Toast.makeText(garageRegistration.this, "workshop registered", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
+        sharedPreferences = getApplicationContext().getSharedPreferences("Workshop",0);
+        editor = sharedPreferences.edit();
+
+       btnNext.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if(validate()) {
+                   editor.putString("garageEmail", edtGarageEmail.getText().toString());
+                   editor.putString("garagePassword", edtGaragePassword.getText().toString());
+                   editor.commit();
+
+                   startActivity(new Intent(garageRegistration.this, garageRegistrationPersonalInfo.class));
+               }
+           }
+       });
+
     }
 
-//
-//    private void registerWorkshop() {
-//
-//        Workshop workshop = new Workshop(
-//                garageName.getText().toString(),
-//                edtContactName.getText().toString(),
-//                "email@abc.com",
-//                "password",
-//                edtLocation.getText().toString(),
-//                edtNumber.getText().toString(),
-//                edtRegType.getText().toString(),
-//                edtPanNo.getText().toString(),
-//                "registrationdoc",
-//                isCheckBoxControlBrake,
-//                isCheckBoxElectrical,
-//                isCheckBoxFuelAir,
-//                isCheckBoxWheelDrives
-//                );
-//
-//        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
-//        URL.getStrictMode();
-//
-//        if (workshopBLL.isRegisterWorkshop()) {
-//            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    public boolean validate() {
+        boolean flag = true;
+        if(TextUtils.isEmpty(edtGarageEmail.getText().toString())) {
+            edtGarageEmail.requestFocus();
+            edtGarageEmail.setError("Please enter the garage email");
+            flag = false;
+        }
+        else if(TextUtils.isEmpty(edtGaragePassword.getText().toString())) {
+            edtGaragePassword.requestFocus();
+            edtGaragePassword.setError("Please enter the password");
+            flag = false;
+        }
+        return flag;
+    }
 }

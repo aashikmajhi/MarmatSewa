@@ -2,8 +2,15 @@
     <string name="app_name">MarmatSewa</string>
 
     <string-array name="vehicleType">
-        <item>2 wheeler</item>
-        <item>4 wheeler</item>
-        <item>Both</item>
+        <item name="TWO_WHEEL">2 wheeler</item>
+        <item name="FOUR_WHEEL">4 wheeler</item>
+        <item name="BOTH">Both</item>
     </string-array>
+    <string name="title_activity_garage_login">GarageLoginActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_maps_location">Map</string>
 </resources>

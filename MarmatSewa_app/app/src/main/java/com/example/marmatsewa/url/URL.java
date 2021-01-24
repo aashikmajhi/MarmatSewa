@@ -8,8 +8,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class URL {
 
     public static String token = "";
+    public static String role = "";
 
-    public static String BASE_URL = "http://10.0. 2.2:3001/";
+    public static String BASE_URL = "http://10.0.2.2:3001/";
+//    public static String BASE_URL = "http://10.1.14.43:3001";
+
 
     public static Retrofit getInstance() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL.BASE_URL)
