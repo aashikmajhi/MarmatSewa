@@ -9,6 +9,7 @@ const userRouter = require('./routes/userRouter');
 const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
 const adminRouter = require('./routes/adminRouter');
+const requestRouter = require('./routes/requestRouter');
 
 const uploadRouter = require('./routes/uploadRouter');
 
@@ -25,7 +26,7 @@ mongoose.connect(process.env.DbURI,{
 .then(()=> console.log('----------------- Database server connected --------------------'))
 .catch((err) => console.log(err));
 
-app.use(express.json());
+app.use(express.json());//json
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -36,6 +37,8 @@ app.get('/', (req, res) => {
 app.use('/api/users', userRouter);
 app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
+app.use('/api/requests', requestRouter);
+
 
 app.use('api/upload', uploadRouter);
 
