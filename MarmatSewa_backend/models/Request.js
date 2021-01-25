@@ -26,5 +26,5 @@ const Request = new mongoose.Schema({
     //     //what will be the options ... 
     // }
 },{timestamps: true});
-b
-module.exports = mongoose.model('GarageOwner', garageOwnerSchema); 
+
+module.exports = mongoose.model('Request', Request); 

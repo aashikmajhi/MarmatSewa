@@ -29,11 +29,6 @@ router.route('/')
 
     panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
 
-//     panNo, registrationDoc, latitude, longitude } = req.body;
-
-
-    panNo, registrationDoc, latitude, longitude } = req.body;
-
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -51,12 +46,7 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
-
                     registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
-                    // registrationType, panNo,  registrationDoc, latitude, longitude })
-                    
-                    registrationType, panNo,  registrationDoc, latitude, longitude })
-
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
@@ -91,11 +81,6 @@ router.route('/:garage_id/reviews')
        garage.save()
        .then(newReview => res.status(201).json(newReview)).catch(next);
     }).catch(next);
-
-
-// })
-});
-
 });
 
 
