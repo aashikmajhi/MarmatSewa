@@ -9,10 +9,14 @@ const router = express.Router();
 
 router.route('/')
 .get((req, res, next ) => {
+<<<<<<< HEAD
+    console.log("Get req to be sent ...")
+=======
     GarageOwner.find()
     .then(garageOwner => {
         res.status(200).json(garageOwner);
     })
+>>>>>>> Development
 })
 .post((req, res, next) => {
     let { errors, isValid } = validators.GarageInput(req.body);
@@ -23,7 +27,11 @@ router.route('/')
         });
     }
     let { businessName, ownerName, email, password, address, contactNo, registrationType,
+<<<<<<< HEAD
+    panDoc, registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude } = req.body;
+=======
     panNo, registrationDoc, latitude, longitude } = req.body;
+>>>>>>> Development
     User.findOne({ email })
     .then(user => {
         if (user) {
@@ -41,7 +49,11 @@ router.route('/')
             bcrypt.hash(password, 10)
             .then((hash) => {
                 GarageOwner.create({ businessName, ownerName,  email, password: hash, address, contactNo, 
+<<<<<<< HEAD
+                    registrationType, panDoc,  registrationDoc, controlsAndBrakes, electricity, puncture, wheelAndControl, latitude, longitude })
+=======
                     registrationType, panNo,  registrationDoc, latitude, longitude })
+>>>>>>> Development
                     .then(user => {
                         res.status(201).json({ "status": "Registration successful" });
                     })
@@ -57,6 +69,10 @@ router.route('/:garage_id/reviews')
         res.status(200).json(garage.reviews);
     })
 })
+<<<<<<< HEAD
+
+=======
+>>>>>>> Development
 .post(auth.verifyUser, (req, res, next) => {
     const rv = { review, rating } = req.body;
     rv.user = req.user.id;
@@ -66,7 +82,11 @@ router.route('/:garage_id/reviews')
        garage.save()
        .then(newReview => res.status(201).json(newReview)).catch(next);
     }).catch(next);
+<<<<<<< HEAD
+})
+=======
 });
+>>>>>>> Development
 
 router.route('/:garage_id/reviews/:review_id')
 .get(auth.verifyUser, (req, res, next) => {

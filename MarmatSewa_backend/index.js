@@ -8,9 +8,13 @@ require('dotenv').config();
 const userRouter = require('./routes/userRouter');
 const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
+<<<<<<< HEAD
+const adminRouter = require('./routes/adminRouter');
+=======
 const uploadRouter = require('./routes/uploadRouter');
 const adminRouter = require('./routes/adminRouter');
 const featureGarageOwnerRouter = require('./routes/featureGarageOwnerRouter');
+>>>>>>> Development
 
 const app = express();
 app.use(cors('*'));
@@ -36,7 +40,10 @@ app.get('/', (req, res) => {
 app.use('/api/users', userRouter);
 app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
+<<<<<<< HEAD
+=======
 app.use('api/upload', uploadRouter);
+>>>>>>> Development
 app.use('/api/admin', adminRouter);
 
 app.listen(process.env.Port, () => {
