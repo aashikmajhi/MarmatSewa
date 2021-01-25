@@ -18,7 +18,7 @@ const Request = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['REQUESTED', 'PENDING', 'APPROVED'],
+        enum: ['PENDING', 'APPROVED'],
         default: 'REQUESTED'
     },
     // requestType: {
@@ -26,5 +26,5 @@ const Request = new mongoose.Schema({
     //     //what will be the options ... 
     // }
 },{timestamps: true});
-
+b
 module.exports = mongoose.model('GarageOwner', garageOwnerSchema); 
