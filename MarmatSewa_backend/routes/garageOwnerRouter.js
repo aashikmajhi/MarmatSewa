@@ -43,10 +43,6 @@ router
 			longitude
 		} = req.body;
 
-		//     panNo, registrationDoc, latitude, longitude } = req.body;
-
-		// panNo, registrationDoc, latitude, longitude } = req.body;
-
 		User.findOne({ email })
 			.then((user) => {
 				if (user) {
@@ -71,7 +67,6 @@ router
 									password: hash,
 									address,
 									contactNo,
-
 									registrationType,
 									panDoc,
 									registrationDoc,
@@ -81,19 +76,15 @@ router
 									wheelAndControl,
 									latitude,
 									longitude
+								}).then((user) => {
+									res.status(201).json({ status: 'Registration successful' });
 								});
-								// registrationType, panNo,  registrationDoc, latitude, longitude })
-
-								registrationType, panNo, registrationDoc, latitude, longitude;
 							})
-							.then((user) => {
-								res.status(201).json({ status: 'Registration successful' });
-							});
+							.catch(next);
 					})
 					.catch(next);
 			})
 			.catch(next);
-		// }).catch(next);
 	});
 
 router.route('/:garage_id').get(auth.verifyUser, (req, res, next) => {
@@ -119,11 +110,7 @@ router
 				garage.save().then((newReview) => res.status(201).json(newReview)).catch(next);
 			})
 			.catch(next);
-
-		// })
 	});
-
-// });
 
 router
 	.route('/:garage_id/reviews/:review_id')

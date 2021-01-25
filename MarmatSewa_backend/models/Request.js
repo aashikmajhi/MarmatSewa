@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const RequestSchema = new mongoose.Schema(
+const Request = new mongoose.Schema(
 	{
 		user: {
 			type: mongoose.Schema.Types.ObjectId,
@@ -30,4 +30,4 @@ const RequestSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-module.exports = mongoose.model('Request', RequestSchema);
+module.exports = mongoose.model('Request', Request);

@@ -47,8 +47,6 @@ public class user_dashboard extends AppCompatActivity {
         dialog = dialogBuilder.create();
         dialog.show();
 
-
-
     }
 
 }

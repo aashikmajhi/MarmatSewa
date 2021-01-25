@@ -10,10 +10,12 @@ const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
 const adminRouter = require('./routes/adminRouter');
 const requestRouter = require('./routes/requestRouter');
+const profileRouter = require('./routes/profileRouter');
 
 const uploadRouter = require('./routes/uploadRouter');
 
 const featureGarageOwnerRouter = require('./routes/featureGarageOwnerRouter');
+const { profile } = require('console');
 
 const app = express();
 app.use(cors('*'));
@@ -38,7 +40,7 @@ app.use('/api/users', userRouter);
 app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
 app.use('/api/requests', requestRouter);
-
+app.use('/api/profiles', profileRouter);
 
 app.use('api/upload', uploadRouter);
 
