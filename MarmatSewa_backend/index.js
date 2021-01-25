@@ -10,7 +10,7 @@ const garageOwnerRouter = require('./routes/garageOwnerRouter');
 const featureRouter = require('./routes/featureRouter');
 const adminRouter = require('./routes/adminRouter');
 const requestRouter = require('./routes/requestRouter');
-const profileRouter = require('./routes/profileRouter');
+const profileRouter = require('./routes/userProfileRouter');
 
 const uploadRouter = require('./routes/uploadRouter');
 
