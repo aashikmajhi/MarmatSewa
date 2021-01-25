@@ -83,8 +83,7 @@ router.post('/register', (req, res, next) => {
 									res.status(201).json({ status: 'Registration successful' });
 								})
 								.catch(next);
-						})
-						.catch(next);
+						}).catch(next);
 				})
 				.catch(next);
 		})
