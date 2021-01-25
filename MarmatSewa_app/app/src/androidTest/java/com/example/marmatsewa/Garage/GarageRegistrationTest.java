@@ -20,11 +20,11 @@ public class GarageRegistrationTest {
 
     @Test
     public void GarageRegistrationTest() {
-        onView(ViewMatchers.withId(R.id.edtGarageEmail))
+        onView(ViewMatchers.withId(R.id.garageName))
                 .perform(typeText("aashik.majhi1234@gmail.com"))
                 .perform(closeSoftKeyboard());
 
-        onView(withId(R.id.edtGaragePassword))
+        onView(withId(R.id.garagePassword))
                 .perform(typeText("Ashik@123"))
                 .perform(closeSoftKeyboard());
 

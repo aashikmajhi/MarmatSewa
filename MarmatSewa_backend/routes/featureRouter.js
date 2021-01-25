@@ -32,7 +32,7 @@ router.route('/')
 //     .then(feature => {
 //         res.status(201).json(feature);
 //     }).catch(next);
-// });
+});
 
 router.route('/:feature_id')
 
@@ -46,6 +46,7 @@ router.route('/:feature_id')
     }
     const feature = { name, img } = req.body;
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feature }, {new: true})
+})
 
 .put(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     const feat = req.body;
