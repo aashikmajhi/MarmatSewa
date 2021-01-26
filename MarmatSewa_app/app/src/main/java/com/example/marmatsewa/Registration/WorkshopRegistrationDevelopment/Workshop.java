@@ -1,7 +1,5 @@
 package com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment;
 
-import java.math.BigDecimal;
-
 public class Workshop {
 
     private String businessName;
@@ -23,7 +21,7 @@ public class Workshop {
     private String vehicleType;
 
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, double latitude, double longitude, String vehicleType) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, double latitude, double longitude, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
