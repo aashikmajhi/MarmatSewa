@@ -1,10 +1,11 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.Users;
 
 
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.userRegistration;
 
 import org.junit.Rule;
