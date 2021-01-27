@@ -21,7 +21,6 @@
         <activity android:name=".UserInterface.user_dashboard" />
 
 
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,21 +33,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".SplashActivity">
+
         <activity
-<<<<<<< HEAD
-            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-=======
             android:name=".MapLocation.MapsLocation"
             android:label="@string/title_activity_maps_location">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
->>>>>>> db4a4055e4f4c07e5abf7192977ebcc2adddc8e7
         </activity>
         <activity android:name=".GarageDashboard.GarageFourWheelService" />
         <activity android:name=".GarageDashboard.GarageTwoWheelService" />
@@ -62,15 +55,6 @@
         <activity android:name=".AdminInterface.TwoWheelerServices" />
         <activity android:name=".AdminInterface.FourWheelerServices" />
         <activity android:name=".GarageDashboard.GarageServices" />
-        <activity android:name=".MapLocation.MapsLocation">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
         <activity android:name=".Registration.garageRegistration" />
         <activity android:name=".GarageDashboard.Request_Log_Activity" />
         <activity android:name=".GarageDashboard.customerRequest" />
