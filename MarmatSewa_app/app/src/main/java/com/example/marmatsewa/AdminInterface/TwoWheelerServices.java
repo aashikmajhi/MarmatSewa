@@ -2,6 +2,7 @@ package com.example.marmatsewa.AdminInterface;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ public class TwoWheelerServices extends AppCompatActivity {
     private EditText edtTwoWheelServiceName;
     private Button btnAddService;
 
+    private RecyclerView twoWheerRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class TwoWheelerServices extends AppCompatActivity {
 
         backbtn=findViewById(R.id.btnBack);
         btnTForm=findViewById(R.id.btnTForm);
+
+        twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override

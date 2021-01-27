@@ -1,5 +1,10 @@
 package com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment;
 
+import android.text.style.TtsSpan;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class Workshop {
 
     private String businessName;
@@ -16,12 +21,12 @@ public class Workshop {
     private boolean puncture;
     private boolean wheelAndControl;
     private String status;
-    private double latitude;
-    private double longitude;
+    private TtsSpan.DecimalBuilder latitude;
+    private TtsSpan.DecimalBuilder longitude;
     private String vehicleType;
 
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, double latitude, double longitude, String vehicleType) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, TtsSpan.DecimalBuilder latitude, TtsSpan.DecimalBuilder longitude, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -38,6 +43,24 @@ public class Workshop {
         this.status = status;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.vehicleType = vehicleType;
+    }
+
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, String vehicleType) {
+        this.businessName = businessName;
+        this.ownerName = ownerName;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.contactNo = contactNo;
+        this.registrationType = registrationType;
+        this.panNo = panNo;
+        this.registrationDoc = registrationDoc;
+        this.controlsAndBrakes = controlsAndBrakes;
+        this.electricity = electricity;
+        this.puncture = puncture;
+        this.wheelAndControl = wheelAndControl;
+        this.status = status;
         this.vehicleType = vehicleType;
     }
 
@@ -161,19 +184,19 @@ public class Workshop {
         this.panNo = panNo;
     }
 
-    public double getLatitude() {
+    public TtsSpan.DecimalBuilder getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(TtsSpan.DecimalBuilder latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public TtsSpan.DecimalBuilder getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(TtsSpan.DecimalBuilder longitude) {
         this.longitude = longitude;
     }
 
