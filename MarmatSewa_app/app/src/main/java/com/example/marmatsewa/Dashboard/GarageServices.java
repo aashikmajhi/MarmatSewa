@@ -29,9 +29,6 @@ public class GarageServices extends AppCompatActivity {
         btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
         btnFourWheeler=findViewById(R.id.btnFourWheeler);
 
-//        btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
-//        btnFourWheeler=findViewById(R.id.btnFourWheeler);
-
 
         btnTwoWheeler.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +86,6 @@ public class GarageServices extends AppCompatActivity {
 //                startActivity(i);
 //                break;
     }
-
 
     public void ClickLog(View view) {
         garageDashboard.redirectActivity(this, Request_Log_Activity.class);

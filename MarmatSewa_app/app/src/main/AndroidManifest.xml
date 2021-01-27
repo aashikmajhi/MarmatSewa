@@ -34,11 +34,14 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".SplashActivity">
+
+        <activity
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+            android:name=".MapLocation.MapsLocation"
+            android:label="@string/title_activity_maps_location">
         </activity>
         <activity android:name=".GarageDashboard.GarageFourWheelService" />
         <activity android:name=".GarageDashboard.GarageTwoWheelService" />
@@ -52,7 +55,6 @@
         <activity android:name=".AdminInterface.TwoWheelerServices" />
         <activity android:name=".AdminInterface.FourWheelerServices" />
         <activity android:name=".GarageDashboard.GarageServices" />
-        <activity android:name=".MapLocation.MapsLocation"></activity>
         <activity android:name=".Registration.garageRegistration" />
         <activity android:name=".GarageDashboard.Request_Log_Activity" />
         <activity android:name=".GarageDashboard.customerRequest" />
