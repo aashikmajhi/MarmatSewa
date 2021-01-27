@@ -92,8 +92,8 @@ public class GarageProfile extends AppCompatActivity {
         edtRegType.setText(w.getRegistrationType());
         edtLocation.setText(w.getAddress());
         edtContactName.setText(w.getOwnerName());
-        //edtNumber.setText(w.getContactNo());
-        //edtPanNo.setText(w.getPanNo());
+        edtNumber.setText(w.getContactNo());
+        edtPanNo.setText(w.getPanNo());
     }
 
     private void updateGarageProfile() {
