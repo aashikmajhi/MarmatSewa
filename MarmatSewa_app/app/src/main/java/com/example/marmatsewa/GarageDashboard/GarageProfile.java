@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.marmatsewa.R;
 
@@ -16,6 +19,9 @@ public class GarageProfile extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
+    private EditText garageName, newPassword, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo;
+    private Spinner spinner;
+    private ImageView btnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +30,19 @@ public class GarageProfile extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        //Dropdown list for the garage registration form..
+        garageName = findViewById(R.id.garageName);
+        newPassword = findViewById(R.id.newPassword);
+        edtRegType = findViewById(R.id.edtRegType);
+        edtLocation = findViewById(R.id.edtLocation);
+        edtContactName = findViewById(R.id.edtContactName);
+        edtNumber = findViewById(R.id.edtNumber);
+        edtPanNo = findViewById(R.id.edtPanNo);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        btnUpdate = findViewById(R.id.btnUpdate);
+
+
+        //Dropdown list for the garage registration form..
+        spinner = (Spinner) findViewById(R.id.spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.vehicleType, android.R.layout.simple_spinner_item);
@@ -34,6 +50,16 @@ public class GarageProfile extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+        loadGarageProfile();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GarageProfile.this, "update button clicked", Toast.LENGTH_SHORT).show();
+                updateGarageProfile();
+            }
+        });
 
     }
 
@@ -51,6 +77,14 @@ public class GarageProfile extends AppCompatActivity {
             // Another interface callback
 
         }
+
+    }
+
+    private void loadGarageProfile() {
+
+    }
+
+    private void updateGarageProfile() {
 
     }
 
