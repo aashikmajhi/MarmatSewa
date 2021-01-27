@@ -24,8 +24,8 @@ public class GarageServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_services);
 
-
         drawerLayout = findViewById(R.id.drawer_layout);
+
         btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
         btnFourWheeler=findViewById(R.id.btnFourWheeler);
 
@@ -66,7 +66,6 @@ public class GarageServices extends AppCompatActivity {
     public void ClickProfile(View view){
         garageDashboard.redirectActivity(this, GarageProfile.class);
     }
-
 
 
     public void ClickDashboard(View view) {

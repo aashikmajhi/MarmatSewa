@@ -11,7 +11,7 @@ import com.example.marmatsewa.R;
 
 public class Request_Log_Activity extends AppCompatActivity {
 
-    private RecyclerView rcView;
+    private RecyclerView rcViewHistory;
 
     DrawerLayout drawerLayout;
 
@@ -21,7 +21,17 @@ public class Request_Log_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_request_log);
 
         drawerLayout=findViewById(R.id.drawer_layout);
+
+        rcViewHistory = findViewById(R.id.rcViewHistory);
     }
+
+    private void getRequestList() {
+
+
+
+    }
+
+
 
     public void  ClickMenu(View view){
         //Open Drawer
