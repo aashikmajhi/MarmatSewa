@@ -92,6 +92,7 @@ public class garageDashboard extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 URL.token="";
                 URL.role="";
+                URL.user_id="";
                 garageDashboard.redirectActivity(activity, LoginActivity.class);
                 //activity.finishAffinity();
                // System.exit(0);
