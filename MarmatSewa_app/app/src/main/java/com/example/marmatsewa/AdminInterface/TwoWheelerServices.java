@@ -1,16 +1,26 @@
 package com.example.marmatsewa.AdminInterface;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
 import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
 
@@ -27,6 +37,14 @@ public class TwoWheelerServices extends AppCompatActivity {
     private Button btnAddService;
 
     private RecyclerView twoWheerRecyclerView;
+    private ImageBLL imageBLL;
+    private String imagePath;
+
+    private Integer CHOOSE_FROM_GALLERY = 0;
+    private Integer CHOOSE_FROM_CAMERA = 1;
+
+    private AlertDialog.Builder builder;
+
 
 
     @Override
@@ -55,7 +73,7 @@ public class TwoWheelerServices extends AppCompatActivity {
         });
     }
 
-    public void createNewTwoWheelerDialog(){
+    public void createNewTwoWheelerDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View twoWheelerFormView = getLayoutInflater().inflate(R.layout.popup_twowheeler_form, null);
         edtTwoWheelServiceName = (EditText) twoWheelerFormView.findViewById(R.id.edtTwoWheelServiceName);
@@ -71,6 +89,11 @@ public class TwoWheelerServices extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //define upload button here!!
+                checkCameraPermission();
+                popUpSelectFromCameraOrGallery();
+
+
+
 
             }
         });
@@ -84,4 +107,47 @@ public class TwoWheelerServices extends AppCompatActivity {
 
 
     }
+    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        }
+    }
+
+    private void popUpSelectFromCameraOrGallery() {
+        final CharSequence[] options = { "Choose from Gallery","Cancel" };
+        builder = new AlertDialog.Builder(TwoWheelerServices.this);
+
+        builder.setTitle("Add Profile Pic!")
+                .setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("debug", String.valueOf(which));
+
+                        if (which == CHOOSE_FROM_GALLERY) {
+                            Intent intent = new Intent(Intent.ACTION_PICK);
+                            intent.setType("image/*");
+                            startActivityForResult(intent, 0);
+                        }
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if ( data == null ) {
+                Toast.makeText(this, "Please Select Image", Toast.LENGTH_LONG).show();
+            }
+        }
+        Uri uri = data.getData();
+        imagePath = imageBLL.getRealPathFromUri(uri, getApplicationContext());
+        imageBLL.previewImage(imagePath, btnUploadImage);
+
+        imageBLL.checkImageUpload(imagePath);
+    }
+
+
 }

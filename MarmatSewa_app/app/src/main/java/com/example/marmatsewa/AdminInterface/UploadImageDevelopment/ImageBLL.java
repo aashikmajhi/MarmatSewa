@@ -7,16 +7,26 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.loader.content.CursorLoader;
+
+import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-public class ImageBLL {
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
-    public static void previewImage(String imagePath, ImageView imgView) {
+public class ImageBLL {
+    String path = "";
+    public void previewImage(String imagePath, ImageView imgView) {
         File imgFile = new File(imagePath);
         if (imgFile.exists()) {
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
@@ -24,12 +34,12 @@ public class ImageBLL {
         }
     }
 
-    public static void MakeStrict() {
+    public  void MakeStrict() {
         android.os.StrictMode.ThreadPolicy policy = new android.os.StrictMode.ThreadPolicy.Builder().permitAll().build();
         android.os.StrictMode.setThreadPolicy(policy);
     }
 
-    public static String getRealPathFromUri(Uri uri, Context context) {
+    public  String getRealPathFromUri(Uri uri, Context context) {
         String [] projection = {MediaStore.Images.Media.DATA};
         CursorLoader loader = new CursorLoader(context, uri, projection, null, null, null);
         Cursor cursor = loader.loadInBackground();
@@ -40,7 +50,7 @@ public class ImageBLL {
         return result;
     }
 
-    public static Bitmap loadImageFromURL(String imagePath) {
+    public  Bitmap loadImageFromURL(String imagePath) {
         MakeStrict();
         Bitmap bmp;
         try {
@@ -54,5 +64,27 @@ public class ImageBLL {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public Boolean checkImageUpload(String imagePath) {
+        File file = new File(imagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("myFile", file.getName(), requestBody);
+
+        ImageAPI imageAPI = URL.getInstance().create(ImageAPI.class);
+        Call<ImageResponse> responseCall = imageAPI.uploadImage(body);
+
+        MakeStrict();
+
+        try {
+            Response<ImageResponse> responseResponse = responseCall.execute();
+            path = responseResponse.body().getFile();
+            return !path.equals("");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }
