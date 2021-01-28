@@ -65,9 +65,7 @@ router
 router.route('/:feature_id')
 .put(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     const feat = req.body;
-    console.log(feat)
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feat }, {new: true})
-
     .then(updatedFeature => {
         res.status(201).send(updatedFeature);
     }).catch(next);

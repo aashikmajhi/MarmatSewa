@@ -26,7 +26,9 @@ public class Workshop {
     private String vehicleType;
 
 
+
     public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, TtsSpan.DecimalBuilder latitude, TtsSpan.DecimalBuilder longitude, String vehicleType) {
+
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;

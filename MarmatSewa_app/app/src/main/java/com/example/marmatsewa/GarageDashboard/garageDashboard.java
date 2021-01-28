@@ -93,6 +93,7 @@ public class garageDashboard extends AppCompatActivity {
                 URL.token="";
                 URL.role="";
                 URL.user_id="";
+
                 garageDashboard.redirectActivity(activity, LoginActivity.class);
                 //activity.finishAffinity();
                // System.exit(0);

@@ -64,6 +64,15 @@ public class GarageProfile extends AppCompatActivity {
             }
         });
 
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GarageProfile.this, "update button clicked", Toast.LENGTH_SHORT).show();
+                updateGarageProfile();
+            }
+        });
+
     }
 
 //    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
@@ -94,6 +103,14 @@ public class GarageProfile extends AppCompatActivity {
         edtContactName.setText(w.getOwnerName());
         edtNumber.setText(w.getContactNo());
         edtPanNo.setText(w.getPanNo());
+    }
+
+    private void updateGarageProfile() {
+
+    }
+
+    private void loadGarageProfile() {
+
     }
 
     private void updateGarageProfile() {
