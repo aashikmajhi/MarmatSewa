@@ -47,7 +47,7 @@ router.post('/register', (req, res, next) => {
 		.then((user) => {
 			if (user) {
 				let err = new Error('Email already exists!');
-				err.sta5tus = 400;
+				err.status = 400;
 				return next(err);
 			}
 			GarageOwner.findOne({ email })

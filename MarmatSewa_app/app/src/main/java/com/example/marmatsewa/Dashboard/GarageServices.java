@@ -89,10 +89,6 @@ public class GarageServices extends AppCompatActivity {
 //                startActivity(i);
 //                break;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> db4a4055e4f4c07e5abf7192977ebcc2adddc8e7
 
     public void ClickLog(View view) {
         garageDashboard.redirectActivity(this, Request_Log_Activity.class);
