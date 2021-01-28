@@ -75,7 +75,8 @@ router.post('/register', (req, res, next) => {
 									res.status(201).json({ status: 'Registration successful' });
 								})
 								.catch(next);
-						}).catch(next);
+						})
+						.catch(next);
 				})
 				.catch(next);
 		})
@@ -220,7 +221,9 @@ router.post('/login', (req, res, next) => {
 												if (err) return next(err);
 												res.json({
 													status: 'Login successful',
-													token: `Bearer ${token}`
+													token: `Bearer ${token}`,
+													role: payload.role,
+													user_id: payload.id
 												});
 											});
 										})
@@ -234,7 +237,8 @@ router.post('/login', (req, res, next) => {
 							res.json({
 								status: 'Login successful',
 								token: `Bearer ${token}`,
-								role: payload.role
+								role: payload.role,
+								user_id: payload.id
 							});
 						});
 					})

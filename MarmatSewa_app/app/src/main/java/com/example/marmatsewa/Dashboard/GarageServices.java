@@ -29,9 +29,6 @@ public class GarageServices extends AppCompatActivity {
         btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
         btnFourWheeler=findViewById(R.id.btnFourWheeler);
 
-//        btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
-//        btnFourWheeler=findViewById(R.id.btnFourWheeler);
-
 
         btnTwoWheeler.setOnClickListener(new View.OnClickListener() {
             @Override

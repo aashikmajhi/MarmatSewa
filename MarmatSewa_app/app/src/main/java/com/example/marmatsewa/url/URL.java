@@ -20,6 +20,7 @@ public class URL {
 //    private static String ipAddressOfYourHost = " 10.1.1.90";
 //    private static String BASE_URL =  "http://" + ipAddressOfYourHost + ":3001/api/";
 
+
     public static Retrofit getInstance() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

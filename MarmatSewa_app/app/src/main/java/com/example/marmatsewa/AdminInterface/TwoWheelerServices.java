@@ -3,8 +3,12 @@ package com.example.marmatsewa.AdminInterface;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+<<<<<<< HEAD
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+=======
+import androidx.recyclerview.widget.LinearLayoutManager;
+>>>>>>> dc0d3206be6fe3133a31be21964079b896e684eb
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -20,9 +24,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
+=======
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
+import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
+>>>>>>> dc0d3206be6fe3133a31be21964079b896e684eb
 import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class TwoWheelerServices extends AppCompatActivity {
 
@@ -37,6 +50,7 @@ public class TwoWheelerServices extends AppCompatActivity {
     private Button btnAddService;
 
     private RecyclerView twoWheerRecyclerView;
+<<<<<<< HEAD
     private ImageBLL imageBLL;
     private String imagePath;
 
@@ -46,6 +60,9 @@ public class TwoWheelerServices extends AppCompatActivity {
     private AlertDialog.Builder builder;
 
 
+=======
+    private List<Service> serviceList;
+>>>>>>> dc0d3206be6fe3133a31be21964079b896e684eb
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +73,9 @@ public class TwoWheelerServices extends AppCompatActivity {
         btnTForm=findViewById(R.id.btnTForm);
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
+
+        twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        getAllServices();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +125,15 @@ public class TwoWheelerServices extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void getAllServices() {
+        ServiceBLL serviceBLL = new ServiceBLL();
+        URL.getStrictMode();
+
+        serviceList = serviceBLL.getServices();
+        ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
+        twoWheerRecyclerView.setAdapter(serviceAdapter);
     }
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

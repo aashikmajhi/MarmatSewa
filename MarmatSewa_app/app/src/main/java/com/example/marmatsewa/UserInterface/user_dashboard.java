@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ public class user_dashboard extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-    private ImageView btnNotification, userLogout;
+    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout;
     private RecyclerView notificationRcView;
 
     private AlertDialog.Builder builder;
@@ -66,6 +67,25 @@ public class user_dashboard extends AppCompatActivity {
                 });
 
                 builder.show();
+            }
+        });
+
+        btnTwoWheel = findViewById(R.id.btnTwoWheel);
+
+        btnTwoWheel.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(user_dashboard.this,user_two_wheel_services.class));
+            }
+        });
+
+        btnFourWheel = findViewById(R.id.btnFourWheel);
+
+        btnFourWheel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(user_dashboard.this,user_four_wheel_services.class));
             }
         });
 
