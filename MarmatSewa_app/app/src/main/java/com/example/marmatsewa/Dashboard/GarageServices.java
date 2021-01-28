@@ -25,10 +25,7 @@ public class GarageServices extends AppCompatActivity {
         setContentView(R.layout.activity_garage_services);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-<<<<<<< HEAD
-=======
 
->>>>>>> db4a4055e4f4c07e5abf7192977ebcc2adddc8e7
         btnTwoWheeler=findViewById(R.id.btnTwoWheeler);
         btnFourWheeler=findViewById(R.id.btnFourWheeler);
 

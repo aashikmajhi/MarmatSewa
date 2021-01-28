@@ -41,7 +41,6 @@ router
 router.route('/:feature_id')
 
 .put(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
-
     let { errors, isValid } = validators.FeatureInput(req.body);
     if (!isValid) {
         return res.status(400).json({
@@ -53,8 +52,6 @@ router.route('/:feature_id')
     Feature.findByIdAndUpdate(req.params.feature_id, { $set: feature }, {new: true})
     .then(res.status(201).json(feature)).catch(next);
 })
-
-
 .post(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     Feature.create({... req.body, admin: req.user.id})
     .then(feature => {
