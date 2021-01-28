@@ -2,15 +2,26 @@ package com.example.marmatsewa.AdminInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.marmatsewa.AdminInterface.GarageListDevelopment.GarageBLL;
+import com.example.marmatsewa.AdminInterface.adapter.GarageListAdapter;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Workshop;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class admin_garage_list extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
+
+    private RecyclerView rcViewAdminGarageList;
+    private List<Workshop> approvedGarageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +29,9 @@ public class admin_garage_list extends AppCompatActivity {
         setContentView(R.layout.activity_admin_garage_list);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        rcViewAdminGarageList.setLayoutManager(new LinearLayoutManager(this));
+        loadApprovedGarageList();
     }
 
     public void  ClickMenu(View view){
@@ -56,5 +70,17 @@ public class admin_garage_list extends AppCompatActivity {
 
     }
 
+    private void loadApprovedGarageList() {
+        GarageBLL garageBLL = new GarageBLL();
+        URL.getStrictMode();
+
+        approvedGarageList = garageBLL.getAllGarageList();
+        for(Workshop apg : approvedGarageList) {
+            if (apg.getStatus().equals("APPROVED")) {
+                GarageListAdapter garageListAdapter = new GarageListAdapter(this, approvedGarageList);
+                rcViewAdminGarageList.setAdapter(garageListAdapter);
+            }
+        }
+    }
 
 }
