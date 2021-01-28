@@ -2,6 +2,7 @@ package com.example.marmatsewa.AdminInterface;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -11,8 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
+import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class TwoWheelerServices extends AppCompatActivity {
 
@@ -27,7 +34,7 @@ public class TwoWheelerServices extends AppCompatActivity {
     private Button btnAddService;
 
     private RecyclerView twoWheerRecyclerView;
-
+    private List<Service> serviceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,9 @@ public class TwoWheelerServices extends AppCompatActivity {
         btnTForm=findViewById(R.id.btnTForm);
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
+
+        twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        getAllServices();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +92,14 @@ public class TwoWheelerServices extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void getAllServices() {
+        ServiceBLL serviceBLL = new ServiceBLL();
+        URL.getStrictMode();
+
+        serviceList = serviceBLL.getServices();
+        ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
+        twoWheerRecyclerView.setAdapter(serviceAdapter);
     }
 }
