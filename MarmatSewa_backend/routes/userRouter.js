@@ -8,13 +8,6 @@ const GarageOwner = require('../models/GarageOwner');
 const router = express.Router();
 
 router.post('/register', (req, res, next) => {
-	let { errors, isValid } = validators.RegisterInput(req.body);
-	if (!isValid) {
-		return res.status(400).json({
-			status: 'error',
-			message: errors
-		});
-	}
 
 	// let { errors, isValid } = validators.RegisterInput(req.body);
 	// if (!isValid) {

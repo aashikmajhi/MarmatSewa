@@ -75,10 +75,10 @@ const garageOwnerSchema = new mongoose.Schema(
 			default: 'PENDING'
 		},
 		latitude: {
-			type: mongoose.Types.Decimal128
+			type: String
 		},
 		longitude: {
-			type: mongoose.Types.Decimal128
+			type: String
 		},
 		vehicleType: {
 			type: String,
