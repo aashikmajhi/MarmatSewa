@@ -17,6 +17,7 @@ import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginDevelopment.LoginBLL;
+import com.example.marmatsewa.UserInterface.user_dashboard;
 import com.example.marmatsewa.url.URL;
 
 public class LoginActivity extends AppCompatActivity {
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 //            startActivity(new Intent(LoginActivity.this, GarageServices.class));
 
             if(URL.role.equals("USER")) {
-               startActivity(new Intent(LoginActivity.this, GarageServices.class));
+               startActivity(new Intent(LoginActivity.this, user_dashboard.class));
             } else if (URL.role.equals("ADMIN")) {
                 startActivity(new Intent(LoginActivity.this, admin_dash.class));
                 Toast.makeText(this, "Admin Login success !!", Toast.LENGTH_SHORT).show();
