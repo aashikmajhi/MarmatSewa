@@ -87,8 +87,6 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         garageRegType = sharedPreferences.getString("garageRegType", null);
         garagePan = sharedPreferences.getString("garagePan", null);
 
-
-
     }
 
     private void registerWorkshop() {
