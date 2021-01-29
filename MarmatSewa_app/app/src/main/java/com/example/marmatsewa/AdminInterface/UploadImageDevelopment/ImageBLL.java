@@ -7,11 +7,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.loader.content.CursorLoader;
 
-import com.example.marmatsewa.R;
 import com.example.marmatsewa.url.URL;
 
 import java.io.File;
@@ -78,7 +76,7 @@ public class ImageBLL {
 
         try {
             Response<ImageResponse> responseResponse = responseCall.execute();
-            path = responseResponse.body().getFile();
+            path = responseResponse.body().getFilename();
             return !path.equals("");
 
         } catch (Exception e) {
@@ -86,5 +84,9 @@ public class ImageBLL {
             return false;
         }
 
+    }
+
+    public String returnFilename() {
+        return path;
     }
 }

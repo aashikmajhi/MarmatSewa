@@ -42,7 +42,7 @@ app.use('/api/features', featureRouter);
 app.use('/api/requests', requestRouter);
 app.use('/api/profiles', profileRouter);
 
-app.use('/api/upload', uploadRouter);
+app.use('/upload', uploadRouter);
 
 app.use('/api/admin', adminRouter);
 

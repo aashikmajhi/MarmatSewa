@@ -1,5 +1,6 @@
 package com.example.marmatsewa.AdminInterface.SeviceDevelopment;
 
+import com.example.marmatsewa.Registration.LoginDevelopment.LoginResponse;
 import com.example.marmatsewa.url.URL;
 
 import java.io.IOException;
@@ -32,5 +33,19 @@ public class ServiceBLL {
             e.printStackTrace();
         }
         return serviceList;
+    }
+
+    public boolean checkPostService(String feature, String image ) {
+        ServiceAPI serviceAPI = URL.getInstance().create(ServiceAPI.class);
+        Service service = new Service(feature, image);
+        Call<Void> call = serviceAPI.postService(URL.token, service);
+
+        try {
+            Response<Void> response = call.execute();
+            return response.isSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -109,13 +109,7 @@ public class GarageProfile extends AppCompatActivity {
 
     }
 
-    private void loadGarageProfile() {
 
-    }
-
-    private void updateGarageProfile() {
-
-    }
 
 
     public void ClickMenu(View view) {

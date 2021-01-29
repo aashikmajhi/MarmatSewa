@@ -1,17 +1,17 @@
 package com.example.marmatsewa.AdminInterface.UploadImageDevelopment;
 
 public class ImageResponse {
-    String file;
+    String filename;
 
-    public ImageResponse(String file) {
-        this.file = file;
+    public ImageResponse(String filename) {
+        this.filename = filename;
     }
 
-    public String getFile() {
-        return file;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
