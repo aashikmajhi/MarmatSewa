@@ -23,14 +23,9 @@ import com.example.marmatsewa.url.URL;
 
 public class garageRegistrationBusinessInfo extends AppCompatActivity {
 
-    private CheckBox checkBoxControlBrake, checkBoxElectrical, checkBoxFuelAir, checkBoxWheelDrives;
     private ImageView btnRegisterWorkshop, backBtn;
     private TextView register;
 
-    private boolean isCheckBoxControlBrake=false,
-            isCheckBoxElectrical=false,
-            isCheckBoxFuelAir=false,
-            isCheckBoxWheelDrives=false;
 
     private Spinner spinner;
     String[] categories = {"TWO WHEEL", "FOUR WHEEL", "BOTH"};
@@ -46,11 +41,6 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_registration_business_info);
 
-        //checkbox references
-        checkBoxControlBrake = findViewById(R.id.checkBoxControlBrake);
-        checkBoxElectrical = findViewById(R.id.checkBoxElectrical);
-        checkBoxFuelAir = findViewById(R.id.checkBoxFuelAir);
-        checkBoxWheelDrives = findViewById(R.id.checkBoxWheelDrives);
 
         //button reference
         backBtn = findViewById(R.id.backBtn);
@@ -77,7 +67,7 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                category = spinner.getSelectedItem().toString();
+                    category = spinner.getSelectedItem().toString();
             }
 
             @Override
@@ -97,46 +87,6 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         garageRegType = sharedPreferences.getString("garageRegType", null);
         garagePan = sharedPreferences.getString("garagePan", null);
 
-
-        btnRegisterWorkshop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkBoxControlBrake.isChecked()){
-                    isCheckBoxControlBrake = true;
-                }
-                if(checkBoxElectrical.isChecked()) {
-                    isCheckBoxElectrical = true;
-                }
-                if(checkBoxFuelAir.isChecked()) {
-                    isCheckBoxFuelAir = true;
-                }
-                if(checkBoxWheelDrives.isChecked()) {
-                    isCheckBoxWheelDrives = true;
-                }
-
-                registerWorkshop();
-            }
-        });
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkBoxControlBrake.isChecked()){
-                    isCheckBoxControlBrake = true;
-                }
-                if(checkBoxElectrical.isChecked()) {
-                    isCheckBoxElectrical = true;
-                }
-                if(checkBoxFuelAir.isChecked()) {
-                    isCheckBoxFuelAir = true;
-                }
-                if(checkBoxWheelDrives.isChecked()) {
-                    isCheckBoxWheelDrives = true;
-                }
-
-                registerWorkshop();
-            }
-        });
     }
 
     private void registerWorkshop() {
@@ -151,13 +101,9 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
                 garageRegType,
                 garagePan,
                 "registrationdoc",
-                isCheckBoxControlBrake,
-                isCheckBoxElectrical,
-                isCheckBoxFuelAir,
-                isCheckBoxWheelDrives,
                 "APPROVED",
-//                27.6946843,
-//                85.3310636,
+                27.6946843,
+                85.3310636,
                 category
         );
 
@@ -172,5 +118,6 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
             Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
+
+
