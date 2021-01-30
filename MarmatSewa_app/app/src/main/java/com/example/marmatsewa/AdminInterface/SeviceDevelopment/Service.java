@@ -2,11 +2,11 @@ package com.example.marmatsewa.AdminInterface.SeviceDevelopment;
 
 public class Service {
     private String feature;
-    private String admin_id;
+    private String image;
 
-    public Service(String feature, String admin_id) {
+    public Service(String feature, String image) {
         this.feature = feature;
-        this.admin_id = admin_id;
+        this.image = image;
     }
 
     public String getFeature() {
@@ -17,11 +17,11 @@ public class Service {
         this.feature = feature;
     }
 
-    public String getAdmin_id() {
-        return admin_id;
+    public String getImage() {
+        return image;
     }
 
-    public void setAdmin_id(String admin_id) {
-        this.admin_id = admin_id;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

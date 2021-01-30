@@ -62,7 +62,7 @@ const garageOwnerSchema = new mongoose.Schema(
 		panNo: {
 			type: String,
 			maxlength: 255,
-			required: true
+			required: false
 		},
 		registrationDoc: {
 			type: String,
@@ -75,10 +75,10 @@ const garageOwnerSchema = new mongoose.Schema(
 			default: 'PENDING'
 		},
 		latitude: {
-			type: mongoose.Types.Decimal128
+			type: String
 		},
 		longitude: {
-			type: mongoose.Types.Decimal128
+			type: String
 		},
 		vehicleType: {
 			type: String,

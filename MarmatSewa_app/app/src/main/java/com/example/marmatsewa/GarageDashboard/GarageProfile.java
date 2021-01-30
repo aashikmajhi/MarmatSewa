@@ -64,6 +64,15 @@ public class GarageProfile extends AppCompatActivity {
             }
         });
 
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GarageProfile.this, "update button clicked", Toast.LENGTH_SHORT).show();
+                updateGarageProfile();
+            }
+        });
+
     }
 
 //    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
@@ -99,6 +108,8 @@ public class GarageProfile extends AppCompatActivity {
     private void updateGarageProfile() {
 
     }
+
+
 
 
     public void ClickMenu(View view) {

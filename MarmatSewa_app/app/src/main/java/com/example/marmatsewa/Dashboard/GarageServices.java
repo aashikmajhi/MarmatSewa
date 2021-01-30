@@ -73,8 +73,18 @@ public class GarageServices extends AppCompatActivity {
         garageDashboard.redirectActivity(this, customerRequest.class);
     }
 
-    public void ClickServices(View view) {
+    public void ClickServices(View v) {
         recreate();
+//        switch (v.getId()){
+//            case R.id.btnTwoWheeler:
+//                i=new Intent(this,TwoWheelerServices.class);
+//                startActivity(i);
+//                break;
+//
+//            case R.id.btnFourWheeler:
+//                i=new Intent(this,FourWheelerServices.class);
+//                startActivity(i);
+//                break;
     }
 
     public void ClickLog(View view) {
