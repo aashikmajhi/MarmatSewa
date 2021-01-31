@@ -16,17 +16,15 @@ public class Workshop {
     private String registrationType;
     private String panNo;
     private String registrationDoc;
-    private boolean controlsAndBrakes;
-    private boolean electricity;
-    private boolean puncture;
-    private boolean wheelAndControl;
     private String status;
-    private TtsSpan.DecimalBuilder latitude;
-    private TtsSpan.DecimalBuilder longitude;
+    private String latitude;
+    private String longitude;
     private String vehicleType;
 
+    public Workshop() {
+    }
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, TtsSpan.DecimalBuilder latitude, TtsSpan.DecimalBuilder longitude, String vehicleType) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, String latitude, String longitude, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -36,31 +34,9 @@ public class Workshop {
         this.registrationType = registrationType;
         this.panNo = panNo;
         this.registrationDoc = registrationDoc;
-        this.controlsAndBrakes = controlsAndBrakes;
-        this.electricity = electricity;
-        this.puncture = puncture;
-        this.wheelAndControl = wheelAndControl;
         this.status = status;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.vehicleType = vehicleType;
-    }
-
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, boolean controlsAndBrakes, boolean electricity, boolean puncture, boolean wheelAndControl, String status, String vehicleType) {
-        this.businessName = businessName;
-        this.ownerName = ownerName;
-        this.email = email;
-        this.password = password;
-        this.address = address;
-        this.contactNo = contactNo;
-        this.registrationType = registrationType;
-        this.panNo = panNo;
-        this.registrationDoc = registrationDoc;
-        this.controlsAndBrakes = controlsAndBrakes;
-        this.electricity = electricity;
-        this.puncture = puncture;
-        this.wheelAndControl = wheelAndControl;
-        this.status = status;
         this.vehicleType = vehicleType;
     }
 
@@ -136,38 +112,6 @@ public class Workshop {
         this.registrationDoc = registrationDoc;
     }
 
-    public boolean isControlsAndBrakes() {
-        return controlsAndBrakes;
-    }
-
-    public void setControlsAndBrakes(boolean controlsAndBrakes) {
-        this.controlsAndBrakes = controlsAndBrakes;
-    }
-
-    public boolean isElectricity() {
-        return electricity;
-    }
-
-    public void setElectricity(boolean electricity) {
-        this.electricity = electricity;
-    }
-
-    public boolean isPuncture() {
-        return puncture;
-    }
-
-    public void setPuncture(boolean puncture) {
-        this.puncture = puncture;
-    }
-
-    public boolean isWheelAndControl() {
-        return wheelAndControl;
-    }
-
-    public void setWheelAndControl(boolean wheelAndControl) {
-        this.wheelAndControl = wheelAndControl;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -184,19 +128,19 @@ public class Workshop {
         this.panNo = panNo;
     }
 
-    public TtsSpan.DecimalBuilder getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(TtsSpan.DecimalBuilder latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public TtsSpan.DecimalBuilder getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(TtsSpan.DecimalBuilder longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

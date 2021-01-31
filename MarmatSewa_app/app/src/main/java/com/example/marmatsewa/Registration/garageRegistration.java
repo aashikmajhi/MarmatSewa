@@ -74,16 +74,16 @@ public class garageRegistration extends AppCompatActivity {
 
     public boolean validate() {
         boolean flag = true;
-        if(TextUtils.isEmpty(edtGarageEmail.getText().toString())) {
-            edtGarageEmail.requestFocus();
-            edtGarageEmail.setError("Please enter the garage email");
-            flag = false;
-        }
-        else if(TextUtils.isEmpty(edtGaragePassword.getText().toString())) {
-            edtGaragePassword.requestFocus();
-            edtGaragePassword.setError("Please enter the password");
-            flag = false;
-        }
+//        if(TextUtils.isEmpty(edtGarageEmail.getText().toString())) {
+//            edtGarageEmail.requestFocus();
+//            edtGarageEmail.setError("Please enter the garage email");
+//            flag = false;
+//        }
+//        else if(TextUtils.isEmpty(edtGaragePassword.getText().toString())) {
+//            edtGaragePassword.requestFocus();
+//            edtGaragePassword.setError("Please enter the password");
+//            flag = false;
+//        }
         return flag;
     }
 }

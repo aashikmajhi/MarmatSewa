@@ -72,35 +72,35 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
     private boolean validate() {
         boolean flag = true;
 
-        if(TextUtils.isEmpty(garageName.getText().toString())) {
-            garageName.requestFocus();
-            garageName.setError("Please enter garage name");
-            flag = false;
-        }
-        else if (TextUtils.isEmpty(edtRegType.getText().toString())) {
-            edtRegType.requestFocus();
-            edtRegType.setError("Please enter registration type private or public");
-            flag = false;
-        }
-        else if (TextUtils.isEmpty(edtLocation.getText().toString())) {
-            edtLocation.requestFocus();
-            edtLocation.setError("Please enter the address of garage");
-            flag = false;
-        }
-        else if (TextUtils.isEmpty(edtContactName.getText().toString())) {
-            edtContactName.requestFocus();
-            edtContactName.setError("Please enter the contact perseon name");
-            flag = false;
-        }
-        else if (TextUtils.isEmpty(edtNumber.getText().toString())) {
-            edtNumber.requestFocus();
-            edtNumber.setError("Please enter the contact number");
-            flag = false;
-        }
-        else if (TextUtils.isEmpty(edtPanNo.getText().toString())) {
-            edtPanNo.requestFocus();
-            edtPanNo.setError("Please enter the valid PAN number");
-        }
+//        if(TextUtils.isEmpty(garageName.getText().toString())) {
+//            garageName.requestFocus();
+//            garageName.setError("Please enter garage name");
+//            flag = false;
+//        }
+//        else if (TextUtils.isEmpty(edtRegType.getText().toString())) {
+//            edtRegType.requestFocus();
+//            edtRegType.setError("Please enter registration type private or public");
+//            flag = false;
+//        }
+//        else if (TextUtils.isEmpty(edtLocation.getText().toString())) {
+//            edtLocation.requestFocus();
+//            edtLocation.setError("Please enter the address of garage");
+//            flag = false;
+//        }
+//        else if (TextUtils.isEmpty(edtContactName.getText().toString())) {
+//            edtContactName.requestFocus();
+//            edtContactName.setError("Please enter the contact perseon name");
+//            flag = false;
+//        }
+//        else if (TextUtils.isEmpty(edtNumber.getText().toString())) {
+//            edtNumber.requestFocus();
+//            edtNumber.setError("Please enter the contact number");
+//            flag = false;
+//        }
+//        else if (TextUtils.isEmpty(edtPanNo.getText().toString())) {
+//            edtPanNo.requestFocus();
+//            edtPanNo.setError("Please enter the valid PAN number");
+//        }
 
         return flag;
     }
