@@ -8,14 +8,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.marmatsewa.ProfileDevelopment.ProfileBLL;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Workshop;
+import com.example.marmatsewa.url.URL;
 
 public class GarageProfile extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
+    private EditText garageName, newPassword, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo;
+    private Spinner spinner;
+    private ImageView btnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,35 +33,89 @@ public class GarageProfile extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        //Dropdown list for the garage registration form..
+        garageName = findViewById(R.id.garageName);
+        newPassword = findViewById(R.id.newPassword);
+        edtRegType = findViewById(R.id.edtRegType);
+        edtLocation = findViewById(R.id.edtLocation);
+        edtContactName = findViewById(R.id.edtContactName);
+        edtNumber = findViewById(R.id.edtNumber);
+        edtPanNo = findViewById(R.id.edtPanNo);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.vehicleType, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        btnUpdate = findViewById(R.id.btnUpdate);
+
+
+//        //Dropdown list for the garage registration form..
+//        spinner = (Spinner) findViewById(R.id.spinner);
+//// Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+//                R.array.vehicleType, android.R.layout.simple_spinner_item);
+//// Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//// Apply the adapter to the spinner
+//        spinner.setAdapter(adapter);
+
+        loadGarageProfile();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GarageProfile.this, "update button clicked", Toast.LENGTH_SHORT).show();
+                updateGarageProfile();
+            }
+        });
+
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GarageProfile.this, "update button clicked", Toast.LENGTH_SHORT).show();
+                updateGarageProfile();
+            }
+        });
 
     }
 
-    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
+//    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
+//
+//        public void onItemSelected(AdapterView<?> parent, View view,
+//                                   int pos, long id) {
+//            // An item was selected. You can retrieve the selected item using
+//            // parent.getItemAtPosition(pos)
+//            Spinner spinner = (Spinner) findViewById(R.id.spinner);
+//            spinner.setOnItemSelectedListener(this);
+//        }
+//
+//        public void onNothingSelected(AdapterView<?> parent) {
+//            // Another interface callback
+//
+//        }
+//
+//    }
 
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            Spinner spinner = (Spinner) findViewById(R.id.spinner);
-            spinner.setOnItemSelectedListener(this);
-        }
+    private void loadGarageProfile() {
+        ProfileBLL profileBLL = new ProfileBLL(URL.user_id);
+        URL.getStrictMode();
+        final Workshop w = profileBLL.loadGarageProfile();
 
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
+        garageName.setText(w.getBusinessName());
+        edtRegType.setText(w.getRegistrationType());
+        edtLocation.setText(w.getAddress());
+        edtContactName.setText(w.getOwnerName());
+        edtNumber.setText(w.getContactNo());
+        edtPanNo.setText(w.getPanNo());
+    }
 
-        }
+    private void updateGarageProfile() {
 
     }
+
+//    private void loadGarageProfile() {
+//
+//    }
+//
+//    private void updateGarageProfile() {
+//
+//    }
 
 
     public void ClickMenu(View view) {

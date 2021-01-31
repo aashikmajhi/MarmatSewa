@@ -1,8 +1,9 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.Garage;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.garageRegistration;
 
 import org.junit.Rule;
@@ -24,7 +25,7 @@ public class GarageRegistrationTest {
                 .perform(typeText("aashik.majhi1234@gmail.com"))
                 .perform(closeSoftKeyboard());
 
-        onView(withId(R.id.garagePassword))
+        onView(withId(R.id.edtGaragePassword))
                 .perform(typeText("Ashik@123"))
                 .perform(closeSoftKeyboard());
 

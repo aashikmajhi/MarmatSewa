@@ -4,7 +4,7 @@
   "description": "a product by Code Fellas",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -17,27 +17,15 @@
     "url": "https://github.com/aashikmajhi/MarmatSewa/issues"
   },
   "homepage": "https://github.com/aashikmajhi/MarmatSewa#readme",
-  "config": {
-    "mongodbMemoryServer": {
-      "version": "latest"
-    }
-  },
   "dependencies": {
-    "@shelf/jest-mongodb": "^1.2.3",
-    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "cucumber": "^7.0.0-rc.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jest-environment-node": "^26.6.2",
     "jsonwebtoken": "^8.5.1",
-    "mongodb-memory-server": "^6.5.1",
     "mongoose": "^5.11.5",
     "multer": "^1.4.2",
     "nodemon": "^2.0.6",
-    "supertest": "^6.0.1",
     "validator": "^13.5.1"
-  },
-  "devDependencies": {}
+  }
 }

@@ -29,7 +29,7 @@ const upload = multer({
 
 router.route('/')
 .post(upload.single('myFile'), (req, res, next) => {
-	res.json({ file: req.file });
+	res.json(req.file);
 });
 
 module.exports = router;

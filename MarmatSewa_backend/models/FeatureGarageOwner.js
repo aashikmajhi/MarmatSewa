@@ -8,7 +8,7 @@ const featureGarageOwner = new mongoose.Schema({
     },
     garageOwner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'GarageOwner',
         required: true
     }
 }, { timestamps: true });

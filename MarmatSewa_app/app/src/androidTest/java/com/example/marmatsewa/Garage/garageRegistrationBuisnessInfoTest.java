@@ -1,8 +1,9 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.Garage;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.garageRegistrationBusinessInfo;
 
 import org.junit.Rule;
@@ -22,22 +23,6 @@ public class garageRegistrationBuisnessInfoTest {
 
     @Test
     public void GarageRegistrationTest() {
-        onView(ViewMatchers.withId(R.id.checkBoxControlBrake))
-                .perform(typeText(true))
-                .perform(closeSoftKeyboard());
-
-        onView(withId(R.id.checkBoxElectrical))
-                .perform(typeText(true))
-                .perform(closeSoftKeyboard());
-
-        onView(withId(R.id.checkBoxFuelAir))
-                .perform(typeText(true))
-                .perform(closeSoftKeyboard());
-
-        onView(withId(R.id.checkBoxWheelDrives))
-                .perform(typeText(true))
-                .perform(closeSoftKeyboard());
-
         onView(withId(R.id.btnRegisterWorkshop))
                 .perform(click());
 

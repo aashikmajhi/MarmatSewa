@@ -77,7 +77,7 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    category = spinner.getSelectedItem().toString();
+                category = spinner.getSelectedItem().toString();
             }
 
             @Override
@@ -156,8 +156,8 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
                 isCheckBoxFuelAir,
                 isCheckBoxWheelDrives,
                 "APPROVED",
-                27.6946843,
-                85.3310636,
+//                27.6946843,
+//                85.3310636,
                 category
         );
 
@@ -174,5 +174,3 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
     }
 
 }
-
-
