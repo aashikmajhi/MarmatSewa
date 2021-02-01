@@ -102,8 +102,8 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
                 garagePan,
                 "registrationdoc",
                 "APPROVED",
-                27.6946843,
-                85.3310636,
+                "27.6946843",
+                "85.3310636",
                 category
         );
 
