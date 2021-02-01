@@ -7,13 +7,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
+import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class customerRequest extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-
     private RecyclerView rcView;
+    private List<GarageRequestResponse> requestList;
+
 
 
     @Override
@@ -22,7 +30,15 @@ public class customerRequest extends AppCompatActivity {
         setContentView(R.layout.activity_customer_request);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        rcView = findViewById(R.id.rcView);
+    }
 
+    private void getAllRequests() {
+        GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
+        URL.getStrictMode();
+        requestList = garageRequestAPI.getGarageRequests();
+        CustomerRequestAdapter serviceAdapter = new CustomerRequestAdapter(this, requestList);
+        rcView.setAdapter(serviceAdapter);
     }
 
     public void  ClickMenu(View view){

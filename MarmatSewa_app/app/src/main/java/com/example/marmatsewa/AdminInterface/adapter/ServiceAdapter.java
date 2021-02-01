@@ -23,10 +23,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import retrofit2.Response;
+
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
 
     private Context context;
     private List<Service> serviceList;
+
 
     public ServiceAdapter(Context context, List<Service> serviceList) {
         this.context = context;

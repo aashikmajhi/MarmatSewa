@@ -89,35 +89,35 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
 
     }
 
-    private void registerWorkshop() {
-
-        Workshop workshop = new Workshop(
-                garageName,
-                garageContactName,
-                garageEmail,
-                garagePassword,
-                garageLocation,
-                garageNumber,
-                garageRegType,
-                garagePan,
-                "registrationdoc",
-                "APPROVED",
-                27.6946843,
-                85.3310636,
-                category
-        );
-
-        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
-        URL.getStrictMode();
-
-        if (workshopBLL.isRegisterWorkshop()) {
-            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(garageRegistrationBusinessInfo.this, LoginActivity.class));
-        }
-        else {
-            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void registerWorkshop() {
+//
+//        Workshop workshop = new Workshop(
+//                garageName,
+//                garageContactName,
+//                garageEmail,
+//                garagePassword,
+//                garageLocation,
+//                garageNumber,
+//                garageRegType,
+//                garagePan,
+//                "registrationdoc",
+//                "APPROVED",
+//                27.6946843,
+//                85.3310636,
+//                category
+//        );
+//
+//        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
+//        URL.getStrictMode();
+//
+//        if (workshopBLL.isRegisterWorkshop()) {
+//            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(garageRegistrationBusinessInfo.this, LoginActivity.class));
+//        }
+//        else {
+//            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 }
 
 
