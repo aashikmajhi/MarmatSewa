@@ -1,9 +1,12 @@
 package com.example.marmatsewa.GarageDashboard.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
     private List<GarageRequestResponse> requestList;
 
     public CustomerRequestAdapter(Context context, List<GarageRequestResponse> requestList) {
+        this.context = context;
         this.requestList = requestList;
     }
 
@@ -31,6 +35,7 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
 
     @Override
     public void onBindViewHolder(@NonNull CustomerRequestHolder holder, int position) {
+        Log.i("CustomerRequestAdapter", requestList.get(position).getUser().getFullname());
         holder.customerName.setText(requestList.get(position).getUser().getFullname());
         holder.customerNumber.setText(requestList.get(position).getUser().getPhoneNo());
         holder.customerLocation.setText(requestList.get(position).getUser().getAddress());
@@ -43,16 +48,16 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
             }
         });
 
-        return;
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return requestList.size();
     }
 
     public class CustomerRequestHolder extends RecyclerView.ViewHolder {
-        TextView customerName, customerNumber, customerLocation, feature, btnAccept;
+        TextView customerName, customerNumber, customerLocation, feature;
+        ImageView btnAccept;
         public CustomerRequestHolder(@NonNull View itemView) {
             super(itemView);
             customerName = itemView.findViewById(R.id.customerName);

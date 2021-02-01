@@ -2,10 +2,13 @@ package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
 import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
@@ -31,14 +34,22 @@ public class customerRequest extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         rcView = findViewById(R.id.rcView);
+        rcView.setLayoutManager(new LinearLayoutManager(this));
+        //api call is fired ...
+        getAllRequests();
     }
 
     private void getAllRequests() {
         GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
         URL.getStrictMode();
         requestList = garageRequestAPI.getGarageRequests();
-        CustomerRequestAdapter serviceAdapter = new CustomerRequestAdapter(this, requestList);
-        rcView.setAdapter(serviceAdapter);
+        //if no data is fetched from api call returns void ...
+        if (requestList.size() <= 0) {
+            Toast.makeText(this, "no requests have been received ...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        CustomerRequestAdapter requestAdapter = new CustomerRequestAdapter(this, requestList);
+        rcView.setAdapter(requestAdapter);
     }
 
     public void  ClickMenu(View view){
