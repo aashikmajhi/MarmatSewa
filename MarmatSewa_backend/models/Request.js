@@ -20,12 +20,9 @@ const Request = new mongoose.Schema(
 		status: {
 			type: String,
 			enum: [ 'PENDING', 'APPROVED' ],
-			default: 'REQUESTED'
+			default: 'PENDING'
 		}
-		// requestType: {
-		//     type: String,
-		//     //what will be the options ...
-		// }
+
 	},
 	{ timestamps: true }
 );
