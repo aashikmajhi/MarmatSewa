@@ -24,7 +24,7 @@ public class Workshop {
     public Workshop() {
     }
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, String latitude, String longitude, String vehicleType) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -33,10 +33,6 @@ public class Workshop {
         this.contactNo = contactNo;
         this.registrationType = registrationType;
         this.panNo = panNo;
-        this.registrationDoc = registrationDoc;
-        this.status = status;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.vehicleType = vehicleType;
     }
 

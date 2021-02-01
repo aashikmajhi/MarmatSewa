@@ -30,13 +30,14 @@
                 android:gravity="center"/>
         </LinearLayout>
 
-        <TextView
+        <Button
+            android:id="@+id/btnAddgarageService"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Graph View"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:text="Add Services"
             android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
