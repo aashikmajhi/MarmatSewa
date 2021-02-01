@@ -21,7 +21,7 @@ public class UserLogOutTest {
 
     @Before
     public void setUp(){
-        LoginBLL loginBLL = new LoginBLL("aashikmajhi@gmail.com", "Password123");
+        LoginBLL loginBLL = new LoginBLL("user@gmail.com", "Password");
         boolean res = loginBLL.checkLogin();
         assertEquals(true, res);
     }

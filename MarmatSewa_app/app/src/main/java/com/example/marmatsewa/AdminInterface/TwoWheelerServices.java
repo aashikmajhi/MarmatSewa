@@ -22,8 +22,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
+
+import com.example.marmatsewa.AdminInterface.GarageListDevelopment.GarageBLL;
+
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
+import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
 import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
@@ -46,6 +50,8 @@ public class TwoWheelerServices extends AppCompatActivity {
     private RecyclerView twoWheerRecyclerView;
     private ImageBLL imageBLL;
     private String imagePath;
+    private String featureName;
+    private String image;
 
     private Integer CHOOSE_FROM_GALLERY = 0;
     private Integer CHOOSE_FROM_CAMERA = 1;
@@ -53,6 +59,10 @@ public class TwoWheelerServices extends AppCompatActivity {
     private AlertDialog.Builder builder;
 
     private List<Service> serviceList;
+
+
+    private ServiceBLL serviceBLL;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +115,9 @@ public class TwoWheelerServices extends AppCompatActivity {
 
 
 
+
+
+
             }
         });
 
@@ -112,9 +125,12 @@ public class TwoWheelerServices extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //define add button here!!
+                featureName = edtTwoWheelServiceName.getText().toString();
+                serviceBLL = new ServiceBLL();
+                serviceBLL.checkPostService(featureName, image);
+                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
             }
         });
-
     }
 
     private void getAllServices() {
@@ -155,6 +171,7 @@ public class TwoWheelerServices extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        imageBLL = new ImageBLL();
         if (resultCode == RESULT_OK) {
             if ( data == null ) {
                 Toast.makeText(this, "Please Select Image", Toast.LENGTH_LONG).show();
@@ -164,8 +181,10 @@ public class TwoWheelerServices extends AppCompatActivity {
         imagePath = imageBLL.getRealPathFromUri(uri, getApplicationContext());
         imageBLL.previewImage(imagePath, btnUploadImage);
 
-        imageBLL.checkImageUpload(imagePath);
-    }
 
+        if (imageBLL.checkImageUpload(imagePath))
+            image = imageBLL.returnFilename();
+        Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+    }
 
 }

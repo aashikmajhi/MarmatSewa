@@ -1,8 +1,5 @@
 package com.example.marmatsewa.User;
 
-import android.widget.CheckBox;
-
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.marmatsewa.R;
@@ -15,27 +12,25 @@ import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
-public class UserServiceTest {
+public class NotificationTest {
     @Rule
-    public ActivityTestRule<user_dashboard> userService=new ActivityTestRule<>(user_dashboard.class);
+    public ActivityTestRule<user_dashboard> userDashboardActivityTestRule=new ActivityTestRule<>(user_dashboard.class);
+
     @Before
     public void setUp(){
-        LoginBLL loginBLL = new LoginBLL("aashikmajhi@gmail.com", "Password123");
+        LoginBLL loginBLL = new LoginBLL("user@gmail.com", "Password");
         boolean res = loginBLL.checkLogin();
         assertEquals(true, res);
     }
     @Test
-    public void UserServiceTest() {
+    public void UserNotificationTest() {
 
-        onView(withId(R.id.btnTwoWheeler))
+        onView(withId(R.id.btnNotification))
                 .perform(click());
 
-        onView(withId(R.id.btnFourWheeler))
-                .perform(click());
     }
 
 }

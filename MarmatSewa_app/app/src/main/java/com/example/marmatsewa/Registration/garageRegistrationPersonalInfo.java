@@ -63,7 +63,7 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
                     editor.putString("garagePan", edtPanNo.getText().toString());
                     editor.commit();
 
-                    startActivity(new Intent(garageRegistrationPersonalInfo.this, garageRegistrationBusinessInfo.class));
+//                    startActivity(new Intent(garageRegistrationPersonalInfo.this, garageRegistrationBusinessInfo.class));
                 }
             }
         });

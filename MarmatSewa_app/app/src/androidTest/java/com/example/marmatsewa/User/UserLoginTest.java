@@ -21,11 +21,11 @@ public ActivityTestRule<LoginActivity>testRule=new ActivityTestRule<>(LoginActiv
     @Test
     public void LoginTest() {
         onView(ViewMatchers.withId(R.id.edtEmail))
-                .perform(typeText("aashikmajhi@gmail.com"))
+                .perform(typeText("user@gmail.com"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.edtPword))
-                .perform(typeText("Password123"))
+                .perform(typeText("Password"))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.btnLogin))

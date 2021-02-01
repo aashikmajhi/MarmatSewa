@@ -20,10 +20,10 @@ router.route('/')
     }).catch(next);
 });
 
-router.route('/:FeatureGarageOwner_id')
+router.route('/:request_id')
 .put(auth.verifyUser, (req, res, next) => {
     const request = req.body;
-    Request.findByIdAndUpdate(req.params.FeatureGarageOwner_id, { $set: request }, {new: true} )
+    Request.findByIdAndUpdate(req.params.request_id, { $set: request }, {new: true} )
     .then(request => {
         res.status(201).send(request);
     }).catch(next);

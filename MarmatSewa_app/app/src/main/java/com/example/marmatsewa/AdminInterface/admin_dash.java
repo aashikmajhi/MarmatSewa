@@ -15,7 +15,7 @@ import com.example.marmatsewa.R;
 
 public class admin_dash extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

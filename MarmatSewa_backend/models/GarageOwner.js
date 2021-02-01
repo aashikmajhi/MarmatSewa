@@ -62,7 +62,7 @@ const garageOwnerSchema = new mongoose.Schema(
 		panNo: {
 			type: String,
 			maxlength: 255,
-			required: true
+			required: false
 		},
 		registrationDoc: {
 			type: String,

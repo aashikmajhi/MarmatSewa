@@ -12,8 +12,8 @@ public class URL {
     public static String user_id="";
 
 
-//    public static String BASE_URL = "http://10.0.2.2:3001/";
-    public static String BASE_URL = "http://10.1.1.46:3001/";
+    public static String BASE_URL = "http://10.0.2.2:3001/";
+//    public static String BASE_URL = "http://10.1.1.46:3001/";
 
     //For connecting with mobile ...
 //    private static String ipAddressOfYourHost = "192.168.0.113";
