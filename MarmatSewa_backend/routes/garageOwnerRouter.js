@@ -17,13 +17,13 @@ router
 		});
 	})
 	.post((req, res, next) => {
-		let { errors, isValid } = validators.GarageInput(req.body);
-		if (!isValid) {
-			return res.status(400).json({
-				status: 'error',
-				message: errors
-			});
-		}
+		// let { errors, isValid } = validators.GarageInput(req.body);
+		// if (!isValid) {
+		// 	return res.status(400).json({
+		// 		status: 'error',
+		// 		message: errors
+		// 	});
+		// }
 		let {
 			businessName,
 			ownerName,

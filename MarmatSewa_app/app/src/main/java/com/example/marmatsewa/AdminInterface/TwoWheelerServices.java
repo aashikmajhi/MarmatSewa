@@ -107,12 +107,6 @@ public class TwoWheelerServices extends AppCompatActivity {
                 checkCameraPermission();
                 popUpSelectFromCameraOrGallery();
 
-
-
-
-
-
-
             }
         });
 
