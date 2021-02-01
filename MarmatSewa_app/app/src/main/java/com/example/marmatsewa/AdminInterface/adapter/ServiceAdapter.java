@@ -49,7 +49,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         //get image from server ...
         ImageBLL imageBLL = new ImageBLL();
         imageBLL.MakeStrict();
-        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"api/uploads/" + serviceList.get(position).getImage();
+        String imagePath = com.example.marmatsewa.url.URL.IMAGE_BASE_URL + "/uploads/" + serviceList.get(position).getImage();
         try {
             URL url = new URL(imagePath);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
