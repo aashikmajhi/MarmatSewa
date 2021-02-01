@@ -27,8 +27,7 @@ const upload = multer({
 	}
 });
 
-router.route('/')
-.post(upload.single('myFile'), (req, res, next) => {
+router.route('/').post(upload.single('myFile'), (req, res, next) => {
 	res.json(req.file);
 });
 
