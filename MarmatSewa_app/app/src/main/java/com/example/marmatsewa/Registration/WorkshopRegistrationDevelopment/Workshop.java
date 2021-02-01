@@ -21,8 +21,10 @@ public class Workshop {
     private String longitude;
     private String vehicleType;
 
+    public Workshop() {
+    }
 
-    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, String latitude, String longitude, String vehicleType) {
+    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String vehicleType) {
         this.businessName = businessName;
         this.ownerName = ownerName;
         this.email = email;
@@ -31,29 +33,8 @@ public class Workshop {
         this.contactNo = contactNo;
         this.registrationType = registrationType;
         this.panNo = panNo;
-        this.registrationDoc = registrationDoc;
-        this.status = status;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.vehicleType = vehicleType;
     }
-
-//    public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String registrationDoc, String status, String latitude, String longitude, String vehicleType) {
-//        this.businessName = businessName;
-//        this.ownerName = ownerName;
-//        this.email = email;
-//        this.password = password;
-//        this.address = address;
-//        this.contactNo = contactNo;
-//        this.registrationType = registrationType;
-//        this.panNo = panNo;
-//        this.registrationDoc = registrationDoc;
-//        this.status = status;
-//        this.latitude = latitude;
-//        this.longitude = longitude;
-//        this.vehicleType = vehicleType;
-//
-//    }
 
     public String getBusinessName() {
         return businessName;
@@ -126,7 +107,6 @@ public class Workshop {
     public void setRegistrationDoc(String registrationDoc) {
         this.registrationDoc = registrationDoc;
     }
-
 
     public String getStatus() {
         return status;

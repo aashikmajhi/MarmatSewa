@@ -9,16 +9,25 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Workshop;
+import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.WorkshopBLL;
+import com.example.marmatsewa.url.URL;
 
 public class garageRegistrationPersonalInfo extends AppCompatActivity {
 
-    private ImageView backBtn, btnUploadDocument, btnNext;
+    private ImageView backBtn, btnNext, btnRegisterWorkshop;
     private EditText garageName, edtRegType, edtLocation, edtContactName, edtNumber, edtPanNo;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
+    private TextView register;
+
+    private String garageEmail, garagePassword, garageRegType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +36,10 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
 
         //button References
         backBtn=findViewById(R.id.backBtn);
-        btnUploadDocument=findViewById(R.id.btnUploadDocument);
-        btnNext = findViewById(R.id.btnNext);
+        //btnUploadDocument=findViewById(R.id.btnUploadDocument);
+        //btnNext = findViewById(R.id.btnNext);
+        register = findViewById(R.id.register);
+        btnRegisterWorkshop = findViewById(R.id.btnRegisterWorkshop);
 
         //edit text references
         garageName = findViewById(R.id.garageName);
@@ -49,24 +60,23 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences("Workshop",0);
         editor = sharedPreferences.edit();
 
+
+        garageEmail = sharedPreferences.getString("garageEmail", null);
+        garagePassword = sharedPreferences.getString("garagePassword", null);
+        garageRegType = sharedPreferences.getString("garageRegType", null);
+
+
         System.out.println(sharedPreferences.getString("garageEmail", null));
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                    editor.putString("garageName", garageName.getText().toString());
-                    editor.putString("garageRegType", edtRegType.getText().toString());
-                    editor.putString("garageLocation", edtLocation.getText().toString());
-                    editor.putString("garageContactName", edtContactName.getText().toString());
-                    editor.putString("garageNumber", edtNumber.getText().toString());
-                    editor.putString("garagePan", edtPanNo.getText().toString());
-                    editor.commit();
-
-                    startActivity(new Intent(garageRegistrationPersonalInfo.this, garageRegistrationBusinessInfo.class));
+                    registerWorkshop();
                 }
             }
         });
+
     }
 
     private boolean validate() {
@@ -103,5 +113,31 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
         }
 
         return flag;
+    }
+
+    private void registerWorkshop() {
+
+        Workshop workshop = new Workshop(
+                garageName.getText().toString(),
+                edtContactName.getText().toString(),
+                garageEmail,
+                garagePassword,
+                edtLocation.getText().toString(),
+                edtNumber.getText().toString(),
+                edtRegType.getText().toString(),
+                edtPanNo.getText().toString(),
+                garageRegType
+        );
+
+        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
+        URL.getStrictMode();
+
+        if (workshopBLL.isRegisterWorkshop()) {
+            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(garageRegistrationPersonalInfo.this, LoginActivity.class));
+        }
+        else {
+            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

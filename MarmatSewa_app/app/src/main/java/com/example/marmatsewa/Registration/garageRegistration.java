@@ -34,6 +34,9 @@ public class garageRegistration extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+    private Spinner spinner;
+    String[] categories = {"TWO WHEEL", "FOUR WHEEL", "BOTH"};
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,27 @@ public class garageRegistration extends AppCompatActivity {
 
         backBtn = findViewById(R.id.backBtn);
         btnNext = findViewById(R.id.btnNext);
+
+        //Dropdown list for the garage registration form..
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
+
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                category = spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +87,7 @@ public class garageRegistration extends AppCompatActivity {
                if(validate()) {
                    editor.putString("garageEmail", edtGarageEmail.getText().toString());
                    editor.putString("garagePassword", edtGaragePassword.getText().toString());
+                   editor.putString("category", category);
                    editor.commit();
 
                    startActivity(new Intent(garageRegistration.this, garageRegistrationPersonalInfo.class));
