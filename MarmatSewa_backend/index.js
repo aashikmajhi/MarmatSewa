@@ -20,15 +20,16 @@ const { profile } = require('console');
 const app = express();
 app.use(cors('*'));
 
-mongoose.connect(process.env.DbURI,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: true
-})
-.then(()=> console.log('----------------- Database server connected --------------------'))
-.catch((err) => console.log(err));
+mongoose
+	.connect(process.env.DbURI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: true
+	})
+	.then(() => console.log('----------------- Database server connected --------------------'))
+	.catch((err) => console.log(err));
 
-app.use(express.json());//json
+app.use(express.json()); //json
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,6 +42,7 @@ app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
 app.use('/api/requests', requestRouter);
 app.use('/api/profiles', profileRouter);
+app.use('api/garagefeatures', featureGarageOwnerRouter);
 
 app.use('/api/upload', uploadRouter);
 

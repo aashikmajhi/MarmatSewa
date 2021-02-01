@@ -1,6 +1,8 @@
 package com.example.marmatsewa.Registration;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,25 +18,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
+import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
+import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.UserServiceApdater;
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Workshop;
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.WorkshopBLL;
 import com.example.marmatsewa.url.URL;
 
+import java.util.List;
+
 public class garageRegistrationBusinessInfo extends AppCompatActivity {
 
-    private ImageView btnRegisterWorkshop, backBtn;
-    private TextView register;
+    private ImageView backBtn;
 
-
-    private Spinner spinner;
-    String[] categories = {"TWO WHEEL", "FOUR WHEEL", "BOTH"};
-    private String category;
-
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-
-    private String garageName, garageContactName, garageEmail, garagePassword, garageLocation, garageNumber, garageRegType, garagePan;
+    private RecyclerView serviceRcView;
+    private List<Service> serviceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,80 +45,31 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
 
         //button reference
         backBtn = findViewById(R.id.backBtn);
-        btnRegisterWorkshop = findViewById(R.id.btnRegisterWorkshop);
-        register = findViewById(R.id.register);
+
+
+        serviceRcView = findViewById(R.id.serviceRcView);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(garageRegistrationBusinessInfo.this, garageRegistrationPersonalInfo.class);
+                Intent intent = new Intent(garageRegistrationBusinessInfo.this, garageDashboard.class);
                 startActivity(intent);
             }
         });
 
-        //Dropdown list for the garage registration form..
-        spinner = (Spinner) findViewById(R.id.spinner);
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
-
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    category = spinner.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        sharedPreferences = getApplicationContext().getSharedPreferences("Workshop",0);
-
-        garageName = sharedPreferences.getString("garageName", null);
-        garageContactName = sharedPreferences.getString("garageContactName", null);
-        garageEmail = sharedPreferences.getString("garageEmail", null);
-        garagePassword = sharedPreferences.getString("garagePassword", null);
-        garageLocation = sharedPreferences.getString("garageLocation", null);
-        garageNumber = sharedPreferences.getString("garageNumber", null);
-        garageRegType = sharedPreferences.getString("garageRegType", null);
-        garagePan = sharedPreferences.getString("garagePan", null);
+        serviceRcView.setLayoutManager(new LinearLayoutManager(this));
+        loadService();
 
     }
 
-//    private void registerWorkshop() {
-//
-//        Workshop workshop = new Workshop(
-//                garageName,
-//                garageContactName,
-//                garageEmail,
-//                garagePassword,
-//                garageLocation,
-//                garageNumber,
-//                garageRegType,
-//                garagePan,
-//                "registrationdoc",
-//                "APPROVED",
-//                27.6946843,
-//                85.3310636,
-//                category
-//        );
-//
-//        WorkshopBLL workshopBLL = new WorkshopBLL(workshop);
-//        URL.getStrictMode();
-//
-//        if (workshopBLL.isRegisterWorkshop()) {
-//            Toast.makeText(this, "Workshop registered successfully!", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(garageRegistrationBusinessInfo.this, LoginActivity.class));
-//        }
-//        else {
-//            Toast.makeText(this, "error: something went wrong!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    private void loadService() {
+        ServiceBLL serviceBLL = new ServiceBLL();
+        URL.getStrictMode();
+
+        serviceList = serviceBLL.getServices();
+        UserServiceApdater userServiceApdater = new UserServiceApdater(this, serviceList);
+        serviceRcView.setAdapter(userServiceApdater);
+    }
 }
 
 

@@ -10,9 +10,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
+import com.example.marmatsewa.Registration.garageRegistrationBusinessInfo;
 import com.example.marmatsewa.url.URL;
 
 public class garageDashboard extends AppCompatActivity {
@@ -21,14 +23,23 @@ public class garageDashboard extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
+    private Button btnAddgarageService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_dashboard);
 
         //Assign variable
-
         drawerLayout = findViewById(R.id.drawer_layout);
+        btnAddgarageService = findViewById(R.id.btnAddgarageService);
+
+        btnAddgarageService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(garageDashboard.this, garageRegistrationBusinessInfo.class));
+            }
+        });
 
     }
 
