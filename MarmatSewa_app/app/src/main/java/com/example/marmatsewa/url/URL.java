@@ -20,6 +20,7 @@ public class URL {
 //    private static String ipAddressOfYourHost = " 10.1.10.148";
 //    public static String BASE_URL =  "http://" + ipAddressOfYourHost + ":3001/api/";
 
+    public static String IMAGE_BASE_URL = "http://10.0.2.2:3001/";
 
     public static Retrofit getInstance() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL.BASE_URL)
