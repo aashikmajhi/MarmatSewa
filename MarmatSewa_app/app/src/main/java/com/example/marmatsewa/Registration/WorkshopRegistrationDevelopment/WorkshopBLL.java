@@ -22,6 +22,8 @@ public class WorkshopBLL {
 
         try {
             Response<Void> r = call.execute();
+            if (!r.isSuccessful()) return false;
+
             isSuccess = true;
         }
         catch (Exception e) {

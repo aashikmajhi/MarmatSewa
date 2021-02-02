@@ -28,7 +28,7 @@ public class RequestListAdapter extends RecyclerView.Adapter<RequestListAdapter.
     @NonNull
     @Override
     public RequestListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RequestListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_garage_request_card, parent, false));
+        return new RequestListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.request_card, parent, false));
     }
 
     @Override

@@ -17,9 +17,10 @@ public class URL {
 
     //For connecting with mobile ...
 //    private static String ipAddressOfYourHost = "192.168.0.113";
-//    private static String ipAddressOfYourHost = " 10.1.1.90";
-//    private static String BASE_URL =  "http://" + ipAddressOfYourHost + ":3001/api/";
+//    private static String ipAddressOfYourHost = " 10.1.10.148";
+//    public static String BASE_URL =  "http://" + ipAddressOfYourHost + ":3001/api/";
 
+    public static String IMAGE_BASE_URL = "http://10.0.2.2:3001/";
 
     public static Retrofit getInstance() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(URL.BASE_URL)

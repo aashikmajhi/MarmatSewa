@@ -2,18 +2,29 @@ package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
+import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class customerRequest extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
-
     private RecyclerView rcView;
+    private List<GarageRequestResponse> requestList;
+
 
 
     @Override
@@ -22,7 +33,23 @@ public class customerRequest extends AppCompatActivity {
         setContentView(R.layout.activity_customer_request);
 
         drawerLayout = findViewById(R.id.drawer_layout);
+        rcView = findViewById(R.id.rcView);
+        rcView.setLayoutManager(new LinearLayoutManager(this));
+        //api call is fired ...
+        getAllRequests();
+    }
 
+    private void getAllRequests() {
+        GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
+        URL.getStrictMode();
+        requestList = garageRequestAPI.getGarageRequests();
+        //if no data is fetched from api call returns void ...
+        if (requestList.size() <= 0) {
+            Toast.makeText(this, "no requests have been received ...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        CustomerRequestAdapter requestAdapter = new CustomerRequestAdapter(this, requestList);
+        rcView.setAdapter(requestAdapter);
     }
 
     public void  ClickMenu(View view){

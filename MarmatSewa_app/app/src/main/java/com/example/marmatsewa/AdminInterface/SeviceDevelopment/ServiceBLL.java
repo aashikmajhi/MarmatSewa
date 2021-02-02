@@ -18,7 +18,6 @@ public class ServiceBLL {
 
     public List<Service> getServices() {
         List<Service> serviceList = null;
-
         Call<List<Service>> call = serviceAPI.getAllService(URL.token);
 
         try {
