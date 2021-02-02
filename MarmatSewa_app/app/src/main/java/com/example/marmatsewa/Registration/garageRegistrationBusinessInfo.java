@@ -42,10 +42,8 @@ public class garageRegistrationBusinessInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_registration_business_info);
 
-
         //button reference
         backBtn = findViewById(R.id.backBtn);
-
 
         serviceRcView = findViewById(R.id.serviceRcView);
 
