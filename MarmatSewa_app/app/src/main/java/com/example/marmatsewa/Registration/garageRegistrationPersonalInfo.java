@@ -77,6 +77,13 @@ public class garageRegistrationPersonalInfo extends AppCompatActivity {
             }
         });
 
+        btnRegisterWorkshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private boolean validate() {

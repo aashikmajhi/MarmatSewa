@@ -24,9 +24,6 @@ public class ServiceBLL {
             Response<List<Service>> response = call.execute();
             if(response.isSuccessful()) {
                 serviceList = response.body();
-                for (Service service: serviceList) {
-                    System.out.println(service);
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();
