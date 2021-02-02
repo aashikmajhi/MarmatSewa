@@ -45,7 +45,7 @@ public class UserServiceApdater extends RecyclerView.Adapter<UserServiceApdater.
         //get image from server ...
         ImageBLL imageBLL = new ImageBLL();
         imageBLL.MakeStrict();
-        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"api/upload/" + userServiceList.get(position).getImage();
+        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"/uploads/" + userServiceList.get(position).getImage();
         try {
             URL url = new URL(imagePath);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
@@ -56,6 +56,7 @@ public class UserServiceApdater extends RecyclerView.Adapter<UserServiceApdater.
             e.printStackTrace();
         }
         holder.btnAddService.setOnClickListener(v -> {
+            System.out.println(userServiceList.get(position).get_id());
             Features features = new Features(com.example.marmatsewa.url.URL.user_id, userServiceList.get(position).get_id());
             AddFeaturesBLL addFeaturesBLL = new AddFeaturesBLL(features);
             com.example.marmatsewa.url.URL.getStrictMode();
