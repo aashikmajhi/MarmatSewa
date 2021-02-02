@@ -24,14 +24,14 @@ public class ServiceBLLTest {
         assertEquals(true, res);
     }
 
-    @Test
-    public void AddServiceTest() {
-        ServiceBLL serviceBLL = new ServiceBLL(new Service("puncture", "abcd.jpg"));
-        boolean res = serviceBLL.checkPostService("puncture", "abcd.jpg");
-        assertEquals(true,res);
-
-
-    }
+//    @Test
+//    public void AddServiceTest() {
+//        ServiceBLL serviceBLL = new ServiceBLL(new Service("puncture", "abcd.jpg"));
+//        boolean res = serviceBLL.checkPostService("puncture", "abcd.jpg");
+//        assertEquals(true,res);
+//
+//
+//    }
 
     @Test
     public void GetServiceTest(){
