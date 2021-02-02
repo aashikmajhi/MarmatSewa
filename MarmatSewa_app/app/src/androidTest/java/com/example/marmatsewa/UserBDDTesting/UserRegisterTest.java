@@ -1,4 +1,4 @@
-package com.example.marmatsewa.BDDTesting;
+package com.example.marmatsewa.UserBDDTesting;
 
 
 

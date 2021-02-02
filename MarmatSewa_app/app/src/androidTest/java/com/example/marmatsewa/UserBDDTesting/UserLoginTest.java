@@ -1,4 +1,4 @@
-package com.example.marmatsewa.BDDTesting;
+package com.example.marmatsewa.UserBDDTesting;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
