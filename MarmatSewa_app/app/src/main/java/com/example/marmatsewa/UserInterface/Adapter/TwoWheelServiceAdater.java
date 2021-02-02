@@ -1,6 +1,8 @@
 package com.example.marmatsewa.UserInterface.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -9,12 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
+import com.example.marmatsewa.MapLocation.MapsLocation;
 import com.example.marmatsewa.R;
 
 import java.io.IOException;
@@ -22,9 +27,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class TwoWheelServiceAdater extends RecyclerView.Adapter<TwoWheelServiceAdater.TwoWhellServiceHolder> {
     private Context context;
     private List<Service> userServiceList;
+    private String selectedServiceId;
 
     public TwoWheelServiceAdater(Context context, List<Service> userServiceList) {
         this.context = context;
@@ -53,6 +61,24 @@ public class TwoWheelServiceAdater extends RecyclerView.Adapter<TwoWheelServiceA
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               selectedServiceId = userServiceList.get(position).get_id();
+               if (selectedServiceId.isEmpty()) {
+                   Toast.makeText(context, "No id is fetched in adapter ...", Toast.LENGTH_SHORT).show();
+                   return;
+               }
+//               storeFeatureIdToSharedPreference();
+               Intent intent = new Intent(context, MapsLocation.class);
+               intent.putExtra("service_id", selectedServiceId);
+               context.startActivity(intent);
+            }
+        });
+        
+        
+        
     }
 
     @Override
@@ -64,12 +90,22 @@ public class TwoWheelServiceAdater extends RecyclerView.Adapter<TwoWheelServiceA
 
         private TextView twoWheelServiceName;
         private ImageView twoWheelServiceImage;
+        private ConstraintLayout card;
 
         public TwoWhellServiceHolder(@NonNull View itemView) {
             super(itemView);
 
             twoWheelServiceName = itemView.findViewById(R.id.twoWheelServiceName);
             twoWheelServiceImage = itemView.findViewById(R.id.twoWheelServiceImage);
+            card = itemView.findViewById(R.id.card);
         }
     }
+
+//    private void storeFeatureIdToSharedPreference() {
+//        SharedPreferences sharedPreferences = this.context.getSharedPreferences("SERVICE", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("id", selectedServiceId);
+//        editor.apply();
+//    }
+
 }

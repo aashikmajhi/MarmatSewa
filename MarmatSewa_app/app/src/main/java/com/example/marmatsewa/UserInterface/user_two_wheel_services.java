@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
@@ -45,6 +46,10 @@ public class user_two_wheel_services extends AppCompatActivity {
     private void loadTwoWheelService() {
         ServiceBLL serviceBLL = new ServiceBLL();
         serviceListForTwoWheel = serviceBLL.getServices();
+        if (serviceListForTwoWheel.size() <= 0) {
+            Toast.makeText(getApplicationContext(), "No services in database to load ...", Toast.LENGTH_LONG).show();
+            return;
+        }
         URL.getStrictMode();
         TwoWheelServiceAdater twoWheelServiceAdater = new TwoWheelServiceAdater(this, serviceListForTwoWheel);
         userTwoWheelServiceView.setAdapter(twoWheelServiceAdater);
