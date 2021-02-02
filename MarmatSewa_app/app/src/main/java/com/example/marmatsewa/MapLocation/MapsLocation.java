@@ -106,11 +106,12 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-//                Intent intent = new Intent(this, TwoWheelerServices.class);
+                Intent intent = new Intent(getApplicationContext(), user_hiring_page.class);
+                startActivity(intent);
                 return false;
             }
         });
-//         mMap.addMarker(new MarkerOptions().position(latLng).title(nameOfGarage));
+         mMap.addMarker(new MarkerOptions().position(latLng).title(nameOfGarage));
 
     }
 }
