@@ -1,8 +1,9 @@
-package com.example.marmatsewa;
+package com.example.marmatsewa.GarageBDDTesting;
 
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
+import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.garageRegistration;
 
 import org.junit.Rule;
