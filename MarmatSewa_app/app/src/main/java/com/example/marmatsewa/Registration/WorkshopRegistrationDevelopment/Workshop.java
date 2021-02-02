@@ -20,9 +20,9 @@ public class Workshop {
     private String latitude;
     private String longitude;
     private String vehicleType;
-
-    public Workshop() {
-    }
+//
+//    public Workshop() {
+//    }
 
     public Workshop(String businessName, String ownerName, String email, String password, String address, String contactNo, String registrationType, String panNo, String vehicleType) {
         this.businessName = businessName;
