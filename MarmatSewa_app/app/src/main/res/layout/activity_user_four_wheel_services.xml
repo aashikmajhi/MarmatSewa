@@ -15,14 +15,26 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078"
+        app:layout_constraintVertical_bias="0.059"
         app:srcCompat="@drawable/car" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.293"
+        app:srcCompat="@drawable/divider" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose the problem"
+        android:text="What are you looking for?"
         android:textColor="#85A8E3"
         android:textSize="24sp"
         android:textStyle="bold|italic"
@@ -30,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <ImageView
         android:id="@+id/btnback4wheelservice"
@@ -46,8 +58,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userFourWheelServiceView"
-        android:layout_width="wrap_content"
-        android:layout_height="512dp"
+        android:layout_width="240dp"
+        android:layout_height="486dp"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,5 +67,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/tabtext"
+        android:text="Select and hire the service.. "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.237" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
