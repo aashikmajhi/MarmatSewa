@@ -23,16 +23,19 @@ router
 			.catch(next);
 	});
 
-router.route('/:FeatureGarageOwner_id').delete(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
-	Feature_GarageOwner.findByIdAndDelete(req.params.FeatureGarageOwner_id)
-		.then((deletedFeature_GarageOwner) => {
-			res.status(200).send(deletedFeature_GarageOwner);
-		})
-		.catch(next);
-});
+// router.route('/:FeatureGarageOwner_id').delete(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
+// 	Feature_GarageOwner.findByIdAndDelete(req.params.FeatureGarageOwner_id)
+// 		.then((deletedFeature_GarageOwner) => {
+// 			res.status(200).send(deletedFeature_GarageOwner);
+// 		})
+// 		.catch(next);
+// });
+
+
 
 //GET garageOwner Detail from feature_id
-router.route('/:FeatureGarageOwner_id/:feature_id').get(auth.verifyUser, (req, res, next) => {
+router.route('/:feature_id')
+.get(auth.verifyUser, (req, res, next) => {
 	Feature_GarageOwner.find({ feature: req.params.feature_id })
 		.populate('garageOwner')
 		.then((feature_garageOwner) => {
