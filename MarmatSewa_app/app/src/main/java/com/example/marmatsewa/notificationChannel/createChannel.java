@@ -18,19 +18,19 @@ public class createChannel {
 
     public void createChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 = new NotificationChannel(hire, "hire", NotificationManager.IMPORTANCE_HIGH);
-            channel1.setDescription("New Request!!");
+            NotificationChannel HIRE = new NotificationChannel(hire, "hire", NotificationManager.IMPORTANCE_HIGH);
+            HIRE.setDescription("New Request!!");
 
-            NotificationChannel channel2 = new NotificationChannel(approved, "approved", NotificationManager.IMPORTANCE_HIGH);
-            channel2.setDescription("Your service request has been accepted!!");
+            NotificationChannel APPROVE = new NotificationChannel(approved, "approved", NotificationManager.IMPORTANCE_HIGH);
+            APPROVE.setDescription("Your service request has been accepted!!");
 
-            NotificationChannel channel3 = new NotificationChannel(completed, "completed", NotificationManager.IMPORTANCE_HIGH);
-            channel2.setDescription("Your service is successfully completed!!");
+            NotificationChannel COMPLETED = new NotificationChannel(completed, "completed", NotificationManager.IMPORTANCE_HIGH);
+            APPROVE.setDescription("Your service is successfully completed!!");
 
             NotificationManager manager = context.getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel1);
-            manager.createNotificationChannel(channel2);
-            manager.createNotificationChannel(channel3);
+            manager.createNotificationChannel(HIRE);
+            manager.createNotificationChannel(APPROVE);
+            manager.createNotificationChannel(COMPLETED);
         }
     }
 }

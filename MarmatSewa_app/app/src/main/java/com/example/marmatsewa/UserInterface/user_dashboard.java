@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
@@ -36,10 +34,20 @@ public class user_dashboard extends AppCompatActivity {
 
         userLogout = findViewById(R.id.userLogout);
 
+        //notification
+        if(getIntent().getExtras()!=null){
+            if (getIntent().getExtras().getString("").equals("")){
+                requestAccepted();
+            }
+            else if (getIntent().getExtras().get("").equals("")){
+                serviceCompleted();
+            }
+        }
+
         btnNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNewNotificationPopup();
+
             }
         });
 
@@ -91,7 +99,7 @@ public class user_dashboard extends AppCompatActivity {
 
     }
 
-    public void createNewNotificationPopup(){
+    public void requestAccepted(){
         dialogBuilder = new AlertDialog.Builder(this);
         final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
 
@@ -102,5 +110,17 @@ public class user_dashboard extends AppCompatActivity {
         dialog.show();
 
     }
+
+    public void serviceCompleted(){
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
+
+        //TODO: assign notification card here
+
+        dialogBuilder.setView(notificationView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
 
 }
