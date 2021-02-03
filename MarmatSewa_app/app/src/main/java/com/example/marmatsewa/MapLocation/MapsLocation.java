@@ -42,15 +42,6 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -94,24 +85,30 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
             Double longs = Double.parseDouble(garageList.get(i).garageOwner.getLongitude());
             LatLng latLng = new LatLng(lat, longs);
             String nameOfGarage = garageList.get(i).garageOwner.getBusinessName();
-            placeMarkerOnMap(mMap, latLng, nameOfGarage);
+            String garage_id = garageList.get(i).garageOwner.get_id();
+            String feature_id = garageList.get(i).getFeature().get_id();
+            String nameOfFeature = garageList.get(i).getFeature().getFeature();
+            String garagePhone = garageList.get(i).getGarageOwner().getContactNo();
 
-
+            placeMarkerOnMap(mMap, latLng, nameOfGarage, garage_id, feature_id, nameOfFeature ,garagePhone);
         }
 
     }
 
-    private void placeMarkerOnMap(GoogleMap mMap, LatLng latLng, String nameOfGarage) {
-        MarkerOptions marker = new MarkerOptions().position(latLng).title(nameOfGarage);
+    private void placeMarkerOnMap(GoogleMap mMap, LatLng latLng, String nameOfGarage, String garage_id, String feature_id, String nameOfFeature, String phoneNo) {
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Intent intent = new Intent(getApplicationContext(), user_hiring_page.class);
+                intent.putExtra("name", nameOfGarage);
+                intent.putExtra("garage_id", garage_id);
+                intent.putExtra("feature_id", feature_id);
+                intent.putExtra("feature_name", nameOfFeature);
+                intent.putExtra("garage_phone", phoneNo);
                 startActivity(intent);
                 return false;
             }
         });
          mMap.addMarker(new MarkerOptions().position(latLng).title(nameOfGarage));
-
     }
 }

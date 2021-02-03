@@ -37,6 +37,7 @@ router
 router.route('/:feature_id')
 .get(auth.verifyUser, (req, res, next) => {
 	Feature_GarageOwner.find({ feature: req.params.feature_id })
+		.populate('feature')
 		.populate('garageOwner')
 		.then((feature_garageOwner) => {
 			res.status(200).json(feature_garageOwner);
