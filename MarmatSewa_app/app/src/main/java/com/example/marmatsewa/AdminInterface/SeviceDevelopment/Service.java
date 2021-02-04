@@ -10,6 +10,12 @@ public class Service {
         this.image = image;
     }
 
+    public Service(String _id, String feature, String image) {
+        this._id = _id;
+        this.feature = feature;
+        this.image = image;
+    }
+
     public String get_id() {
         return _id;
     }

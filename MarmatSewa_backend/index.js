@@ -42,7 +42,7 @@ app.use('/api/garageOwner', garageOwnerRouter);
 app.use('/api/features', featureRouter);
 app.use('/api/requests', requestRouter);
 app.use('/api/profiles', profileRouter);
-app.use('api/garagefeatures', featureGarageOwnerRouter);
+app.use('/api/garagefeatures', featureGarageOwnerRouter);
 
 app.use('/api/upload', uploadRouter);
 
