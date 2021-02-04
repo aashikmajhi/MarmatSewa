@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface RatingReviewAPI {
     @GET("api/garageOwner/{garage_id}/reviews")
-    Call<RatingReviewResponse> getReview(@Path("garage_id") String garage_id);
+    Call<List<RatingReviewResponse>> getReview(@Header("Authorization") String header, @Path("garage_id") String garage_id);
 
     @FormUrlEncoded
     @POST("api/garageOwner/{garage_id}/reviews")

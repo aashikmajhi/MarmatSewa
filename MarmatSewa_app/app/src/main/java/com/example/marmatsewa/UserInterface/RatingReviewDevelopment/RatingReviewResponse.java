@@ -4,13 +4,13 @@ import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.User;
 
 public class RatingReviewResponse {
     private String review;
-    private Double rating;
-    private User user;
+    private Float rating;
+    private String createdAt;
 
-    public RatingReviewResponse(String review, Double rating, User user) {
+    public RatingReviewResponse(String review, Float rating, String createdAt) {
         this.review = review;
         this.rating = rating;
-        this.user = user;
+        this.createdAt = createdAt;
     }
 
     public String getReview() {
@@ -21,19 +21,19 @@ public class RatingReviewResponse {
         this.review = review;
     }
 
-    public Double getRating() {
+    public Float getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(Float rating) {
         this.rating = rating;
     }
 
-    public User getUser() {
-        return user;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }
