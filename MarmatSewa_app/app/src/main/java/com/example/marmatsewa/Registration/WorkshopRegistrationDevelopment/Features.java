@@ -1,27 +1,27 @@
 package com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment;
 
 public class Features {
-    private String featureId;
-    private String garageOwnerId;
+    private String feature;
+    private String garageOwner;
 
-    public Features(String featureId, String garageOwnerId) {
-        this.featureId = featureId;
-        this.garageOwnerId = garageOwnerId;
+    public Features(String feature, String garageOwner) {
+        this.feature = feature;
+        this.garageOwner = garageOwner;
     }
 
-    public String getFeatureId() {
-        return featureId;
+    public String getFeature() {
+        return feature;
     }
 
-    public void setFeatureId(String featureId) {
-        this.featureId = featureId;
+    public void setFeature(String feature) {
+        this.feature = feature;
     }
 
-    public String getGarageOwnerId() {
-        return garageOwnerId;
+    public String getGarageOwner() {
+        return garageOwner;
     }
 
-    public void setGarageOwnerId(String garageOwnerId) {
-        this.garageOwnerId = garageOwnerId;
+    public void setGarageOwner(String garageOwner) {
+        this.garageOwner = garageOwner;
     }
 }
