@@ -56,7 +56,7 @@ public class FourWheelServiceAdapter extends RecyclerView.Adapter<FourWheelServi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return fourWheelServiceList.size();
     }
 
     public class FourWheelServiceHolder extends RecyclerView.ViewHolder {
