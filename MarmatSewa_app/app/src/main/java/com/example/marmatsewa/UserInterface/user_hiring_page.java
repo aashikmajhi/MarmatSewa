@@ -41,12 +41,9 @@ public class user_hiring_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postRequestCall();
+
             }
         });
-
-
-
-
 
 
 
@@ -72,11 +69,11 @@ public class user_hiring_page extends AppCompatActivity {
     private void postRequestCall() {
         RequestBLL requestBLL = new RequestBLL(feature_id, garage_id);
         if (requestBLL.checkPostRequest()) {
-        Intent i = new Intent(this, user_dashboard.class);
+        Intent i = new Intent(this, userRating.class);
+        i.putExtra("garage_id", garage_id);
         startActivity(i);
         } else {
             Toast.makeText(this, "postRequestCall failed ..", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

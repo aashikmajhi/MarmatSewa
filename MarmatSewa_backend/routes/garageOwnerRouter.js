@@ -107,7 +107,7 @@ router
 		GarageOwner.findById(req.params.garage_id)
 			.then((garage) => {
 				garage.reviews.push(rv);
-				garage.save().then((newReview) => res.status(201).json(newReview)).catch(next);
+				garage.save().then((newReview) => res.status(201).json(newReview.reviews)).catch(next);
 			})
 			.catch(next);
 	});
