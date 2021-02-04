@@ -20,7 +20,7 @@ import com.example.marmatsewa.url.URL;
 
 import java.util.List;
 
-public class FourWheelerServices extends AppCompatActivity {
+public class    FourWheelerServices extends AppCompatActivity {
 
     ImageView btnBack2, btnFForm;
 
@@ -89,9 +89,6 @@ public class FourWheelerServices extends AppCompatActivity {
                 //define add button here!!
             }
         });
-
-
-
     }
         private void getAllServices() {
         ServiceBLL serviceBLL = new ServiceBLL();
