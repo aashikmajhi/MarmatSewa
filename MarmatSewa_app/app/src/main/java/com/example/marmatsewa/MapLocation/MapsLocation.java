@@ -2,21 +2,35 @@ package com.example.marmatsewa.MapLocation;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
+import com.example.marmatsewa.AdminInterface.TwoWheelerServices;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.UserInterface.ServiceGarageOwner.ServiceGarageOwnerBLL;
+import com.example.marmatsewa.UserInterface.ServiceGarageOwner.*;
+import com.example.marmatsewa.UserInterface.user_hiring_page;
+import com.example.marmatsewa.url.URL;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsLocation extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private CameraUpdate zoom, center;
+    private String feature_id;
+    ArrayList<ServiceGarageOwnerResponse> garageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,37 +42,19 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        getFeatureIdFromIntent();
         // Add a marker in Sydney and move the camera
-        LatLng Softwarica = new LatLng(27.7062581,85.3278125);
-        LatLng Boudha = new LatLng(27.7231762,85.3510666);
-        LatLng Chisapani = new LatLng(27.7474555,85.2525451);
-        LatLng Siddhapokhari = new LatLng(27.6719705,85.4182473);
         LatLng GOD = new LatLng(27.7141308,85.3123154);
 
-        mMap.addMarker(new MarkerOptions().position(Softwarica).title("Marker in Softwarica"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Softwarica));
-
-        mMap.addMarker(new MarkerOptions().position(Boudha).title("Marker in Boudha"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Boudha));
-
-        mMap.addMarker(new MarkerOptions().position(Chisapani).title("Marker in Chisapani"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Chisapani));
-
-        mMap.addMarker(new MarkerOptions().position(Siddhapokhari).title("Marker in Siddhapokhari"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Siddhapokhari));
+        feature_id = getFeatureIdFromIntent();
+        if (feature_id.isEmpty()) {
+            Toast.makeText(this, "No feature id is received from Intent", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        getGarageOwnerWithSelectedFeatures(mMap);
 
         mMap.addMarker(new MarkerOptions().position(GOD).title("Marker in Garden Of Dreams"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(GOD));
@@ -68,5 +64,51 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(center);
         mMap.animateCamera(zoom);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+    }
+
+    private String getFeatureIdFromIntent() {
+        try {
+            return getIntent().getStringExtra("service_id");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "";
+    }
+
+    private void getGarageOwnerWithSelectedFeatures(GoogleMap mMap) {
+        ServiceGarageOwnerBLL serviceGarageOwnerBLL = new ServiceGarageOwnerBLL(feature_id);
+        URL.getStrictMode();
+
+        garageList = new ArrayList<>(serviceGarageOwnerBLL.getGarageInfo());
+        for (int i = 0; i < garageList.size(); i++) {
+            Double lat = Double.parseDouble(garageList.get(i).garageOwner.getLatitude());
+            Double longs = Double.parseDouble(garageList.get(i).garageOwner.getLongitude());
+            LatLng latLng = new LatLng(lat, longs);
+            String nameOfGarage = garageList.get(i).garageOwner.getBusinessName();
+            String garage_id = garageList.get(i).garageOwner.get_id();
+            String feature_id = garageList.get(i).getFeature().get_id();
+            String nameOfFeature = garageList.get(i).getFeature().getFeature();
+            String garagePhone = garageList.get(i).getGarageOwner().getContactNo();
+
+            placeMarkerOnMap(mMap, latLng, nameOfGarage, garage_id, feature_id, nameOfFeature ,garagePhone);
+        }
+
+    }
+
+    private void placeMarkerOnMap(GoogleMap mMap, LatLng latLng, String nameOfGarage, String garage_id, String feature_id, String nameOfFeature, String phoneNo) {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Intent intent = new Intent(getApplicationContext(), user_hiring_page.class);
+                intent.putExtra("name", nameOfGarage);
+                intent.putExtra("garage_id", garage_id);
+                intent.putExtra("feature_id", feature_id);
+                intent.putExtra("feature_name", nameOfFeature);
+                intent.putExtra("garage_phone", phoneNo);
+                startActivity(intent);
+                return false;
+            }
+        });
+         mMap.addMarker(new MarkerOptions().position(latLng).title(nameOfGarage));
     }
 }

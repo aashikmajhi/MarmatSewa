@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class Workshop {
-
+    private String _id;
     private String businessName;
     private String ownerName;
     private String email;
@@ -34,6 +34,14 @@ public class Workshop {
         this.registrationType = registrationType;
         this.panNo = panNo;
         this.vehicleType = vehicleType;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getBusinessName() {
