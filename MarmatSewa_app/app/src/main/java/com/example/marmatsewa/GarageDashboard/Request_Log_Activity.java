@@ -2,16 +2,26 @@ package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
+import com.example.marmatsewa.GarageDashboard.Adapter.RequestLogAdapter;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class Request_Log_Activity extends AppCompatActivity {
 
     private RecyclerView rcViewHistory;
+    private List<GarageRequestResponse> requestList = null;
 
     DrawerLayout drawerLayout;
 
@@ -19,19 +29,22 @@ public class Request_Log_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_log);
-
         drawerLayout=findViewById(R.id.drawer_layout);
-
         rcViewHistory = findViewById(R.id.rcViewHistory);
-    }
-
-    private void getRequestList() {
-
-
+        getAllRequests();
 
     }
 
 
+    private void getAllRequests() {
+        GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
+        URL.getStrictMode();
+        requestList = garageRequestAPI.getAcceptedRequests();
+
+        rcViewHistory.setLayoutManager(new LinearLayoutManager(this));
+        RequestLogAdapter requestAdapter = new RequestLogAdapter(this, requestList);
+        rcViewHistory.setAdapter(requestAdapter);
+    }
 
     public void  ClickMenu(View view){
         //Open Drawer
