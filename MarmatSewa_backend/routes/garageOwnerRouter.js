@@ -87,11 +87,18 @@ router
 			.catch(next);
 	});
 
-router.route('/:garage_id').get(auth.verifyUser, (req, res, next) => {
+router.route('/:garage_id')
+.get(auth.verifyUser, (req, res, next) => {
 	GarageOwner.findById(req.params.garage_id).then((garage) => {
 		res.status(200).json(garage);
 	});
-});
+})
+.put(auth.verifyUser, (req, res, next) => {
+	GarageOwner.findOneAndUpdate(req.params.garage_id, {$set: req.body}, {new: true})
+	.then(garage => {
+		res.status(201).json(garage);
+	}).catch(next);
+})
 
 //reviews
 router

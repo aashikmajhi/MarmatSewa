@@ -49,11 +49,8 @@ public class RequestLogAdapter extends RecyclerView.Adapter<RequestLogAdapter.Re
                     requestList.remove(position);
                     notifyDataSetChanged();
                 }
-
-
             }
         });
-
     }
 
     @Override

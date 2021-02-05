@@ -19,7 +19,7 @@ const Request = new mongoose.Schema(
 		},
 		status: {
 			type: String,
-			enum: [ 'PENDING', 'APPROVED' ],
+			enum: [ 'PENDING', 'APPROVED', 'DONE' ],
 			default: 'PENDING'
 		}
 
