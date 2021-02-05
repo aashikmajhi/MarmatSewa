@@ -71,17 +71,17 @@
             app:srcCompat="@drawable/back" />
 
 
-    <ImageView
-        android:id="@+id/btnNext"
-        android:layout_width="92dp"
-        android:layout_height="78dp"
-        android:src="@drawable/next_arrow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+<!--    <ImageView-->
+<!--        android:id="@+id/btnNext"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="78dp"-->
+<!--        android:src="@drawable/next_arrow"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.949"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.975" />-->
 
     <TextView
         android:id="@+id/Name"
@@ -115,6 +115,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.221" />
 
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/btnUploadDocument"-->
+<!--        android:layout_width="73dp"-->
+<!--        android:layout_height="58dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.772"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.823"-->
+<!--        app:srcCompat="@drawable/attach" />-->
+
+    <EditText
+        android:id="@+id/edtRegType"
+        android:layout_width="238dp"
+        android:layout_height="55dp"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="RegistrationType"
+        android:padding="16dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323" />
+
     <TextView
         android:id="@+id/registrationtype"
         android:layout_width="wrap_content"
@@ -128,24 +158,24 @@
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
+        app:layout_constraintVertical_bias="0.342" />
 
     <EditText
-        android:id="@+id/edtRegType"
+        android:id="@+id/edtLocation"
         android:layout_width="238dp"
         android:layout_height="55dp"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="RegistrationType"
-        android:padding="16dp"
         android:gravity="center_horizontal"
+        android:hint="Location"
+        android:padding="16dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
+        app:layout_constraintVertical_bias="0.426" />
 
     <TextView
         android:id="@+id/location"
@@ -160,24 +190,24 @@
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.431" />
 
     <EditText
-        android:id="@+id/edtLocation"
+        android:id="@+id/edtContactName"
         android:layout_width="238dp"
         android:layout_height="55dp"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Location"
         android:gravity="center_horizontal"
-        android:textAlignment="center"
+        android:hint="Contact Name"
         android:padding="16dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.538" />
 
     <TextView
         android:id="@+id/name"
@@ -192,24 +222,24 @@
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.536" />
 
     <EditText
-        android:id="@+id/edtContactName"
+        android:id="@+id/edtNumber"
         android:layout_width="238dp"
         android:layout_height="55dp"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="Contact Name"
-        android:padding="16dp"
         android:gravity="center_horizontal"
+        android:hint="Contact Number"
+        android:padding="16dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681" />
 
     <TextView
         android:id="@+id/number"
@@ -224,56 +254,11 @@
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
-
-    <EditText
-        android:id="@+id/edtNumber"
-        android:layout_width="238dp"
-        android:layout_height="55dp"
-        android:drawablePadding="16dp"
-        android:ems="10"
-        android:hint="Contact Number"
-        android:padding="16dp"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.861"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/pan"
-        android:layout_width="397dp"
-        android:layout_height="42dp"
-        android:gravity="center_horizontal"
-        android:text="Pan No And  Register Certificate"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.709" />
-
-    <ImageView
-        android:id="@+id/btnUploadDocument"
-        android:layout_width="73dp"
-        android:layout_height="58dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.772"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823"
-        app:srcCompat="@drawable/attach" />
+        app:layout_constraintVertical_bias="0.673" />
 
     <EditText
         android:id="@+id/edtPanNo"
-        android:layout_width="148dp"
+        android:layout_width="238dp"
         android:layout_height="54dp"
         android:drawablePadding="16dp"
         android:ems="10"
@@ -284,10 +269,56 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.824" />
+
+    <TextView
+        android:id="@+id/pan"
+        android:layout_width="97dp"
+        android:layout_height="42dp"
+        android:gravity="center_horizontal"
+        android:text="Pan No"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827" />
+
+    <ImageView
+        android:id="@+id/btnRegisterWorkshop"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977"
+        app:srcCompat="@drawable/enter" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="129dp"
+        android:layout_height="39dp"
+        android:gravity="center_horizontal"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

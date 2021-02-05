@@ -67,7 +67,7 @@ const garageOwnerSchema = new mongoose.Schema(
 		registrationDoc: {
 			type: String,
 			maxlength: 255,
-			required: true
+			required: false
 		},
 		status: {
 			type: String,

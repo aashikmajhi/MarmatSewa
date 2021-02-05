@@ -22,7 +22,9 @@ public class WorkshopBLL {
 
         try {
             Response<Void> r = call.execute();
-            isSuccess = true;
+            if (r.isSuccessful()) {
+                isSuccess = true;
+            }
         }
         catch (Exception e) {
             e.printStackTrace();

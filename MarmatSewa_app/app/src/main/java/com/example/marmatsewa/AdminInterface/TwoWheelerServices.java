@@ -112,12 +112,6 @@ public class TwoWheelerServices extends AppCompatActivity {
                 checkCameraPermission();
                 popUpSelectFromCameraOrGallery();
 
-
-
-
-
-
-
             }
         });
 
@@ -128,7 +122,8 @@ public class TwoWheelerServices extends AppCompatActivity {
                 featureName = edtTwoWheelServiceName.getText().toString();
                 serviceBLL = new ServiceBLL();
                 serviceBLL.checkPostService(featureName, image);
-                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
+                finish();
+//                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
             }
         });
     }
@@ -138,6 +133,7 @@ public class TwoWheelerServices extends AppCompatActivity {
         URL.getStrictMode();
 
         serviceList = serviceBLL.getServices();
+        if (serviceList.size() <= 0) return;
         ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
         twoWheerRecyclerView.setAdapter(serviceAdapter);
     }
@@ -167,6 +163,7 @@ public class TwoWheelerServices extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -180,7 +177,6 @@ public class TwoWheelerServices extends AppCompatActivity {
         Uri uri = data.getData();
         imagePath = imageBLL.getRealPathFromUri(uri, getApplicationContext());
         imageBLL.previewImage(imagePath, btnUploadImage);
-
 
         if (imageBLL.checkImageUpload(imagePath))
             image = imageBLL.returnFilename();

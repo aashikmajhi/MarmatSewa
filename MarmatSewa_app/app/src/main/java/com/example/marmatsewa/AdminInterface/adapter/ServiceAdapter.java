@@ -23,10 +23,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import retrofit2.Response;
+
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
 
     private Context context;
     private List<Service> serviceList;
+
 
     public ServiceAdapter(Context context, List<Service> serviceList) {
         this.context = context;
@@ -46,7 +49,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         //get image from server ...
         ImageBLL imageBLL = new ImageBLL();
         imageBLL.MakeStrict();
-        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"uploads/" + serviceList.get(position).getImage();
+        String imagePath = com.example.marmatsewa.url.URL.IMAGE_BASE_URL + "/uploads/" + serviceList.get(position).getImage();
         try {
             URL url = new URL(imagePath);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
@@ -61,6 +64,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
     @Override
     public int getItemCount() {
         return serviceList.size();
+        //return 0;
     }
 
     public class ServiceViewHolder extends ViewHolder {

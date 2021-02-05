@@ -4,6 +4,7 @@ const auth = require('../middlewares/authentication');
 
 const router = express.Router();
 
+//for user and admin to view available features ...
 router.route('/')
 .get(auth.verifyUser, (req, res, next ) => {
     Request.find()
@@ -20,7 +21,19 @@ router.route('/')
     }).catch(next);
 });
 
-router.route('/:request_id')
+router.route('/garages')
+//for garageOwner to get requests sent by user to specific garage...
+//GET requests with status PENDING only ...
+.get(auth.verifyUser, (req, res, next) => {
+    Request.find({ garageOwner: { $in: req.user.id }, status: 'PENDING' })
+    .populate('user')
+    .populate('feature')
+    .then(request => res.json(request));
+})
+
+
+router.route('garages/:request_id')
+//to change status of requests by garageOwner after accepting the request ...
 .put(auth.verifyUser, (req, res, next) => {
     const request = req.body;
     Request.findByIdAndUpdate(req.params.request_id, { $set: request }, {new: true} )

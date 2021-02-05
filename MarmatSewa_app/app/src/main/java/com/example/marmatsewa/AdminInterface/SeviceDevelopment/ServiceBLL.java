@@ -18,16 +18,12 @@ public class ServiceBLL {
 
     public List<Service> getServices() {
         List<Service> serviceList = null;
-
         Call<List<Service>> call = serviceAPI.getAllService(URL.token);
 
         try {
             Response<List<Service>> response = call.execute();
             if(response.isSuccessful()) {
                 serviceList = response.body();
-                for (Service service: serviceList) {
-                    System.out.println(service);
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();
