@@ -87,27 +87,20 @@ router
 			.catch(next);
 	});
 
-router.route('/:garage_id')
-.get(auth.verifyUser, (req, res, next) => {
-	GarageOwner.findById(req.params.garage_id).then((garage) => {
-		res.status(200).json(garage);
-	});
-})
-.put(auth.verifyUser, (req, res, next) => {
-	let { password, phoneNo } = req.body;
-	GarageOwner.findById(req.params.garage_id).then((garage) => {
-		bcrypt.hash(password, 10).then((hash) => {
-			user.password = hash;
-			user.phoneNo = phoneNo;
-			user
-				.save()
-				.then((user) => {
-					res.status(201).json(user);
-				})
-				.catch(next);
+router
+	.route('/:garage_id')
+	.get(auth.verifyUser, (req, res, next) => {
+		GarageOwner.findById(req.params.garage_id).then((garage) => {
+			res.status(200).json(garage);
 		});
+	})
+	.put(auth.verifyUser, (req, res, next) => {
+		GarageOwner.findOneAndUpdate(req.params.garage_id, { $set: req.body }, { new: true })
+			.then((garage) => {
+				res.status(201).json(garage);
+			})
+			.catch(next);
 	});
-});
 
 //reviews
 router
