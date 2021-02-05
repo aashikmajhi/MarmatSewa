@@ -42,7 +42,7 @@ public class GarageTwoWheelServiceAdapter extends RecyclerView.Adapter<GarageTwo
 
         ImageBLL imageBLL = new ImageBLL();
         imageBLL.MakeStrict();
-        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"/uploads/" + garageTwoWheelServiceList.get(position).getImage();
+        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"uploads/" + garageTwoWheelServiceList.get(position).getImage();
         try {
             URL url = new URL(imagePath);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());

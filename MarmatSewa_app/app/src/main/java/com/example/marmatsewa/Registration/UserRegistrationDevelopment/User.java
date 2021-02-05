@@ -2,6 +2,7 @@ package com.example.marmatsewa.Registration.UserRegistrationDevelopment;
 
 public class User {
 
+    private String _id;
     private String fullname;
     private String email;
     private String password;
@@ -20,6 +21,14 @@ public class User {
         this.dob = dob;
         this.gender = gender;
         this.scannedLicense = scannedLicense;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getFullname() {

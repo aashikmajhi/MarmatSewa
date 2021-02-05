@@ -17,23 +17,6 @@ public class ProfileBLL {
         this.uid = uid;
     }
 
-    public User loadProfile() {
-        User profile = null;
-        ProfileAPI profileAPI = URL.getInstance().create(ProfileAPI.class);
-        Call<User> call = profileAPI.getProfile(URL.token, uid);
-
-        try {
-            Response<User> response = call.execute();
-
-            if(response.isSuccessful()) {
-                profile = response.body();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return profile;
-    }
-
     public Workshop loadGarageProfile() {
         Workshop garageProfile = null;
         ProfileAPI profileAPI = URL.getInstance().create(ProfileAPI.class);

@@ -22,7 +22,6 @@ const Request = new mongoose.Schema(
 			enum: [ 'PENDING', 'APPROVED' ],
 			default: 'PENDING'
 		}
-
 	},
 	{ timestamps: true }
 );
