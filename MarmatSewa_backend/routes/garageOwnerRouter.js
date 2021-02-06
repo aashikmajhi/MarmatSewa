@@ -32,7 +32,6 @@ router
 			address,
 			contactNo,
 			registrationType,
-
 			panDoc,
 			registrationDoc,
 			controlsAndBrakes,
