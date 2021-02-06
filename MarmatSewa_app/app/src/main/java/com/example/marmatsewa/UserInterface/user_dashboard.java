@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
@@ -20,10 +22,10 @@ public class user_dashboard extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-    private ImageView btnTwoWheel, btnFourWheel,btnUserProfile, btnNotification, userLogout;
+    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout;
     private RecyclerView notificationRcView;
 
-//    private AlertDialog.Builder builder;
+    private AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,57 +36,39 @@ public class user_dashboard extends AppCompatActivity {
 
         userLogout = findViewById(R.id.userLogout);
 
-        //notification
-        if(getIntent().getExtras()!=null){
-            if (getIntent().getExtras().getString("").equals("")){
-                requestAccepted();
-            }
-            else if (getIntent().getExtras().get("").equals("")){
-                serviceCompleted();
-            }
-        }
-
         btnNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                createNewNotificationPopup();
             }
         });
 
-        btnUserProfile =findViewById(R.id.btnUserProfile);
-        btnUserProfile.setOnClickListener(new View.OnClickListener() {
+        builder = new AlertDialog.Builder(this);
+
+        userLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this, user_profile_view.class));
+            public void onClick(View v) {
+                builder.setTitle("Logout")
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                URL.token = "";
+                                URL.role = "";
+                                URL.user_id = "";
+                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
+                            }
+                        });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.show();
             }
         });
-
-//        builder = new AlertDialog.Builder(this);
-
-//        userLogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                builder.setTitle("Logout")
-//                        .setMessage("Are you sure?")
-//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                URL.token = "";
-//                                URL.role = "";
-//                                URL.user_id = "";
-//                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
-//                            }
-//                        });
-//                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                builder.show();
-//            }
-//        });
 
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 
@@ -107,7 +91,7 @@ public class user_dashboard extends AppCompatActivity {
 
     }
 
-    public void requestAccepted(){
+    public void createNewNotificationPopup(){
         dialogBuilder = new AlertDialog.Builder(this);
         final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
 
@@ -118,17 +102,5 @@ public class user_dashboard extends AppCompatActivity {
         dialog.show();
 
     }
-
-    public void serviceCompleted(){
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
-
-        //TODO: assign notification card here
-
-        dialogBuilder.setView(notificationView);
-        dialog = dialogBuilder.create();
-        dialog.show();
-    }
-
 
 }
