@@ -87,29 +87,52 @@ router
 			.catch(next);
 	});
 
-router.route('/:garage_id').get(auth.verifyUser, (req, res, next) => {
-	GarageOwner.findById(req.params.garage_id).then((garage) => {
-		res.status(200).json(garage);
+router
+	.route('/:garage_id')
+	.get(auth.verifyUser, (req, res, next) => {
+		GarageOwner.findById(req.params.garage_id).then((garage) => {
+			res.status(200).json(garage);
+		});
+	})
+	.put(auth.verifyUser, (req, res, next) => {
+		GarageOwner.findOneAndUpdate(req.params.garage_id, { $set: req.body }, { new: true })
+			.then((garage) => {
+				res.status(201).json(garage);
+			})
+			.catch(next);
 	});
-});
 
 //reviews
 router
 	.route('/:garage_id/reviews')
 	.get(auth.verifyUser, (req, res, next) => {
-		GarageOwner.findById(req.params.garage_id).then((garage) => {
+		GarageOwner.findById(req.params.garage_id)
+		.then((garage) => {
+			// for (let index = 0; index < garage.reviews.length; index++) {
+			// 	User.findById(garage.reviews[index].user)
+			// 	.then(user => {
+			// 	    garage.reviews[index].username = user.fullname;
+			// 		console.log(garage.reviews[index].username); 
+			// 		console.log(garage.reviews[index]); 
+			// 	})
+			// }
 			res.status(200).json(garage.reviews);
-		});
+ 		}).catch(next);
 	})
 	.post(auth.verifyUser, (req, res, next) => {
 		const rv = ({ review, rating } = req.body);
+
 		rv.user = req.user.id;
 		GarageOwner.findById(req.params.garage_id)
-			.then((garage) => {
-				garage.reviews.push(rv);
-				garage.save().then((newReview) => res.status(201).json(newReview)).catch(next);
+		.then((garage) => {
+			garage.reviews.push(rv);
+			garage.save()
+			.then((newReview) => {
+				res.status(201).json(newReview.reviews)
 			})
 			.catch(next);
+		})
+		.catch(next);
 	});
 
 router

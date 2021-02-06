@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="160dp"
     android:layout_margin="10dp"
     android:background="@color/tab">
 
@@ -11,6 +11,7 @@
         android:id="@+id/rating_bar"
         android:layout_width="236dp"
         android:layout_height="40dp"
+        android:layout_marginTop="4dp"
         android:numStars="5"
         android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,18 +21,32 @@
         app:layout_constraintVertical_bias="0.177" />
 
     <TextView
-        android:id="@+id/Review"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Review by"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_bar" />
+
+    <TextView
+        android:id="@+id/tvReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="*Review"
         android:textColor="@color/blue"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.789" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

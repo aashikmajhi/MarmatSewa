@@ -67,7 +67,7 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edtReview"
         android:layout_width="360dp"
         android:layout_height="153dp"
         app:layout_constraintBottom_toBottomOf="parent"

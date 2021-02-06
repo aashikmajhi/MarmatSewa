@@ -20,10 +20,10 @@ public class user_dashboard extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout;
+    private ImageView btnTwoWheel, btnFourWheel,btnUserProfile, btnNotification, userLogout;
     private RecyclerView notificationRcView;
 
-    private AlertDialog.Builder builder;
+//    private AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,32 +51,40 @@ public class user_dashboard extends AppCompatActivity {
             }
         });
 
-        builder = new AlertDialog.Builder(this);
-
-        userLogout.setOnClickListener(new View.OnClickListener() {
+        btnUserProfile =findViewById(R.id.btnUserProfile);
+        btnUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                builder.setTitle("Logout")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                URL.token = "";
-                                URL.role = "";
-                                URL.user_id = "";
-                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
-                            }
-                        });
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.show();
+            public void onClick(View view) {
+                startActivity(new Intent(user_dashboard.this, user_profile_view.class));
             }
         });
+
+//        builder = new AlertDialog.Builder(this);
+
+//        userLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                builder.setTitle("Logout")
+//                        .setMessage("Are you sure?")
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                URL.token = "";
+//                                URL.role = "";
+//                                URL.user_id = "";
+//                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
+//                            }
+//                        });
+//                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                builder.show();
+//            }
+//        });
 
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 

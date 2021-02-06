@@ -118,7 +118,7 @@ public class TwoWheelerServices extends AppCompatActivity {
                 serviceBLL = new ServiceBLL();
                 serviceBLL.checkPostService(featureName, image);
                 finish();
-//                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
+                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
             }
         });
     }

@@ -36,6 +36,15 @@ public class Workshop {
         this.vehicleType = vehicleType;
     }
 
+    public Workshop(String businessName, String ownerName, String address, String contactNo, String registrationType, String panNo) {
+        this.businessName = businessName;
+        this.ownerName = ownerName;
+        this.address = address;
+        this.contactNo = contactNo;
+        this.registrationType = registrationType;
+        this.panNo = panNo;
+    }
+
     public String get_id() {
         return _id;
     }

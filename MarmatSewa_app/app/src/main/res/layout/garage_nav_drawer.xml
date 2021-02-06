@@ -14,7 +14,7 @@
         android:onClick="ClickLogo"
         android:src="@drawable/logo"/>
 
-    //Name of logged in garage goes in this Textview!
+<!--    //Name of logged in garage goes in this Textview!-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
