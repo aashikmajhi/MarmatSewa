@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 
 public interface UserProfileAPI {
 
-    @GET("api/profiles/{user_id}")
-    Call<User> getProfile(@Header("Authorization") String header, @Path("user_id") String user_id);
+    @GET("api/profiles/")
+    Call<User> getProfile(@Header("Authorization") String header);
 }

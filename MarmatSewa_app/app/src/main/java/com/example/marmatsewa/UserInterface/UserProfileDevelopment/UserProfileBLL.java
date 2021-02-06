@@ -11,16 +11,13 @@ import retrofit2.Response;
 
 public class UserProfileBLL {
 
-    private String user_id;
-
-    public UserProfileBLL(String user_id) {
-        this.user_id = user_id;
+    public UserProfileBLL() {
     }
 
     public User getUserProfile() {
         User userProfile = null;
-        ProfileAPI profileAPI = URL.getInstance().create(ProfileAPI.class);
-        Call<User> call = profileAPI.getProfile(URL.token, user_id);
+        UserProfileAPI userProfileAPI = URL.getInstance().create(UserProfileAPI.class);
+        Call<User> call = userProfileAPI.getProfile(URL.token);
 
         try {
             Response<User> response = call.execute();
