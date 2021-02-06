@@ -29,10 +29,18 @@ router.route('/garages')
     .populate('user')
     .populate('feature')
     .then(request => res.json(request));
+});
+
+
+router.route('/garages/:request_id')
+//for garageOwner log to display APPROVED requests ...
+//for get, just put random string as parameter ...
+.get(auth.verifyUser, (req, res, next) => {
+    Request.find({ garageOwner: { $in: req.user.id }, status: 'APPROVED' })
+    .populate('user')
+    .populate('feature')
+    .then(request => res.json(request));
 })
-
-
-router.route('garages/:request_id')
 //to change status of requests by garageOwner after accepting the request ...
 .put(auth.verifyUser, (req, res, next) => {
     const request = req.body;
@@ -40,6 +48,6 @@ router.route('garages/:request_id')
     .then(request => {
         res.status(201).send(request);
     }).catch(next);
-})
+});
 
 module.exports = router;

@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
 import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
@@ -26,7 +24,7 @@ public class customerRequest extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     private RecyclerView rcView;
-    private List<GarageRequestResponse> requestList;
+    private List<GarageRequestResponse> requestList = null;
 
     //notification
     NotificationManagerCompat notificationManagerCompat;
@@ -58,13 +56,13 @@ public class customerRequest extends AppCompatActivity {
         getAllRequests();
     }
 
-    private void getAllRequests() {
+    public void getAllRequests() {
         GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
         URL.getStrictMode();
-        requestList = garageRequestAPI.getGarageRequests();
+        requestList = garageRequestAPI.getPendingRequests();
         //if no data is fetched from api call returns void ...
         if (requestList.size() <= 0) {
-            Toast.makeText(this, "no requests have been received ...", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "no requests have been received ...", Toast.LENGTH_SHORT).show();
             return;
         }
         CustomerRequestAdapter requestAdapter = new CustomerRequestAdapter(this, requestList);
