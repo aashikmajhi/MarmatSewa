@@ -69,7 +69,7 @@ public class TwoWheelerServices extends AppCompatActivity {
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
-        twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         getAllServices();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -129,8 +129,7 @@ public class TwoWheelerServices extends AppCompatActivity {
 
         serviceList = serviceBLL.getServices();
         if (serviceList.size() <= 0) return;
-        ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
-        twoWheerRecyclerView.setAdapter(serviceAdapter);
+
     }
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
