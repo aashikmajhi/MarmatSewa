@@ -1,8 +1,5 @@
 package com.example.marmatsewa.AdminInterface.SeviceDevelopment;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.example.marmatsewa.Registration.LoginDevelopment.LoginResponse;
 import com.example.marmatsewa.url.URL;
 
@@ -21,7 +18,7 @@ public class ServiceBLL {
 
     public List<Service> getServices() {
         List<Service> serviceList = null;
-        Log.i("token", URL.token);
+        System.out.println("service token :" +URL.token);
         Call<List<Service>> call = serviceAPI.getAllService(URL.token);
 
         try {

@@ -1,4 +1,4 @@
-package com.example.marmatsewa.AdminInterface.adapter;
+package com.example.marmatsewa.GarageDashboard.Adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,10 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
-import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageAPI;
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
 import com.example.marmatsewa.R;
 
@@ -23,60 +21,58 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import retrofit2.Response;
-
-public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
-
+public class GarageTwoWheelServiceAdapter extends RecyclerView.Adapter<GarageTwoWheelServiceAdapter.GarageTwoWheelServiceHolder> {
     private Context context;
-    private List<Service> serviceList;
+    private List<Service> garageTwoWheelServiceList;
 
-
-    public ServiceAdapter(Context context, List<Service> serviceList) {
+    public GarageTwoWheelServiceAdapter(Context context, List<Service> garageTwoWheelServiceList) {
         this.context = context;
-        this.serviceList = serviceList;
+        this.garageTwoWheelServiceList = garageTwoWheelServiceList;
     }
 
     @NonNull
     @Override
-    public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ServiceViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_2_wheel_card, parent, false));
+    public GarageTwoWheelServiceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new GarageTwoWheelServiceHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.garage_two_wheel_service_card, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ServiceViewHolder serviceViewHolder, int position) {
-        //displays feature name ...
-        serviceViewHolder.twoWheelServiceName.setText(serviceList.get(position).getFeature());
-        //get image from server ...
+    public void onBindViewHolder(@NonNull GarageTwoWheelServiceHolder holder, int position) {
+        holder.twoWheelServiceName.setText(garageTwoWheelServiceList.get(position).getFeature());
+
         ImageBLL imageBLL = new ImageBLL();
         imageBLL.MakeStrict();
-        String imagePath = com.example.marmatsewa.url.URL.IMAGE_BASE_URL + "uploads/" + serviceList.get(position).getImage();
+        String imagePath = com.example.marmatsewa.url.URL.BASE_URL +"uploads/" + garageTwoWheelServiceList.get(position).getImage();
         try {
             URL url = new URL(imagePath);
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            serviceViewHolder.twoWheelServiceImage.setImageBitmap(bmp);
+            holder.twoWheelServiceImage.setImageBitmap(bmp);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        holder.btnRemove.setOnClickListener(v-> {
+
+        });
     }
 
     @Override
     public int getItemCount() {
-        return serviceList.size();
-        //return 0;
+        return garageTwoWheelServiceList.size();
     }
 
-    public class ServiceViewHolder extends ViewHolder {
-
+    public class GarageTwoWheelServiceHolder extends RecyclerView.ViewHolder {
         private TextView twoWheelServiceName;
-        private ImageView twoWheelServiceImage;
+        private ImageView twoWheelServiceImage, btnRemove;
 
-        public ServiceViewHolder(@NonNull View itemView) {
+        public GarageTwoWheelServiceHolder(@NonNull View itemView) {
             super(itemView);
 
             twoWheelServiceName = itemView.findViewById(R.id.twoWheelServiceName);
             twoWheelServiceImage = itemView.findViewById(R.id.twoWheelServiceImage);
+            btnRemove = itemView.findViewById(R.id.btnRemove);
         }
     }
 }

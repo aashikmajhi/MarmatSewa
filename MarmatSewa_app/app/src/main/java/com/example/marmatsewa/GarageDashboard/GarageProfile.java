@@ -95,7 +95,7 @@ public class GarageProfile extends AppCompatActivity {
     private void loadGarageProfile() {
         ProfileBLL profileBLL = new ProfileBLL(URL.user_id);
         URL.getStrictMode();
-        final Workshop w = profileBLL.loadGarageProfile();
+        final Workshop w = profileBLL.getGarageProfile();
 
         garageName.setText(w.getBusinessName());
         edtRegType.setText(w.getRegistrationType());
@@ -106,9 +106,26 @@ public class GarageProfile extends AppCompatActivity {
     }
 
     private void updateGarageProfile() {
+        Workshop updateGarage = new Workshop(
+          garageName.getText().toString(),
+          edtContactName.getText().toString(),
+                edtRegType.getText().toString(),
+          edtLocation.getText().toString(),
+
+          edtNumber.getText().toString(),
+          edtPanNo.getText().toString()
+        );
+
+        ProfileBLL profileBLL = new ProfileBLL(URL.user_id);
+        URL.getStrictMode();
+        if (profileBLL.updateGarageProfile(updateGarage)) {
+            Toast.makeText(this, "Garage Profile Updated Successfully", Toast.LENGTH_SHORT).show();
+            recreate();
+        }
+        else
+            Toast.makeText(this, "Error updating garage profile !!", Toast.LENGTH_SHORT).show();
 
     }
-
 
 
 
