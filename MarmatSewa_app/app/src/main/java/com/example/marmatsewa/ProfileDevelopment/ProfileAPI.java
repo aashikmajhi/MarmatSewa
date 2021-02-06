@@ -5,8 +5,10 @@ import com.example.marmatsewa.Registration.UserRegistrationDevelopment.User;
 import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Workshop;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ProfileAPI {
@@ -17,4 +19,6 @@ public interface ProfileAPI {
     @GET("api/garageOwner/{gid}")
     Call<Workshop> getGarageProfile(@Header("Authorization") String header, @Path("gid") String gid);
 
+    @PUT("api/garageOwner/{gid}")
+    Call<Void> updateGarageProfile(@Header("Authorization") String header, @Path("gid") String gid, @Body Workshop workshop);
 }
