@@ -21,8 +21,11 @@ const Request = new mongoose.Schema(
 			type: String,
 			enum: [ 'PENDING', 'APPROVED', 'DONE' ],
 			default: 'PENDING'
+		},
+		serviceTypes: {
+			type: String,
+			enum: [ 'DROP IN SERVICE', 'PICKUP AND DELIVERY', 'ON THE SPOT' ]
 		}
-
 	},
 	{ timestamps: true }
 );
