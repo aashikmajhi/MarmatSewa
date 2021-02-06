@@ -127,8 +127,8 @@ public class TwoWheelerServices extends AppCompatActivity {
         ServiceBLL serviceBLL = new ServiceBLL();
         URL.getStrictMode();
 
-        serviceList = serviceBLL.getServices();
-        if (serviceList.size() <= 0) return;
+        serviceList = serviceBLL.getFilteredServices();
+        if (serviceList.equals(null)) return;
         ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
         twoWheerRecyclerView.setAdapter(serviceAdapter);
     }

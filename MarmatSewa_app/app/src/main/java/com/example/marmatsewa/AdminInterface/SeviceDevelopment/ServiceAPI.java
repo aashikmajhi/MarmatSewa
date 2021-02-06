@@ -15,4 +15,7 @@ public interface    ServiceAPI {
 
     @POST("api/features")
     Call<Void> postService(@Header("Authorization") String header, @Body Service service);
+
+    @GET("api/filteredFeatures")
+    Call<List<Service>> getFilteredFeatures(@Header("Authorization") String header);
 }
