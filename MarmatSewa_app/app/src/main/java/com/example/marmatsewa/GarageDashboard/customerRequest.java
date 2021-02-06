@@ -1,6 +1,8 @@
 package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +15,7 @@ import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.notificationChannel.createChannel;
 import com.example.marmatsewa.url.URL;
 
 import java.util.List;
@@ -23,12 +26,28 @@ public class customerRequest extends AppCompatActivity {
     private RecyclerView rcView;
     private List<GarageRequestResponse> requestList = null;
 
+    //notification
+    NotificationManagerCompat notificationManagerCompat;
+    private androidx.appcompat.app.AlertDialog.Builder dialogBuilder;
+    private androidx.appcompat.app.AlertDialog dialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_request);
+
+        //notification
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+
+        createChannel c = new createChannel(this);
+        c.createChannel();
+
+        if(getIntent().getExtras() !=  null){
+            if (getIntent().getExtras().getString("Username").equals("true")){
+                NewRequest();
+            }
+        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
         rcView = findViewById(R.id.rcView);
@@ -89,5 +108,28 @@ public class customerRequest extends AppCompatActivity {
         super.onPause();
         garageDashboard.closeDrawer(drawerLayout);
 
+    }
+
+    //notification for new Request
+    public void newRequest(){
+        dialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
+
+        //TODO: assign notification card here
+
+        dialogBuilder.setView(notificationView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+    }
+
+    private void NewRequest(){
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(this,createChannel.hire)
+                .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                .setContentTitle("New Request")
+                .setContentText("New Request from : Username")
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+
+        notificationManagerCompat.notify(1,notification.build());
     }
 }

@@ -1,6 +1,7 @@
 package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -15,11 +16,14 @@ import android.widget.Button;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
 import com.example.marmatsewa.Registration.garageRegistrationBusinessInfo;
+import com.example.marmatsewa.notificationChannel.createChannel;
 import com.example.marmatsewa.url.URL;
 
 public class garageDashboard extends AppCompatActivity {
 
     //Initialize variable
+    private androidx.appcompat.app.AlertDialog.Builder dialogBuilder;
+    private androidx.appcompat.app.AlertDialog dialog;
 
     DrawerLayout drawerLayout;
 
@@ -32,6 +36,8 @@ public class garageDashboard extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
         btnAddgarageService = findViewById(R.id.btnAddgarageService);
 
         btnAddgarageService.setOnClickListener(new View.OnClickListener() {
@@ -132,5 +138,16 @@ public class garageDashboard extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         closeDrawer(drawerLayout);
+    }
+
+    public void newRequest(){
+        dialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
+
+        //TODO: assign notification card here
+
+        dialogBuilder.setView(notificationView);
+        dialog = dialogBuilder.create();
+        dialog.show();
     }
 }
