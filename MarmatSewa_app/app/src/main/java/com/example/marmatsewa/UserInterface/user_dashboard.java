@@ -22,7 +22,7 @@ public class user_dashboard extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout;
+    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout, btnUserProfile;
     private RecyclerView notificationRcView;
 
     private AlertDialog.Builder builder;
@@ -35,13 +35,11 @@ public class user_dashboard extends AppCompatActivity {
         notificationRcView = findViewById(R.id.notificationRcView);
 
         userLogout = findViewById(R.id.userLogout);
+        btnUserProfile = findViewById(R.id.btnUserProfile);
 
-        btnNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNewNotificationPopup();
-            }
-        });
+        btnNotification.setOnClickListener(v -> createNewNotificationPopup());
+
+        btnUserProfile.setOnClickListener(v -> startActivity(new Intent(user_dashboard.this, user_profile_view.class)));
 
         builder = new AlertDialog.Builder(this);
 

@@ -13,8 +13,8 @@ import retrofit2.http.Path;
 
 public interface ProfileAPI {
 
-    @GET("api/profiles/")
-    Call<User> getProfile(@Header("Authorization") String header, @Path("user_id") String user_id);
+//    @GET("api/profiles/")
+//    Call<User> getProfile(@Header("Authorization") String header, @Path("user_id") String user_id);
 
     @GET("api/garageOwner/{gid}")
     Call<Workshop> getGarageProfile(@Header("Authorization") String header, @Path("gid") String gid);

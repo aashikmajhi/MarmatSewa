@@ -67,7 +67,7 @@ public class user_profile_view extends AppCompatActivity {
     }
 
     private void loadUserProfile() {
-        UserProfileBLL userProfileBLL = new UserProfileBLL(URL.user_id);
+        UserProfileBLL userProfileBLL = new UserProfileBLL();
         user = userProfileBLL.getUserProfile();
         URL.getStrictMode();
 
