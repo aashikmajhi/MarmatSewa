@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
@@ -21,6 +23,7 @@ public class user_dashboard extends AppCompatActivity {
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private RadioGroup radioGroup;
 
     private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout;
     private RecyclerView notificationRcView;
@@ -33,6 +36,7 @@ public class user_dashboard extends AppCompatActivity {
 
         btnNotification = findViewById(R.id.btnNotification);
         notificationRcView = findViewById(R.id.notificationRcView);
+        radioGroup = findViewById(R.id.radioGroup);
 
         userLogout = findViewById(R.id.userLogout);
 
@@ -45,30 +49,30 @@ public class user_dashboard extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
 
-        userLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                builder.setTitle("Logout")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                URL.token = "";
-                                URL.role = "";
-                                URL.user_id = "";
-                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
-                            }
-                        });
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.show();
-            }
-        });
+//        userLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                builder.setTitle("Logout")
+//                        .setMessage("Are you sure?")
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                URL.token = "";
+//                                URL.role = "";
+//                                URL.user_id = "";
+//                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
+//                            }
+//                        });
+//                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                builder.show();
+//            }
+//        });
 
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 
@@ -76,7 +80,9 @@ public class user_dashboard extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this,user_two_wheel_services.class));
+                Intent intent = new Intent(getApplicationContext(), user_two_wheel_services.class);
+                storeLoggedInStatusToSharedPreference();
+                startActivity(intent);
             }
         });
 
@@ -85,11 +91,34 @@ public class user_dashboard extends AppCompatActivity {
         btnFourWheel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this,user_four_wheel_services.class));
+                Intent intent = new Intent(user_dashboard.this,user_four_wheel_services.class);
+                storeLoggedInStatusToSharedPreference();
+                startActivity(intent);
             }
         });
 
     }
+    private String getRadioButtonValue() {
+        switch (radioGroup.getCheckedRadioButtonId()) {
+            case R.id.rbDropInService:
+                return "DROP IN SERVICE";
+            case R.id.rbOnTheSpot:
+                return "ON THE SPOT";
+            case R.id.rbPickUpDelivery:
+                return "PICKUP AND DELIVERY";
+        }
+        return "";
+
+    }
+
+    private void storeLoggedInStatusToSharedPreference() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("USER_REQUEST", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("SERVICE_TYPES", getRadioButtonValue());
+        editor.apply();
+    }
+
+
 
     public void createNewNotificationPopup(){
         dialogBuilder = new AlertDialog.Builder(this);

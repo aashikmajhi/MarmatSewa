@@ -16,14 +16,16 @@ public class RequestBLL {
     private RequestAPI requestAPI = URL.getInstance().create(RequestAPI.class);
     private String feature;
     private String garageOwner;
+    private String serviceTypes;
 
-    public RequestBLL(String feature, String garageOwner) {
+    public RequestBLL(String feature, String garageOwner, String serviceTypes) {
         this.feature = feature;
         this.garageOwner = garageOwner;
+        this.serviceTypes = serviceTypes;
     }
 
     public Boolean checkPostRequest() {
-        Call<Void> call = requestAPI.postRequest(URL.token, feature, garageOwner);
+        Call<Void> call = requestAPI.postRequest(URL.token, feature, garageOwner, serviceTypes);
 
         try {
             Response<Void> response = call.execute();

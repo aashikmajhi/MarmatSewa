@@ -32,6 +32,21 @@ public class ServiceBLL {
         return serviceList;
     }
 
+    public List<Service> getFilteredServices() {
+        List<Service> serviceList = null;
+        Call<List<Service>> call = serviceAPI.getFilteredFeatures(URL.token);
+
+        try {
+            Response<List<Service>> response = call.execute();
+            if(response.isSuccessful()) {
+                serviceList = response.body();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return serviceList;
+    }
+
     public boolean checkPostService(String feature, String image ) {
         ServiceAPI serviceAPI = URL.getInstance().create(ServiceAPI.class);
         Service service = new Service(feature, image);
