@@ -22,10 +22,11 @@ public class user_dashboard extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-    private ImageView btnTwoWheel, btnFourWheel, btnNotification, userLogout, btnUserProfile;
+    private ImageView btnTwoWheel, btnFourWheel, btnNotification, btnUserProfile;
     private RecyclerView notificationRcView;
 
     private AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,6 @@ public class user_dashboard extends AppCompatActivity {
         btnNotification = findViewById(R.id.btnNotification);
         notificationRcView = findViewById(R.id.notificationRcView);
 
-        userLogout = findViewById(R.id.userLogout);
         btnUserProfile = findViewById(R.id.btnUserProfile);
 
         btnNotification.setOnClickListener(v -> createNewNotificationPopup());
@@ -43,38 +43,13 @@ public class user_dashboard extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
 
-        userLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                builder.setTitle("Logout")
-                        .setMessage("Are you sure?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                URL.token = "";
-                                URL.role = "";
-                                URL.user_id = "";
-                                garageDashboard.redirectActivity(user_dashboard.this, LoginActivity.class);
-                            }
-                        });
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.show();
-            }
-        });
-
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 
-        btnTwoWheel.setOnClickListener(new View.OnClickListener(){
+        btnTwoWheel.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this,user_two_wheel_services.class));
+                startActivity(new Intent(user_dashboard.this, user_two_wheel_services.class));
             }
         });
 
@@ -83,13 +58,13 @@ public class user_dashboard extends AppCompatActivity {
         btnFourWheel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this,user_four_wheel_services.class));
+                startActivity(new Intent(user_dashboard.this, user_four_wheel_services.class));
             }
         });
 
     }
 
-    public void createNewNotificationPopup(){
+    public void createNewNotificationPopup() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
 

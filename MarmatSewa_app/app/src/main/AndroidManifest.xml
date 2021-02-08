@@ -54,8 +54,8 @@
         <activity android:name=".AdminInterface.admin_services" />
         <activity android:name=".AdminInterface.admin_dash" />
         <activity android:name=".GarageDashboard.GarageProfile" />
-        <activity android:name=".AdminInterface.TwoWheelerServices" />
-        <activity android:name=".AdminInterface.FourWheelerServices" />
+        <activity android:name=".AdminInterface.adminTwoWheelerServices" />
+        <activity android:name=".AdminInterface.adminFourWheelerServices" />
         <activity android:name=".GarageDashboard.GarageServices" />
         <activity android:name=".Registration.garageRegistration" />
         <activity android:name=".GarageDashboard.Request_Log_Activity" />

@@ -30,9 +30,9 @@ import com.example.marmatsewa.url.URL;
 
 import java.util.List;
 
-public class    FourWheelerServices extends AppCompatActivity {
+public class adminFourWheelerServices extends AppCompatActivity {
 
-    private ImageView btnBack2, btnFForm;
+    private ImageView btnBack2,btnFForm;
     private String imagePath;
     private String image;
 
@@ -53,14 +53,14 @@ public class    FourWheelerServices extends AppCompatActivity {
 
     private Integer CHOOSE_FROM_GALLERY = 0;
     private Integer CHOOSE_FROM_CAMERA = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_wheeler_services);
 
+        btnBack2 = findViewById(R.id.btnBack2);
         btnFForm=findViewById(R.id.btnFForm);
-
-        btnBack2=findViewById(R.id.btnBack2);
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -70,11 +70,10 @@ public class    FourWheelerServices extends AppCompatActivity {
         btnBack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(FourWheelerServices.this, admin_services.class);
+                Intent i = new Intent(adminFourWheelerServices.this, admin_services.class);
                 startActivity(i);
             }
         });
-
         btnFForm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +82,7 @@ public class    FourWheelerServices extends AppCompatActivity {
         });
     }
 
-    public void createNewFourWheelerDialog(){
+    public void createNewFourWheelerDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View fourWheelerFormView = getLayoutInflater().inflate(R.layout.popup_fourwheeler_form, null);
         edtFourWheelServiceName = (EditText) fourWheelerFormView.findViewById(R.id.edtFourWheelServiceName);
@@ -108,7 +107,7 @@ public class    FourWheelerServices extends AppCompatActivity {
         btnAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                featureName = edtFourWheelServiceName.toString();
+                featureName = edtFourWheelServiceName.getText().toString();
                 serviceBLL = new ServiceBLL();
                 serviceBLL.checkPostService(featureName, image);
                 finish();
@@ -116,7 +115,8 @@ public class    FourWheelerServices extends AppCompatActivity {
             }
         });
     }
-        private void getAllServices() {
+
+    private void getAllServices() {
         ServiceBLL serviceBLL = new ServiceBLL();
         URL.getStrictMode();
 
@@ -124,15 +124,16 @@ public class    FourWheelerServices extends AppCompatActivity {
         ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
         recyclerView.setAdapter(serviceAdapter);
     }
+
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }
 
     private void popUpSelectFromCameraOrGallery() {
-        final CharSequence[] options = { "Choose from Gallery","Cancel" };
-        builder = new AlertDialog.Builder(FourWheelerServices.this);
+        final CharSequence[] options = {"Choose from Gallery", "Cancel"};
+        builder = new AlertDialog.Builder(adminFourWheelerServices.this);
 
         builder.setTitle("Add Profile Pic!")
                 .setItems(options, new DialogInterface.OnClickListener() {
@@ -157,7 +158,7 @@ public class    FourWheelerServices extends AppCompatActivity {
 
         imageBLL = new ImageBLL();
         if (resultCode == RESULT_OK) {
-            if ( data == null ) {
+            if (data == null) {
                 Toast.makeText(this, "Please Select Image", Toast.LENGTH_LONG).show();
             }
         }

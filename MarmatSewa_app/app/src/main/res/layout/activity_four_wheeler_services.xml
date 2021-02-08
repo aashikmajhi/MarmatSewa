@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminInterface.FourWheelerServices">
+    tools:context=".AdminInterface.adminFourWheelerServices">
 
     <View
         android:id="@+id/bottom"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.002"
-        app:srcCompat="@drawable/back"/>
+        app:srcCompat="@drawable/back" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -77,94 +77,5 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="1"-->
-<!--        android:orientation="vertical"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginTop="100dp">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_Services"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/charging"-->
-<!--            android:text="Charging"-->
-<!--            android:layout_margin="15dp"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_Contactus"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/brake"-->
-<!--            android:text="Brake"-->
-<!--            android:layout_margin="15dp"/>-->
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_Booking"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/electronic"-->
-<!--            android:text="Electronic System"-->
-<!--            android:layout_margin="15dp"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_History"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/battery"-->
-<!--            android:text="Battery"-->
-<!--            android:layout_margin="15dp"/>-->
-
-<!--    </LinearLayout>-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_Aboutus"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/suspension"-->
-<!--            android:text="Suspension"-->
-<!--            android:layout_margin="15dp"/>-->
-
-<!--        <Button  android:id="@+id/btn_Feedback"-->
-<!--            style="@style/HomeButton"-->
-<!--            android:drawableTop="@drawable/cooling"-->
-<!--            android:text="Cooling+Heating"-->
-<!--            android:layout_margin="15dp"/>-->
-
-<!--    </LinearLayout>-->
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/Ask"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end|bottom"-->
-<!--            android:src="@drawable/ic_baseline_add_circle_24"-->
-<!--            android:text="Ask"-->
-<!--            tools:ignore="MissingConstraints" />-->
-<!--    </LinearLayout>-->
-<!--    </ScrollView>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.marmatsewa.AdminInterface.FourWheelerServices;
-import com.example.marmatsewa.AdminInterface.TwoWheelerServices;
 import com.example.marmatsewa.R;
 
 public class GarageServices extends AppCompatActivity {
@@ -32,7 +30,7 @@ public class GarageServices extends AppCompatActivity {
         btnTwoWheeler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GarageServices.this, TwoWheelerServices.class);
+                Intent intent = new Intent(GarageServices.this, GarageTwoWheelService.class);
                 startActivity(intent);
 
             }
@@ -41,7 +39,7 @@ public class GarageServices extends AppCompatActivity {
         btnFourWheeler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GarageServices.this, FourWheelerServices.class);
+                Intent intent = new Intent(GarageServices.this, GarageFourWheelService.class);
                 startActivity(intent);
             }
         });

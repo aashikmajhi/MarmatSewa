@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
-import com.example.marmatsewa.AdminInterface.TwoWheelerServices;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.UserInterface.ServiceGarageOwner.ServiceGarageOwnerBLL;
 import com.example.marmatsewa.UserInterface.ServiceGarageOwner.*;
@@ -23,7 +21,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MapsLocation extends FragmentActivity implements OnMapReadyCallback {
 

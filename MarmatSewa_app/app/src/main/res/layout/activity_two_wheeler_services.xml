@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminInterface.TwoWheelerServices">
+    tools:context=".AdminInterface.adminTwoWheelerServices">
 
         <View
             android:id="@+id/bottom"
@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.996">
 
         <ImageView
-            android:id="@+id/btnTForm"
+            android:id="@+id/btnAdd"
             android:layout_width="71dp"
             android:layout_height="69dp"
             android:src="@drawable/add"
@@ -76,97 +76,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="fill_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:orientation="vertical"-->
-<!--            tools:ignore="MissingConstraints">-->
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:layout_marginTop="100dp">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_Services"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/wheels"-->
-<!--                    android:text="Wheels "-->
-<!--                    android:layout_margin="15dp"/>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_Contactus"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/engine"-->
-<!--                    android:text="Engine"-->
-<!--                    android:layout_margin="15dp"/>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_Booking"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/fuel"-->
-<!--                    android:text="Fuel"-->
-<!--                    android:layout_margin="15dp"/>-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_History"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/suspension"-->
-<!--                    android:text="Suspension"-->
-<!--                    android:layout_margin="15dp"/>-->
-
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="fill_parent"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/btn_Aboutus"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/body"-->
-<!--                    android:text="Body Frame"-->
-<!--                    android:layout_margin="15dp"/>-->
-
-<!--                <Button  android:id="@+id/btn_Feedback"-->
-<!--                    style="@style/HomeButton"-->
-<!--                    android:drawableTop="@drawable/cooling"-->
-<!--                    android:text="Cooling"-->
-<!--                    android:layout_margin="15dp"/>-->
-
-<!--            </LinearLayout>-->
-
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/Ask"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="end|bottom"-->
-<!--                android:src="@drawable/ic_baseline_add_circle_24"-->
-<!--                android:text="Ask"-->
-<!--                tools:ignore="MissingConstraints" />-->
-
-<!--        </LinearLayout>-->
-<!--    </ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
