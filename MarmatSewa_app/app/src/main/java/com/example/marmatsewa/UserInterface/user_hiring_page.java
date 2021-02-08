@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -95,7 +97,11 @@ public class user_hiring_page extends AppCompatActivity {
     }
 
     private void postRequestCall() {
-        RequestBLL requestBLL = new RequestBLL(feature_id, garage_id);
+        if (getServiceTypesFromSharedPreference().isEmpty()) {
+            Toast.makeText(this, "Service Types value not fetched from shared preference ...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        RequestBLL requestBLL = new RequestBLL(feature_id, garage_id, getServiceTypesFromSharedPreference());
         if (requestBLL.checkPostRequest()) {
         Intent i = new Intent(this, userRating.class);
         i.putExtra("garage_id", garage_id);
@@ -103,5 +109,10 @@ public class user_hiring_page extends AppCompatActivity {
         } else {
             Toast.makeText(this, "postRequestCall failed ..", Toast.LENGTH_SHORT).show();
         }
+    }
+    
+    private String getServiceTypesFromSharedPreference() {
+        SharedPreferences savedData = getSharedPreferences("USER_REQUEST", Context.MODE_PRIVATE);
+        return savedData.getString("SERVICE_TYPES", "");
     }
 }
