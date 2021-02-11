@@ -59,42 +59,15 @@
             android:layout_width="47dp"
             android:layout_height="42dp"
             android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.791"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.421" />
+            app:layout_constraintVertical_bias="0.526" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_vertical"-->
-<!--        android:onClick="ClickLogout">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Profile"-->
-<!--            android:textSize="30sp"-->
-<!--            android:padding="12dp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textColor="@color/colorPrimaryDark"-->
-<!--            android:layout_marginStart="16dp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src="@drawable/ic_profile"/>-->
-
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -215,32 +188,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.92" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center_vertical"-->
-<!--        android:onClick="ClickLogout">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:text="Logout"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textColor="@color/red"-->
-<!--            android:padding="12dp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:layout_marginStart="16dp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="48dp"-->
-<!--            android:src="@drawable/ic_logout"/>-->
-
-<!--    </LinearLayout>-->
 
 </LinearLayout>

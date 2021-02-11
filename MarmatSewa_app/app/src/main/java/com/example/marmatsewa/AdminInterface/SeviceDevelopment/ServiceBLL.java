@@ -1,6 +1,5 @@
 package com.example.marmatsewa.AdminInterface.SeviceDevelopment;
 
-import com.example.marmatsewa.Registration.LoginDevelopment.LoginResponse;
 import com.example.marmatsewa.url.URL;
 
 import java.io.IOException;
@@ -11,13 +10,13 @@ import retrofit2.Response;
 
 public class ServiceBLL {
 
-    private ServiceAPI serviceAPI = URL.getInstance().create(ServiceAPI.class);
 
     public ServiceBLL() {
     }
 
     public List<Service> getServices() {
         List<Service> serviceList = null;
+        ServiceAPI serviceAPI = URL.getInstance().create(ServiceAPI.class);
         System.out.println("service token :" +URL.token);
         Call<List<Service>> call = serviceAPI.getAllService(URL.token);
 

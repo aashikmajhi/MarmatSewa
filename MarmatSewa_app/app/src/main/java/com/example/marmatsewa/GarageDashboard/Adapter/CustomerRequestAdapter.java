@@ -1,17 +1,16 @@
 package com.example.marmatsewa.GarageDashboard.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
 
@@ -35,7 +34,6 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
 
     @Override
     public void onBindViewHolder(@NonNull CustomerRequestHolder holder, int position) {
-        Log.i("CustomerRequestAdapter", requestList.get(position).getUser().getFullname());
         holder.customerName.setText(requestList.get(position).getUser().getFullname());
         holder.customerNumber.setText(requestList.get(position).getUser().getPhoneNo());
         holder.customerLocation.setText(requestList.get(position).getUser().getAddress());
@@ -45,6 +43,12 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
             @Override
             public void onClick(View v) {
                 //implementation of  put request to change status of request and send notification ...
+                GarageRequestBLL garageRequestBLL = new GarageRequestBLL();
+                garageRequestBLL.putRequest(requestList.get(position).get_id(), "APPROVED");
+                //to refresh list ...
+                requestList.remove(position);
+                notifyDataSetChanged();
+
             }
         });
 
@@ -67,4 +71,6 @@ public class CustomerRequestAdapter extends RecyclerView.Adapter<CustomerRequest
             btnAccept = itemView.findViewById(R.id.btnAccept);
         }
     }
+
+
 }

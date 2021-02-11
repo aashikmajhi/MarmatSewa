@@ -21,82 +21,69 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.marmatsewa.AdminInterface.GarageListDevelopment.GarageBLL;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
 import com.example.marmatsewa.AdminInterface.adapter.ServiceAdapter;
-import com.example.marmatsewa.GarageDashboard.GarageServices;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.url.URL;
 
 import java.util.List;
 
-public class TwoWheelerServices extends AppCompatActivity {
+public class adminFourWheelerServices extends AppCompatActivity {
 
-    ImageView backbtn, btnTForm;
+    private ImageView btnBack2;
+    private String imagePath;
+    private String image;
 
-
-    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog.Builder dialogBuilder, builder;
     private AlertDialog dialog;
 
     private ImageView btnUploadImage;
-    private EditText edtTwoWheelServiceName;
+    private EditText edtFourWheelServiceName;
     private Button btnAddService;
 
-    private RecyclerView twoWheerRecyclerView;
-    private ImageBLL imageBLL;
-    private String imagePath;
+    private RecyclerView recyclerView;
+    private List<Service> serviceList;
+
     private String featureName;
-    private String image;
+
+    private ServiceBLL serviceBLL;
+    private ImageBLL imageBLL;
 
     private Integer CHOOSE_FROM_GALLERY = 0;
     private Integer CHOOSE_FROM_CAMERA = 1;
 
-    private AlertDialog.Builder builder;
-
-    private List<Service> serviceList;
-
-    private ServiceBLL serviceBLL;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_two_wheeler_services);
+        setContentView(R.layout.activity_four_wheeler_services);
 
-        backbtn=findViewById(R.id.btnBack);
-        //btnTForm=findViewById(R.id.btnTForm);
+        btnBack2 = findViewById(R.id.btnBack2);
 
-        twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
 
-        twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getAllServices();
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
+        btnBack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TwoWheelerServices.this, GarageServices.class);
-                startActivity(intent);
+                Intent i = new Intent(adminFourWheelerServices.this, admin_services.class);
+                startActivity(i);
             }
         });
-
-//        btnTForm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                createNewTwoWheelerDialog();
-//            }
-//        });
     }
 
-    public void createNewTwoWheelerDialog() {
+    public void createNewFourWheelerDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
-        final View twoWheelerFormView = getLayoutInflater().inflate(R.layout.popup_twowheeler_form, null);
-        edtTwoWheelServiceName = (EditText) twoWheelerFormView.findViewById(R.id.edtTwoWheelServiceName);
-        btnUploadImage = (ImageView) twoWheelerFormView.findViewById(R.id.btnUploadImage);
+        final View fourWheelerFormView = getLayoutInflater().inflate(R.layout.popup_fourwheeler_form, null);
+        edtFourWheelServiceName = (EditText) fourWheelerFormView.findViewById(R.id.edtFourWheelServiceName);
+        btnUploadImage = (ImageView) fourWheelerFormView.findViewById(R.id.btnUploadImage);
 
-        btnAddService = (Button) twoWheelerFormView.findViewById(R.id.btnAddService);
+        btnAddService = (Button) fourWheelerFormView.findViewById(R.id.btnAddService);
 
-        dialogBuilder.setView(twoWheelerFormView);
+        dialogBuilder.setView(fourWheelerFormView);
         dialog = dialogBuilder.create();
         dialog.show();
 
@@ -113,12 +100,11 @@ public class TwoWheelerServices extends AppCompatActivity {
         btnAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //define add button here!!
-                featureName = edtTwoWheelServiceName.getText().toString();
+                featureName = edtFourWheelServiceName.toString();
                 serviceBLL = new ServiceBLL();
                 serviceBLL.checkPostService(featureName, image);
                 finish();
-                // Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
+                //define add button here!!
             }
         });
     }
@@ -128,19 +114,19 @@ public class TwoWheelerServices extends AppCompatActivity {
         URL.getStrictMode();
 
         serviceList = serviceBLL.getServices();
-        if (serviceList.size() <= 0) return;
         ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
-        twoWheerRecyclerView.setAdapter(serviceAdapter);
+        recyclerView.setAdapter(serviceAdapter);
     }
+
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
     }
 
     private void popUpSelectFromCameraOrGallery() {
-        final CharSequence[] options = { "Choose from Gallery","Cancel" };
-        builder = new AlertDialog.Builder(TwoWheelerServices.this);
+        final CharSequence[] options = {"Choose from Gallery", "Cancel"};
+        builder = new AlertDialog.Builder(adminFourWheelerServices.this);
 
         builder.setTitle("Add Profile Pic!")
                 .setItems(options, new DialogInterface.OnClickListener() {
@@ -165,7 +151,7 @@ public class TwoWheelerServices extends AppCompatActivity {
 
         imageBLL = new ImageBLL();
         if (resultCode == RESULT_OK) {
-            if ( data == null ) {
+            if (data == null) {
                 Toast.makeText(this, "Please Select Image", Toast.LENGTH_LONG).show();
             }
         }
@@ -177,5 +163,4 @@ public class TwoWheelerServices extends AppCompatActivity {
             image = imageBLL.returnFilename();
         Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show();
     }
-
 }

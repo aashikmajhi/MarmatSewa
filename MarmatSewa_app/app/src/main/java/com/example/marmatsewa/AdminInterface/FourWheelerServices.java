@@ -38,7 +38,7 @@ public class    FourWheelerServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_four_wheeler_services);
 
-        btnFForm=findViewById(R.id.btnFForm);
+        //btnFForm=findViewById(R.id.btnFForm);
 
         btnBack2=findViewById(R.id.btnBack2);
 
@@ -55,12 +55,12 @@ public class    FourWheelerServices extends AppCompatActivity {
             }
         });
 
-        btnFForm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNewFourWheelerDialog();
-            }
-        });
+//        btnFForm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                createNewFourWheelerDialog();
+//            }
+//        });
     }
 
     public void createNewFourWheelerDialog(){
