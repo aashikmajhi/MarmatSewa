@@ -13,6 +13,7 @@ import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
 import com.example.marmatsewa.GarageDashboard.Adapter.RequestLogAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.RequestResponse;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.url.URL;
 
@@ -21,7 +22,7 @@ import java.util.List;
 public class Request_Log_Activity extends AppCompatActivity {
 
     private RecyclerView rcViewHistory;
-    private List<GarageRequestResponse> requestList = null;
+    private List<RequestResponse> approveRequestList = null;
 
     DrawerLayout drawerLayout;
 
@@ -39,10 +40,10 @@ public class Request_Log_Activity extends AppCompatActivity {
     private void getAllRequests() {
         GarageRequestBLL garageRequestAPI = new GarageRequestBLL();
         URL.getStrictMode();
-        requestList = garageRequestAPI.getAcceptedRequests();
+        approveRequestList = garageRequestAPI.getApprovedRequests();
 
         rcViewHistory.setLayoutManager(new LinearLayoutManager(this));
-        RequestLogAdapter requestAdapter = new RequestLogAdapter(this, requestList);
+        RequestLogAdapter requestAdapter = new RequestLogAdapter(this, approveRequestList);
         rcViewHistory.setAdapter(requestAdapter);
     }
 

@@ -14,7 +14,7 @@ const Request = new mongoose.Schema(
 		},
 		garageOwner: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Feature',
+			ref: 'GarageOwner',
 			required: true
 		},
 		status: {

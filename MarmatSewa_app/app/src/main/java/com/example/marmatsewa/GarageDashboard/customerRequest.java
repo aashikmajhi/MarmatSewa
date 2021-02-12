@@ -9,13 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
-import com.example.marmatsewa.notificationChannel.createChannel;
+import com.example.marmatsewa.notificationChannel.CreateChannel;
 import com.example.marmatsewa.url.URL;
 
 import java.util.List;
@@ -40,14 +39,6 @@ public class customerRequest extends AppCompatActivity {
         //notification
         notificationManagerCompat = NotificationManagerCompat.from(this);
 
-        createChannel c = new createChannel(this);
-        c.createChannel();
-
-        if(getIntent().getExtras() !=  null){
-            if (getIntent().getExtras().getString("Username").equals("true")){
-                NewRequest();
-            }
-        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
         rcView = findViewById(R.id.rcView);
@@ -123,13 +114,4 @@ public class customerRequest extends AppCompatActivity {
 
     }
 
-    private void NewRequest(){
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(this,createChannel.hire)
-                .setSmallIcon(R.drawable.ic_baseline_notifications_24)
-                .setContentTitle("New Request")
-                .setContentText("New Request from : Username")
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE);
-
-        notificationManagerCompat.notify(1,notification.build());
-    }
 }

@@ -95,8 +95,6 @@ public class admin_dash extends AppCompatActivity {
     }
 
 
-
-
     public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity, aClass);
 

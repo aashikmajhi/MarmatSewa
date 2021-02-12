@@ -55,7 +55,36 @@ public class GarageRequestBLL {
         return true;
     }
 
+    public List<RequestResponse> getApprovedRequests() {
+        List<RequestResponse> approveRequestList = null;
+        Call<List<RequestResponse>> call = garageRequestAPI.getApprovedRequests(URL.token);
 
+        try {
+            Response<List<RequestResponse>> response = call.execute();
+            if(response.isSuccessful()) {
+                approveRequestList = response.body();
 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return approveRequestList;
+    }
+
+    public List<RequestResponse> getDoneRequests() {
+        List<RequestResponse> DoneRequestList = null;
+        Call<List<RequestResponse>> call = garageRequestAPI.getApprovedRequests(URL.token);
+
+        try {
+            Response<List<RequestResponse>> response = call.execute();
+            if(response.isSuccessful()) {
+                DoneRequestList = response.body();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return DoneRequestList;
+    }
 
 }

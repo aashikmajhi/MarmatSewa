@@ -64,7 +64,11 @@ public class adminTwoWheelerServices extends AppCompatActivity {
         setContentView(R.layout.activity_two_wheeler_services);
 
         backbtn=findViewById(R.id.btnBack);
+<<<<<<<< HEAD:MarmatSewa_app/app/src/main/java/com/example/marmatsewa/AdminInterface/adminTwoWheelerServices.java
         btnAdd=findViewById(R.id.btnAdd);
+========
+        //btnTForm=findViewById(R.id.btnTForm);
+>>>>>>>> a2068de4b85876f8d508608b492856759578b50b:MarmatSewa_app/app/src/main/java/com/example/marmatsewa/AdminInterface/TwoWheelerServices.java
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
@@ -78,12 +82,22 @@ public class adminTwoWheelerServices extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<<< HEAD:MarmatSewa_app/app/src/main/java/com/example/marmatsewa/AdminInterface/adminTwoWheelerServices.java
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createNewTwoWheelerDialog();
             }
         });
+========
+
+//        btnTForm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                createNewTwoWheelerDialog();
+//            }
+//        });
+>>>>>>>> a2068de4b85876f8d508608b492856759578b50b:MarmatSewa_app/app/src/main/java/com/example/marmatsewa/AdminInterface/TwoWheelerServices.java
     }
 
     public void createNewTwoWheelerDialog() {
