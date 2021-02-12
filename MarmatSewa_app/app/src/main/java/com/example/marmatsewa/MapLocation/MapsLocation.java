@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
-import com.example.marmatsewa.AdminInterface.TwoWheelerServices;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.UserInterface.ServiceGarageOwner.ServiceGarageOwnerBLL;
 import com.example.marmatsewa.UserInterface.ServiceGarageOwner.*;
@@ -23,7 +21,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MapsLocation extends FragmentActivity implements OnMapReadyCallback {
 
@@ -89,13 +86,14 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
             String feature_id = garageList.get(i).getFeature().get_id();
             String nameOfFeature = garageList.get(i).getFeature().getFeature();
             String garagePhone = garageList.get(i).getGarageOwner().getContactNo();
+            String garageAddress = garageList.get(i).getGarageOwner().getAddress();
 
-            placeMarkerOnMap(mMap, latLng, nameOfGarage, garage_id, feature_id, nameOfFeature ,garagePhone);
+            placeMarkerOnMap(mMap, latLng, nameOfGarage, garage_id, feature_id, nameOfFeature ,garagePhone, garageAddress);
         }
 
     }
 
-    private void placeMarkerOnMap(GoogleMap mMap, LatLng latLng, String nameOfGarage, String garage_id, String feature_id, String nameOfFeature, String phoneNo) {
+    private void placeMarkerOnMap(GoogleMap mMap, LatLng latLng, String nameOfGarage, String garage_id, String feature_id, String nameOfFeature, String phoneNo, String garageAddress) {
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -105,6 +103,7 @@ public class MapsLocation extends FragmentActivity implements OnMapReadyCallback
                 intent.putExtra("feature_id", feature_id);
                 intent.putExtra("feature_name", nameOfFeature);
                 intent.putExtra("garage_phone", phoneNo);
+                intent.putExtra("garage_address", garageAddress);
                 startActivity(intent);
                 return false;
             }

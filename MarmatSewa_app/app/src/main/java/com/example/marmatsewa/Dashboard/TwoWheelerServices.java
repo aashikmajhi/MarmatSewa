@@ -30,6 +30,5 @@ public class TwoWheelerServices extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 }

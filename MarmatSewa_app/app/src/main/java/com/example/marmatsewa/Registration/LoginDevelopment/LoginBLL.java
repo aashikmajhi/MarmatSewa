@@ -1,5 +1,7 @@
 package com.example.marmatsewa.Registration.LoginDevelopment;
 
+import android.util.Log;
+
 import com.example.marmatsewa.url.URL;
 
 import java.io.IOException;
@@ -28,6 +30,7 @@ public class LoginBLL {
 
             if (r.isSuccessful()) {
                 URL.token = r.body().getToken();
+                Log.i("token", URL.token);
                 URL.role = r.body().getRole();
                 URL.user_id = r.body().getUser_id();
                 isSuccess = true;

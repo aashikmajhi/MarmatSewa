@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
-import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageAPI;
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
 import com.example.marmatsewa.R;
 
@@ -22,8 +21,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
-import retrofit2.Response;
 
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder> {
 

@@ -1,6 +1,8 @@
 package com.example.marmatsewa.GarageDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -12,18 +14,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
 import com.example.marmatsewa.Registration.garageRegistrationBusinessInfo;
+import com.example.marmatsewa.RequestDevelopment.RequestBLL;
+import com.example.marmatsewa.notificationChannel.CreateChannel;
 import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class garageDashboard extends AppCompatActivity {
 
     //Initialize variable
+    private androidx.appcompat.app.AlertDialog.Builder dialogBuilder;
+    private androidx.appcompat.app.AlertDialog dialog;
 
     DrawerLayout drawerLayout;
 
     private Button btnAddgarageService;
+
+    private NotificationManagerCompat notificationManagerCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +44,15 @@ public class garageDashboard extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
         btnAddgarageService = findViewById(R.id.btnAddgarageService);
+
+        //notification
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel c = new CreateChannel(this);
+        c.createChannel();
+        NewRequest();
 
         btnAddgarageService.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,5 +152,39 @@ public class garageDashboard extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         closeDrawer(drawerLayout);
+    }
+
+    public void newRequest(){
+        dialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        final View notificationView = getLayoutInflater().inflate(R.layout.notification_popup, null);
+
+        //TODO: assign notification card here
+
+        dialogBuilder.setView(notificationView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+
+    private void NewRequest(){
+        GarageRequestBLL pendindRequest = new GarageRequestBLL();
+        URL.getStrictMode();
+
+        List<GarageRequestResponse> pendingRequestList = pendindRequest.getPendingRequests();
+        String username = null, servicename = null;
+        if (pendingRequestList.size() >= 0) {
+            for (GarageRequestResponse grr : pendingRequestList) {
+                username = grr.getUser().getFullname();
+                servicename = grr.getFeature().getFeature();
+            }
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.hire)
+                    .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                    .setContentTitle("New Request")
+                    .setContentText("New Request from : " + username + "  For service: " + servicename)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+
+            notificationManagerCompat.notify(1, notification.build());
+
+        }
     }
 }

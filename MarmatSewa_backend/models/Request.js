@@ -14,13 +14,17 @@ const Request = new mongoose.Schema(
 		},
 		garageOwner: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Feature',
+			ref: 'GarageOwner',
 			required: true
 		},
 		status: {
 			type: String,
-			enum: [ 'PENDING', 'APPROVED' ],
+			enum: [ 'PENDING', 'APPROVED', 'DONE' ],
 			default: 'PENDING'
+		},
+		serviceTypes: {
+			type: String,
+			enum: [ 'DROP IN SERVICE', 'PICKUP AND DELIVERY', 'ON THE SPOT' ]
 		}
 	},
 	{ timestamps: true }

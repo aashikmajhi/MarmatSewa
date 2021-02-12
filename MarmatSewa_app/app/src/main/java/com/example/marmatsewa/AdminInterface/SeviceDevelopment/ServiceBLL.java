@@ -1,5 +1,8 @@
 package com.example.marmatsewa.AdminInterface.SeviceDevelopment;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.marmatsewa.Registration.LoginDevelopment.LoginResponse;
 import com.example.marmatsewa.url.URL;
 
@@ -18,8 +21,23 @@ public class ServiceBLL {
 
     public List<Service> getServices() {
         List<Service> serviceList = null;
-        System.out.println("service token :" +URL.token);
+        ServiceAPI serviceAPI = URL.getInstance().create(ServiceAPI.class);
         Call<List<Service>> call = serviceAPI.getAllService(URL.token);
+
+        try {
+            Response<List<Service>> response = call.execute();
+            if(response.isSuccessful()) {
+                serviceList = response.body();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return serviceList;
+    }
+
+    public List<Service> getFilteredServices() {
+        List<Service> serviceList = null;
+        Call<List<Service>> call = serviceAPI.getFilteredFeatures(URL.token);
 
         try {
             Response<List<Service>> response = call.execute();

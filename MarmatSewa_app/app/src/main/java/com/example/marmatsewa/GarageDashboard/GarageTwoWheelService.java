@@ -1,13 +1,12 @@
 package com.example.marmatsewa.GarageDashboard;
 
-import androidx.appcompat.app.AlertDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
@@ -19,32 +18,27 @@ import java.util.List;
 
 public class GarageTwoWheelService extends AppCompatActivity {
 
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
-
     private RecyclerView recyclerView;
     private List<Service> garageTwoWheelServiceList;
-
-    private RecyclerView two_wheel_popup_rcview;
+    private ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage_two_wheel_service);
 
+        btnBack=findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(view -> {
+            startActivity(new Intent(GarageTwoWheelService.this,GarageServices.class));
+        });
+
+        recyclerView=findViewById(R.id.recyclerView);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         loadGarageTwoWheelService();
     }
 
-    public void createNewFourWheelerDialog(){
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View twoWheelerFormView = getLayoutInflater().inflate(R.layout.popup_twowheeler_form, null);
-
-        dialogBuilder.setView(twoWheelerFormView);
-        dialog = dialogBuilder.create();
-        dialog.show();
-
-    }
 
     private void loadGarageTwoWheelService() {
         ServiceBLL serviceBLL = new ServiceBLL();
@@ -54,5 +48,4 @@ public class GarageTwoWheelService extends AppCompatActivity {
         GarageTwoWheelServiceAdapter garageTwoWheelServiceAdapter = new GarageTwoWheelServiceAdapter(this, garageTwoWheelServiceList);
         recyclerView.setAdapter(garageTwoWheelServiceAdapter);
     }
-
 }

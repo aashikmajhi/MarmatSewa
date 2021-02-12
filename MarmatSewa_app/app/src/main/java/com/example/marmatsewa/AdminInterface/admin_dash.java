@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.Registration.LoginActivity;
+import com.example.marmatsewa.url.URL;
 
 public class admin_dash extends AppCompatActivity {
 
@@ -77,9 +79,14 @@ public class admin_dash extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                activity.finishAffinity();
+                URL.token="";
+                URL.role="";
+                URL.user_id="";
 
-                System.exit(0);
+              redirectActivity(activity, LoginActivity.class);
+               // activity.finishAffinity();
+
+                //System.exit(0);
             }
         });
 
@@ -93,8 +100,6 @@ public class admin_dash extends AppCompatActivity {
         builder.show();
 
     }
-
-
 
 
     public static void redirectActivity(Activity activity, Class aClass) {

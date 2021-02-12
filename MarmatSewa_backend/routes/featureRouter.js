@@ -32,14 +32,12 @@ router
 
 .post(auth.verifyUser, auth.verifyAdmin, (req, res, next) => {
     Feature.create({... req.body, admin: req.user.id})
-
     .then(feature => {
         res.status(201).json(feature);
     }).catch(next);
 });
 
 router.route('/:feature_id')
-
 .put(auth.verifyUser, auth.verifyGarageOwner, (req, res, next) => {
     let { errors, isValid } = validators.FeatureInput(req.body);
     if (!isValid) {

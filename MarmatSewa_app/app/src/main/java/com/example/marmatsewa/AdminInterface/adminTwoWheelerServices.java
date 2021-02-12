@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.marmatsewa.AdminInterface.GarageListDevelopment.GarageBLL;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.Service;
 import com.example.marmatsewa.AdminInterface.SeviceDevelopment.ServiceBLL;
 import com.example.marmatsewa.AdminInterface.UploadImageDevelopment.ImageBLL;
@@ -32,9 +31,9 @@ import com.example.marmatsewa.url.URL;
 
 import java.util.List;
 
-public class TwoWheelerServices extends AppCompatActivity {
+public class adminTwoWheelerServices extends AppCompatActivity {
 
-    ImageView backbtn, btnTForm;
+    ImageView backbtn;
 
 
     private AlertDialog.Builder dialogBuilder;
@@ -65,7 +64,6 @@ public class TwoWheelerServices extends AppCompatActivity {
         setContentView(R.layout.activity_two_wheeler_services);
 
         backbtn=findViewById(R.id.btnBack);
-        //btnTForm=findViewById(R.id.btnTForm);
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
@@ -75,17 +73,10 @@ public class TwoWheelerServices extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TwoWheelerServices.this, GarageServices.class);
+                Intent intent=new Intent(adminTwoWheelerServices.this, admin_services.class);
                 startActivity(intent);
             }
         });
-
-//        btnTForm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                createNewTwoWheelerDialog();
-//            }
-//        });
     }
 
     public void createNewTwoWheelerDialog() {
@@ -118,7 +109,7 @@ public class TwoWheelerServices extends AppCompatActivity {
                 serviceBLL = new ServiceBLL();
                 serviceBLL.checkPostService(featureName, image);
                 finish();
-                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
+//                Log.i("btnAdd", String.valueOf(serviceBLL.checkPostService(featureName, image)));
             }
         });
     }
@@ -127,8 +118,8 @@ public class TwoWheelerServices extends AppCompatActivity {
         ServiceBLL serviceBLL = new ServiceBLL();
         URL.getStrictMode();
 
-        serviceList = serviceBLL.getFilteredServices();
-        if (serviceList.equals(null)) return;
+        serviceList = serviceBLL.getServices();
+        if (serviceList.size() <= 0) return;
         ServiceAdapter serviceAdapter = new ServiceAdapter(this, serviceList);
         twoWheerRecyclerView.setAdapter(serviceAdapter);
     }
@@ -140,7 +131,7 @@ public class TwoWheelerServices extends AppCompatActivity {
 
     private void popUpSelectFromCameraOrGallery() {
         final CharSequence[] options = { "Choose from Gallery","Cancel" };
-        builder = new AlertDialog.Builder(TwoWheelerServices.this);
+        builder = new AlertDialog.Builder(adminTwoWheelerServices.this);
 
         builder.setTitle("Add Profile Pic!")
                 .setItems(options, new DialogInterface.OnClickListener() {

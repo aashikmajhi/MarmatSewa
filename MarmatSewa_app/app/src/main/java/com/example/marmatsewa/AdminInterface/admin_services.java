@@ -1,6 +1,8 @@
 package com.example.marmatsewa.AdminInterface;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.marmatsewa.R;
+import com.example.marmatsewa.notificationChannel.CreateChannel;
 
 public class admin_services extends AppCompatActivity {
 
@@ -30,7 +33,7 @@ public class admin_services extends AppCompatActivity {
         btnTwoWheeler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(admin_services.this, TwoWheelerServices.class);
+                Intent intent = new Intent(admin_services.this, adminTwoWheelerServices.class);
                 startActivity(intent);
 
             }
@@ -39,9 +42,46 @@ public class admin_services extends AppCompatActivity {
         btnFourWheeler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(admin_services.this, FourWheelerServices.class);
+                Intent intent = new Intent(admin_services.this, adminFourWheelerServices.class);
                 startActivity(intent);
             }
         });
     }
+
+    public void  ClickMenu(View view){
+        //Open Drawer
+        admin_dash.openDrawer(drawerLayout);
+    }
+
+    public  void ClickLogo(View view){
+        //Close drawer
+        admin_dash.closeDrawer(drawerLayout);
+    }
+
+    public void ClickAdminDashboard(View view){
+        admin_dash.redirectActivity(this, admin_dash.class);
+    }
+
+    public void ClickAdminGarageList(View view){
+        admin_dash.redirectActivity(this, admin_garage_list.class);
+    }
+
+    public void ClickAdminServices(View view) {
+        recreate();
+    }
+
+    public void ClickAdminRequestList(View view){
+        admin_dash.redirectActivity(this, admin_garage_request_list.class);
+    }
+
+    public void ClickLogout(View view){
+        admin_dash.logout(this);
+    }
+
+    protected void onPause(){
+        super.onPause();
+        admin_dash.closeDrawer(drawerLayout);
+
+    }
+
 }
