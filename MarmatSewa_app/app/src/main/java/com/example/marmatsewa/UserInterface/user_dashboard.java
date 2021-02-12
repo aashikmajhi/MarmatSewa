@@ -2,6 +2,8 @@ package com.example.marmatsewa.UserInterface;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
@@ -12,10 +14,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
+import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.RequestResponse;
 import com.example.marmatsewa.GarageDashboard.garageDashboard;
 import com.example.marmatsewa.R;
 import com.example.marmatsewa.Registration.LoginActivity;
+import com.example.marmatsewa.notificationChannel.CreateChannel;
 import com.example.marmatsewa.url.URL;
+
+import java.util.List;
 
 public class user_dashboard extends AppCompatActivity {
 
@@ -26,6 +34,7 @@ public class user_dashboard extends AppCompatActivity {
     private RecyclerView notificationRcView;
 
     private AlertDialog.Builder builder;
+    private NotificationManagerCompat notificationManagerCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,23 +54,19 @@ public class user_dashboard extends AppCompatActivity {
 
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 
-        btnTwoWheel.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this, user_two_wheel_services.class));
-            }
-        });
+        btnTwoWheel.setOnClickListener(view -> startActivity(new Intent(user_dashboard.this, user_two_wheel_services.class)));
 
         btnFourWheel = findViewById(R.id.btnFourWheel);
 
-        btnFourWheel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(user_dashboard.this, user_four_wheel_services.class));
-            }
-        });
+        btnFourWheel.setOnClickListener(view -> startActivity(new Intent(user_dashboard.this, user_four_wheel_services.class)));
 
+        //notification
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel c = new CreateChannel(this);
+        c.createChannel();
+
+        showApprovedNotification();
+        doneNotification();
     }
 
     public void createNewNotificationPopup() {
@@ -74,6 +79,50 @@ public class user_dashboard extends AppCompatActivity {
         dialog = dialogBuilder.create();
         dialog.show();
 
+    }
+
+    private void showApprovedNotification(){
+        GarageRequestBLL pendindRequest = new GarageRequestBLL();
+        URL.getStrictMode();
+
+        List<RequestResponse> approveRequestList = pendindRequest.getApprovedRequests();
+        String garagename = null, servicename = null;
+        if (approveRequestList.size() >= 0) {
+            for (RequestResponse r : approveRequestList) {
+                garagename = r.getWorkshop().getBusinessName();
+                servicename = r.getFeature().getFeature();
+            }
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.approved)
+                    .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                    .setContentTitle("Approved")
+                    .setContentText("Your request of : " + servicename + " is approved by " + garagename)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+
+            notificationManagerCompat.notify(2, notification.build());
+
+        }
+    }
+
+    private void doneNotification(){
+        GarageRequestBLL doneRequest = new GarageRequestBLL();
+        URL.getStrictMode();
+
+        List<RequestResponse> doneRequestList = doneRequest.getDoneRequests();
+        String garageName = null, servicename = null;
+        if (doneRequestList.size() >= 0) {
+            for (RequestResponse dr : doneRequestList) {
+                garageName = dr.getWorkshop().getBusinessName();
+                servicename = dr.getFeature().getFeature();
+            }
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.completed)
+                    .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                    .setContentTitle("Serivce Completed")
+                    .setContentText("Your Request for " + servicename + " is completed and done by " + garageName)
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+
+            notificationManagerCompat.notify(3, notification.build());
+
+        }
     }
 
 }
