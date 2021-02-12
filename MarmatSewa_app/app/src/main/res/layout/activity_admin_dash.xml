@@ -17,11 +17,18 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Instructions..."
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:text="Welcome Admin"
+            android:layout_marginBottom="16dp"
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
