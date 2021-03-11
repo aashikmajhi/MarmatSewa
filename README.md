@@ -1,1 +1,4 @@
 # MarmatSewa
+Marmat Sewa is an application that we have developed is your one-stop destination for your vehicle that goes through every single problem. We have faith in providing the most splendid conceivable service near your recent site. Your automobile bugs primary from power-assisted brake to batteries to tires to oil change to ignition to other addition replacement can be completed here via our application. We believe in bringing the service that is suitable for everybody as we take full accountability to our activities. 
+
+There are two types of categories available in Marmat Sewa, where you have to find the ideal solution. After choosing your problem, you can search for a repairing center near your current location via Google Map. Well, this application also permits users to hire mechanics. It means that a customer gets expert mechanics as quickly as possible at anytime and anyplace.
