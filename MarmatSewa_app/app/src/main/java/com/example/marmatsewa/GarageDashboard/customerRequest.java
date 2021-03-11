@@ -14,7 +14,9 @@ import com.example.marmatsewa.GarageDashboard.Adapter.CustomerRequestAdapter;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.R;
+
 import com.example.marmatsewa.notificationChannel.CreateChannel;
+
 import com.example.marmatsewa.url.URL;
 
 import java.util.List;
@@ -124,6 +126,7 @@ public class customerRequest extends AppCompatActivity {
 
     private void NewRequest(){
         NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.hire)
+
                 .setSmallIcon(R.drawable.ic_baseline_notifications_24)
                 .setContentTitle("New Request")
                 .setContentText("New Request from : Username")

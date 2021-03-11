@@ -134,6 +134,8 @@ router
 					.catch(next);
 			})
 			.catch(next);
+		})
+		.catch(next);
 	});
 
 router

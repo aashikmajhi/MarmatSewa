@@ -37,7 +37,7 @@ public class user_dashboard extends AppCompatActivity {
     private RecyclerView notificationRcView;
     private NotificationManagerCompat notificationManagerCompat;
 
-//    private AlertDialog.Builder builder;
+    private AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,7 @@ public class user_dashboard extends AppCompatActivity {
 
         btnNotification = findViewById(R.id.btnNotification);
         notificationRcView = findViewById(R.id.notificationRcView);
+        radioGroup = findViewById(R.id.radioGroup);
 
         btnUserProfile = findViewById(R.id.btnUserProfile);
         radioGroup = findViewById(R.id.radioGroup);
@@ -52,7 +53,9 @@ public class user_dashboard extends AppCompatActivity {
 
         btnNotification.setOnClickListener(v -> createNewNotificationPopup());
 
+
         btnUserProfile.setOnClickListener(v -> startActivity(new Intent(user_dashboard.this, user_profile_view.class)));
+
 
         btnTwoWheel = findViewById(R.id.btnTwoWheel);
 
@@ -66,6 +69,7 @@ public class user_dashboard extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), user_two_wheel_services.class);
             storeLoggedInStatusToSharedPreference();
             startActivity(intent);
+
         });
 
         btnFourWheel = findViewById(R.id.btnFourWheel);
@@ -107,6 +111,27 @@ public class user_dashboard extends AppCompatActivity {
         editor.putString("SERVICE_TYPES", getRadioButtonValue());
         editor.apply();
     }
+    private String getRadioButtonValue() {
+        switch (radioGroup.getCheckedRadioButtonId()) {
+            case R.id.rbDropInService:
+                return "DROP IN SERVICE";
+            case R.id.rbOnTheSpot:
+                return "ON THE SPOT";
+            case R.id.rbPickUpDelivery:
+                return "PICKUP AND DELIVERY";
+        }
+        return "";
+
+    }
+
+    private void storeLoggedInStatusToSharedPreference() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("USER_REQUEST", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("SERVICE_TYPES", getRadioButtonValue());
+        editor.apply();
+    }
+
+
 
 
 

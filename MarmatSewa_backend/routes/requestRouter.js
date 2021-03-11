@@ -41,6 +41,7 @@ router.route('/approvelist').get(auth.verifyUser, (req, res, next) => {
 		.populate('feature')
 		.then((reply) => res.json(reply))
 		.catch(next);
+
 });
 
 router.route('/donelist').get(auth.verifyUser, (req, res, next) => {
@@ -70,5 +71,6 @@ router
 			})
 			.catch(next);
 	});
+
 
 module.exports = router;

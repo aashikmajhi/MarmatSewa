@@ -44,6 +44,7 @@ public class Request_Log_Activity extends AppCompatActivity {
         rcViewHistory.setLayoutManager(new LinearLayoutManager(this));
        // RequestLogAdapter requestAdapter = new RequestLogAdapter(this, requestList);
        // rcViewHistory.setAdapter(requestAdapter);
+
     }
 
     public void  ClickMenu(View view){

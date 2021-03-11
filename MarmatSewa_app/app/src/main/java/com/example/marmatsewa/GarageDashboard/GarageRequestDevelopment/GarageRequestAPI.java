@@ -24,6 +24,14 @@ public interface GarageRequestAPI {
     @PUT("api/requests/garages/{requestId}")
     Call<Void> checkPutRequest(@Header("Authorization") String header, @Path("requestId") String requestId, @Field("status") String status);
 
+
+    @GET("api/requests/garages/{requestId}")
+    Call<List<GarageRequestResponse>> getAcceptedRequestForLog(@Header("Authorization") String header, @Path("requestId") String requestId);
+
+    @FormUrlEncoded
+    @PUT("api/requests/garages/{requestId}")
+    Call<Void> checkPutRequest(@Header("Authorization") String header, @Path("requestId") String requestId, @Field("status") String status);
+
     @GET("api/requests/approvelist")
     Call<List<RequestResponse>> getApprovedRequests(@Header("Authorization") String header);
 

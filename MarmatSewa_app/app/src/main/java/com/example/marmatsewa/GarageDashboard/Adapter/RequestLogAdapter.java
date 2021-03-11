@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestBLL;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.GarageRequestResponse;
 import com.example.marmatsewa.GarageDashboard.GarageRequestDevelopment.RequestResponse;
+
 import com.example.marmatsewa.R;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class RequestLogAdapter extends RecyclerView.Adapter<RequestLogAdapter.Re
     private Context context;
     private List<RequestResponse> requestList;
 
-    public RequestLogAdapter(Context context, List<RequestResponse> requestList) {
+    public RequestLogAdapter(Context context, List<RequestResponse> requestList) {   
         this.context = context;
         this.requestList = requestList;
     }
