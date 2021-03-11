@@ -172,7 +172,12 @@ public class garageDashboard extends AppCompatActivity {
 
         List<GarageRequestResponse> pendingRequestList = pendindRequest.getPendingRequests();
         String username = null, servicename = null;
-        if (pendingRequestList.size() >= 0) {
+
+        if (pendingRequestList.size() == 0){
+            return;
+        }
+
+        if (pendingRequestList.size() > 0) {
             for (GarageRequestResponse grr : pendingRequestList) {
                 username = grr.getUser().getFullname();
                 servicename = grr.getFeature().getFeature();

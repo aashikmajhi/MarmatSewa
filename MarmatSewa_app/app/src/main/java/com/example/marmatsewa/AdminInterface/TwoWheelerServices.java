@@ -69,6 +69,7 @@ public class TwoWheelerServices extends AppCompatActivity {
 
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
+
         twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         getAllServices();
 

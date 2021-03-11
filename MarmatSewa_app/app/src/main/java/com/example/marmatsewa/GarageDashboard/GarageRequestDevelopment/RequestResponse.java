@@ -5,13 +5,13 @@ import com.example.marmatsewa.Registration.WorkshopRegistrationDevelopment.Works
 public class RequestResponse {
     private String _id;
     private Feature feature;
-    private Workshop workshop;
+    private GarageOwner garageOwner;
     private User user;
 
-    public RequestResponse(String _id, Feature feature, Workshop workshop, User user) {
+    public RequestResponse(String _id, Feature feature, GarageOwner garageOwner, User user) {
         this._id = _id;
         this.feature = feature;
-        this.workshop = workshop;
+        this.garageOwner = garageOwner;
         this.user = user;
     }
 
@@ -31,12 +31,12 @@ public class RequestResponse {
         this.feature = feature;
     }
 
-    public Workshop getWorkshop() {
-        return workshop;
+    public GarageOwner getGarageOwner() {
+        return garageOwner;
     }
 
-    public void setWorkshop(Workshop workshop) {
-        this.workshop = workshop;
+    public void setGarageOwner(GarageOwner garageOwner) {
+        this.garageOwner = garageOwner;
     }
 
     public User getUser() {

@@ -53,8 +53,10 @@ public class GarageRequestBLL {
             Response<List<RequestResponse>> response = call.execute();
             if(response.isSuccessful()) {
                 requestList = response.body();
+                System.out.println("first print: " + requestList);
                 for (RequestResponse service: requestList) {
-                    System.out.println(service);
+                    System.out.println("second print: "+ service.getFeature().getFeature());
+                    System.out.println("third print: "+service.getGarageOwner().getBusinessName());
                 }
             }
         } catch (IOException e) {

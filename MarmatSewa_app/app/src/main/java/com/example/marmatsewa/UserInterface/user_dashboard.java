@@ -84,6 +84,7 @@ public class user_dashboard extends AppCompatActivity {
         CreateChannel c = new CreateChannel(this);
         c.createChannel();
 
+
         showApprovedNotification();
         doneNotification();
     }
@@ -127,9 +128,15 @@ public class user_dashboard extends AppCompatActivity {
 
         List<RequestResponse> approveRequestList = approvedRequest.getApprovedRequest();
         String garagename = null, servicename = null;
-        if (approveRequestList.size() >= 0) {
+
+        System.out.println(approveRequestList.size());
+        if (approveRequestList.size() == 0 ) {
+            return;
+        }
+
+        //if (approveRequestList.size() > 0) {
             for (RequestResponse r : approveRequestList) {
-                garagename = r.getWorkshop().getBusinessName();
+                garagename = r.getGarageOwner().getBusinessName();
                 servicename = r.getFeature().getFeature();
             }
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.approved)
@@ -139,7 +146,7 @@ public class user_dashboard extends AppCompatActivity {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE);
 
             notificationManagerCompat.notify(2, notification.build());
-        }
+       // }
 
     }
 
@@ -149,9 +156,12 @@ public class user_dashboard extends AppCompatActivity {
 
         List<RequestResponse> doneRequestList = doneRequest.getDoneRequests();
         String garageName = null, servicename = null;
-        if (doneRequestList.size() >= 0) {
+        if(doneRequestList.size() == 0) {
+            return;
+        }
+        //if (doneRequestList.size() > 0) {
             for (RequestResponse dr : doneRequestList) {
-                garageName = dr.getWorkshop().getBusinessName();
+                garageName = dr.getGarageOwner().getBusinessName();
                 servicename = dr.getFeature().getFeature();
             }
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CreateChannel.completed)
@@ -162,7 +172,7 @@ public class user_dashboard extends AppCompatActivity {
 
             notificationManagerCompat.notify(3, notification.build());
 
-        }
+       // }
     }
 
 }

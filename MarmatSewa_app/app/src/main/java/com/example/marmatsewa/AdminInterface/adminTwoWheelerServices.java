@@ -33,7 +33,7 @@ import java.util.List;
 
 public class adminTwoWheelerServices extends AppCompatActivity {
 
-    ImageView backbtn;
+    ImageView backbtn, btnAdd;
 
 
     private AlertDialog.Builder dialogBuilder;
@@ -65,6 +65,8 @@ public class adminTwoWheelerServices extends AppCompatActivity {
 
         backbtn=findViewById(R.id.btnBack);
 
+        btnAdd = findViewById(R.id.btnAdd);
+
         twoWheerRecyclerView = findViewById(R.id.twoWheerRecyclerView);
 
         twoWheerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -76,6 +78,10 @@ public class adminTwoWheelerServices extends AppCompatActivity {
                 Intent intent=new Intent(adminTwoWheelerServices.this, admin_services.class);
                 startActivity(intent);
             }
+        });
+
+        btnAdd.setOnClickListener(v-> {
+            createNewTwoWheelerDialog();
         });
     }
 
