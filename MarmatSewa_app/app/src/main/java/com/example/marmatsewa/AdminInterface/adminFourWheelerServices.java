@@ -32,7 +32,7 @@ import java.util.List;
 
 public class adminFourWheelerServices extends AppCompatActivity {
 
-    private ImageView btnBack2;
+    private ImageView btnBack2, btnAdd;
     private String imagePath;
     private String image;
 
@@ -61,6 +61,8 @@ public class adminFourWheelerServices extends AppCompatActivity {
 
         btnBack2 = findViewById(R.id.btnBack2);
 
+        btnAdd = findViewById(R.id.btnAdd);
+
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +74,10 @@ public class adminFourWheelerServices extends AppCompatActivity {
                 Intent i = new Intent(adminFourWheelerServices.this, admin_services.class);
                 startActivity(i);
             }
+        });
+
+        btnAdd.setOnClickListener(v->{
+            createNewFourWheelerDialog();
         });
     }
 
